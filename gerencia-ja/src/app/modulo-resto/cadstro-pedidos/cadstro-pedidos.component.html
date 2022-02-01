@@ -1,0 +1,21 @@
+<div>
+  <button (click)="router.navigate(['/pedidos'])">voltar</button>
+  <h3 *ngIf="id == 'novo'">
+    Cadastro Pedido
+  </h3>
+  <h3 *ngIf="id != 'novo'">
+    Editando Pedido
+  </h3>
+  <div *ngIf="clientes.length == 0">
+    <button (click)="router.navigate(['clientes/novo'])">Cadastrar Cliente</button>
+  </div>
+  <div *ngIf="clientes.length > 0">
+    <select [(ngModel)]="clienteId">
+      <option *ngFor="let cliente of clientes;let i = index" value='{{i}}'>{{cliente.name}} {{cliente.surname}}</option>
+    </select>
+  </div>
+
+  <div *ngIf="clienteId >= 0">
+    a
+  </div>
+</div>

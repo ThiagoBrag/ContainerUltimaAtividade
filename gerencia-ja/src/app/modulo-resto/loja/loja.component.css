@@ -1,0 +1,127 @@
+.ImagemFundo {
+    background-image: url(./1643415467844.jpg);
+    width: 100vw;
+    height: 100vh;
+}
+
+.Tudo {
+    display: flex;
+    justify-content: center;
+}
+
+.FraseInicial {
+    display: flex;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    font-size: 55px;
+    cursor: default;
+    font-family: fantasy;
+}
+
+.opcao1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    font-size: 30px;
+    border: solid black 2px
+}
+
+.opcao1:hover {
+    background-color: rgba(255, 255, 255, 0.548);
+}
+
+.opcao2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    font-size: 30px;
+    border: solid black 2px
+}
+
+.opcao2:hover {
+    background-color: rgba(255, 255, 255, 0.548);
+}
+
+.opcao3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    font-size: 30px;
+    border: solid black 2px
+}
+
+.opcao3:hover {
+    background-color: rgba(255, 255, 255, 0.548);
+}
+
+.FraseProdutos {
+    cursor: default;
+    margin-right: 30px;
+    margin-left: 50px;
+}
+
+.FraseClientes {
+    cursor: default;
+    margin-right: 36px;
+    margin-left: 50px;
+}
+
+.FrasePedidos {
+    cursor: default;
+    margin-right: 37px;
+    margin-left: 50px;
+}
+
+.botao1 {
+    position: absolute;
+    margin-left: 28%;
+}
+
+.botao2 {
+    position: absolute;
+    margin-left: 28%;
+}
+
+.botao3 {
+    position: absolute;
+    margin-left: 28%;
+}
+
+.icone1 {
+    cursor: default;
+}
+
+.icone2 {
+    cursor: default;
+}
+
+.icone3 {
+    cursor: default;
+}
+
+.logout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    font-family: fantasy;
+    padding: 10px;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.418);
+    cursor: pointer;
+}
+
+button:hover {
+    padding: 12px;
+    background-color: rgba(255, 255, 255, 0.719);
+}
+
+span {
+    font-size: 50px;
+    margin: 0px
+}

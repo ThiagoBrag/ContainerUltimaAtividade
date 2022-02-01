@@ -1,0 +1,50 @@
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+<div class="ImagemFundo">
+    <div class="Tudo">
+        <div class="Infos">
+            <div class="Topo">
+                <p class="FraseInicial">
+                    Selecione alguma opção!
+                </p>
+            </div>
+            <div class="opcoes">
+                <div class="opcao1">
+                    <div class="icone1">
+                        <span class="material-icons">
+                    shopping_cart
+                    </span>
+                    </div>
+                    <div class="FraseProdutos">
+                        Lista de Produtos
+                    </div>
+                    <button class='botao1' (click)="goTo('/produtos')">Produtos</button>
+                </div>
+                <div class="opcao2">
+                    <div class="icone2">
+                        <span class="material-icons">
+                    people_alt
+                    </span>
+                    </div>
+                    <div class="FraseClientes">
+                        Lista de Clientes
+                    </div>
+                    <button class='botao2' (click)="goTo('/clientes')">Clientes</button>
+                </div>
+                <div class="opcao3">
+                    <div class="icone3">
+                        <span class="material-icons">
+                    local_mall
+                    </span>
+                    </div>
+                    <div class="FrasePedidos">
+                        Lista de Pedidos
+                    </div>
+                    <button class='botao3' (click)="goTo('/pedidos')">Pedidos</button>
+                </div>
+            </div>
+            <div class='logout'>
+                <button (click)="goTo('/')">Logout</button>
+            </div>
+        </div>
+    </div>
+</div>

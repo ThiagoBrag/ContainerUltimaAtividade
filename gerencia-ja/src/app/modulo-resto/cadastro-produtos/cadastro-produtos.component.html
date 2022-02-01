@@ -1,0 +1,21 @@
+<div>
+  <button (click)="router.navigate(['/produtos'])">voltar</button>
+  <h3 *ngIf="id == 'novo'">
+    Cadastro Produto
+  </h3>
+  <h3 *ngIf="id != 'novo'">
+    Editando Produto
+  </h3>
+  <input placeholder="Nome" [(ngModel)]="name" />
+  <br />
+  <input placeholder="Preço" [(ngModel)]="price" type="number" />
+  <br />
+  <button (click)="cadastrar()">
+    <span *ngIf="id == 'novo'">
+      cadastrar
+    </span>
+    <span *ngIf="id != 'novo'">
+      editar
+    </span>
+  </button>
+</div>

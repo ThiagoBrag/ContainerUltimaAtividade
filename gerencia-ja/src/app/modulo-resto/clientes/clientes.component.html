@@ -1,0 +1,14 @@
+<div>
+  <button (click)="router.navigate(['/loja'])">Voltar</button>
+  <button (click)="router.navigate(['/clientes/novo'])">Adicionar Cliente</button>
+  <br />
+  <h3>Lista de Clientes</h3>
+  <br />
+  <div *ngFor="let cliente of clientes;let i=index">
+    <span>Id: {{i + 1}}</span>
+    <span>Nome: {{cliente.name}}</span>
+    <span>Sobrenome: {{cliente.surname}}</span>
+    <button (click)="router.navigate(['/clientes',i +1])">Editar</button>
+    <button (click)="removerCliente(i)">Excluir</button>
+  </div>
+</div>

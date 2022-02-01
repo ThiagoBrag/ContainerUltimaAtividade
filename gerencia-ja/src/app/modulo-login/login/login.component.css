@@ -1,0 +1,111 @@
+.ImagemFundo {
+    background-image: url(./Wallpaper.jfif);
+    width: 100vw;
+    height: 100vh;
+}
+
+.Tudo {
+    position: relative;
+    top: 10%;
+    display: flex;
+    justify-content: center;
+}
+
+.Degrade {
+    display: flex;
+    justify-content: center;
+    width: 510px;
+    height: 510px;
+    background: rgb(255, 1, 1);
+    background: linear-gradient(90deg, rgba(255, 1, 1, 1) 0%, rgba(255, 130, 0, 1) 12%, rgba(255, 231, 0, 1) 23%, rgba(9, 255, 0, 1) 35%, rgba(0, 255, 222, 1) 49%, rgba(0, 22, 255, 1) 61%, rgba(124, 0, 255, 1) 74%, rgba(248, 0, 255, 1) 88%, rgba(255, 0, 0, 1) 100%);
+    border-radius: 5%;
+}
+
+.loginInfos {
+    position: absolute;
+    background-color: rgb(0, 0, 0);
+    width: 500px;
+    height: 500px;
+    border: solid black 2px;
+    border-radius: 5%;
+    margin-top: 2.5px;
+}
+
+.LoginPalavra {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 50px;
+    cursor: default;
+}
+
+.UsernamePalavra {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 30px;
+    margin-bottom: 10px;
+    cursor: default;
+}
+
+.user {
+    display: flex;
+    justify-content: center;
+}
+
+.IconeUser {
+    margin-right: 5px;
+    color: white;
+    cursor: default;
+}
+
+.PasswordPalavra {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 30px;
+    margin-bottom: 10px;
+    cursor: default;
+}
+
+.password {
+    display: flex;
+    justify-content: center;
+}
+
+.IconePassword {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+    color: white;
+    cursor: default;
+}
+
+.InputPassword {
+    display: flex;
+    align-items: center;
+}
+
+.BotaoLogar {
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+}
+
+button {
+    padding: 3px 7px;
+    cursor: pointer;
+}
+
+.DivVermelha {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+}
+
+.TextoAviso {
+    position: absolute;
+    font-size: large;
+    margin-top: 10px;
+    color: red;
+}

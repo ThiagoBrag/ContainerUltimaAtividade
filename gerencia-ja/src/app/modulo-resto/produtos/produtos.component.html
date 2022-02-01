@@ -1,0 +1,14 @@
+<div>
+  <button (click)="router.navigate(['/loja'])">Voltar</button>
+  <button (click)="router.navigate(['/produtos/novo'])">Adicionar Produto</button>
+  <br />
+  <h3>Lista de Produtos</h3>
+  <br />
+  <div *ngFor="let produto of produtos;let i=index">
+    <span>Id: {{i + 1}}</span>
+    <span>Nome: {{produto.name}}</span>
+    <span>Preço: R$ {{produto.price}}</span>
+    <button (click)="router.navigate(['/produtos',i +1])">Editar</button>
+    <button (click)="removerProduto(i)">Excluir</button>
+  </div>
+</div>

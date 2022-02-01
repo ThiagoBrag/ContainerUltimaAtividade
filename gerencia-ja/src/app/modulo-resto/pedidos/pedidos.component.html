@@ -1,0 +1,15 @@
+<div>
+  <button (click)="router.navigate(['/loja'])">Voltar</button>
+  <button (click)="router.navigate(['/pedidos/novo'])">Adicionar Pedido</button>
+  <br />
+  <h3>Lista de Produtos</h3>
+  <br />
+  <div *ngFor="let pedido of pedidos;let i=index">
+    <span>Id: {{i + 1}}</span>
+    <span>Cliente: {{clientes[pedido.clienteId].name}}</span>
+    <span>Valor Total: R$ {{getValue(i)}}</span>
+    <span>Status: R$ {{pedido.status}}</span>
+    <button (click)="router.navigate(['/pedidos',i +1])">Editar</button>
+    <button (click)="removerProduto(i)">Excluir</button>
+  </div>
+</div>
