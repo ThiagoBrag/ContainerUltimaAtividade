@@ -13,7 +13,7 @@ import { CadstroPedidosComponent } from './modulo-resto/cadstro-pedidos/cadstro-
 import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { LojaComponent } from './modulo-resto/loja/loja.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule} from '@angular/forms';
 import CheckLogged from './checklogged';
 
 const routes: Routes = [
@@ -44,8 +44,7 @@ const routes: Routes = [
     CommonModule,
     BrowserModule,
     RouterModule.forRoot(routes),
-    FormsModule,
-    ReactiveFormsModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

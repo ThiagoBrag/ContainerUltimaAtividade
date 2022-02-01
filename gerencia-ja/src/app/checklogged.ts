@@ -25,7 +25,7 @@ class CheckLogged implements CanActivate{
             if(username && password){
                 return true;
             }else{
-               this.router.navigate([''])
+               this.router.navigate([' '])
                 return false;
             }
             

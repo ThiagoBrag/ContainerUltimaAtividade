@@ -20,21 +20,25 @@ export class LoginComponent implements OnInit {
   }
 
   logar() {
-    console.log(this.username, this.password);
-    const users = [
-      { login: 'bruno', password: '123' },
-      { login: 'henrique', password: '123' },
-      { login: 'verbinnen', password: '123' },
-      { login: 'a', password: 'a' },
-    ];
+    localStorage.setItem('PASSWORD', this.password)
+    localStorage.setItem('USERNAME', this.username)
+    this.router.navigate(['/loja']);
 
-    const find = users.find(e => e.login == this.username && e.password == this.password);
+  //   const users = [
+  //     { login: 'thiago', password: '123' },
+  //     { login: 'a', password: 'b' },
+  //     { login: 'b', password: 'c' },
+  //     { login: 'c', password: 'd' },
+  //   ];
 
-    if (find) {
-      localStorage.setItem('USER', this.username);
-      this.router.navigate(['/loja']);
-    } else {
-      alert('Usuário não cadastrado!');
-    }
-  }
+  //   const find = users.find(e => e.login == this.username && e.password == this.password);
+
+  //   if (find) {
+  //     localStorage.setItem('USER', this.username);
+  //     this.router.navigate(['/loja']);
+  //   } else {
+  //     alert('Usuário não cadastrado!');
+  //   }
+  // }
+}
 }
