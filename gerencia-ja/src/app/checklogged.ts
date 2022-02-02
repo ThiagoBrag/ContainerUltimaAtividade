@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { 
+import {
     ActivatedRouteSnapshot,
     CanActivate,
     Router,
@@ -14,22 +14,30 @@ class CheckLogged implements CanActivate{
     ){}
 
     canActivate(
-        route: ActivatedRouteSnapshot, 
+        route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot,
         ): Observable<boolean> | Promise<boolean> | boolean {
-            console.log("Dentro") 
-            
-            let username = localStorage.getItem("USERNAME")
+            console.log("Dentro")
+
+
+            let user = localStorage.getItem("USER")
             let password = localStorage.getItem('PASSWORD')
 
-            if(username && password){
+            if(user && password){
+                localStorage.removeItem('USER');
+                localStorage.removeItem('PASSWORD')
+            }
+
+            if(user && password){
+                console.log(user)
                 return true;
             }else{
-               this.router.navigate([' '])
+                alert('Usuário não cadastrado')
+                this.router.navigate([''])
                 return false;
             }
-            
-            
+
+
     }
 }
 
