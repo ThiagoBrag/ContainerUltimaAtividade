@@ -41,22 +41,12 @@ export class LoginComponent implements OnInit {
     } */
     
   ngOnInit() {
+
   }
 
   logar(){
     localStorage.setItem('USER', this.user);
     localStorage.setItem("PASSWORD", this.password)
-    /* const users = [
-      {login: 'Diego', password: '123'},
-      {login: 'Planinscheck', password: '123'}
-    ];
-    const find = users.find(e => e.login == this.user && e.password == this.password);
-    if (find) {
-    localStorage.setItem('USER', this.user);
     this.router.navigate(['/loja']);
-    } else {
-    alert('Usuário não cadastrado!');
-    } */
-    this.router.navigate(['']);
   }
 }

@@ -24,8 +24,7 @@ const routes: Routes = [
   { path: 'produtos', component: ProdutosComponent, canActivate: [CheckLogged] },
   { path: 'produtos/:id', component: CadastroProdutosComponent, canActivate: [CheckLogged] },
   { path: 'pedidos', component: PedidosComponent, canActivate: [CheckLogged] },
-  { path: 'pedidos/:id', component: CadstroPedidosComponent, canActivate: [CheckLogged] },
-  { path: '*', redirectTo: '' }
+  { path: 'pedidos/:id', component: CadstroPedidosComponent, canActivate: [CheckLogged] }
 ];
 
 @NgModule({
