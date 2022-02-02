@@ -17,7 +17,7 @@ import { FormsModule} from '@angular/forms';
 import CheckLogged from './checklogged';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: LoginComponent, canActivate: [] },
   { path: 'loja', component: LojaComponent, canActivate: [CheckLogged] },
   { path: 'clientes', component: ClientesComponent, canActivate: [CheckLogged] },
   { path: 'clientes/:id', component: CadastroClientesComponent, canActivate: [CheckLogged] },
@@ -46,7 +46,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     FormsModule
   ],
-  providers: [],
+  providers: [CheckLogged],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
