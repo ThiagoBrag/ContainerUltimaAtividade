@@ -16,7 +16,7 @@ class CheckLogged implements CanActivate{
     usuarios = [
         {username: "thiago", password: "123"},
         {username:"a", password: "a"}
-    ];
+    ]
 
  
     canActivate(
