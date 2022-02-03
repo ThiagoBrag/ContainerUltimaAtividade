@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
 
-/* import {
-  AuthService,
-  GoogleLoginProvider
-} from 'angular-6-social-login'; */
 
 @Component({
   selector: 'app-login',
@@ -14,38 +9,21 @@ import { Location } from '@angular/common';
 })
 export class LoginComponent implements OnInit {
 
-  user = '';
+  username = '';
   password = '';
 
   constructor(
     private router: Router,
     private route:  ActivatedRoute,
-    /* private socialAuthService: AuthService */
     ) { }
 
-
-    /* public socialSignIn(socialPlatform : string) {
-      let socialPlatformProvider;
-       if(socialPlatform == "google"){
-        socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
-      }       
-      this.socialAuthService.signIn(socialPlatformProvider).then(
-        (userData) => {
-          localStorage.setItem('USER', this.user);
-          console.log(socialPlatform + " sign in data : " , userData);
-          // Now sign-in with userData
-          // ...
-          this.router.navigate(['/loja'])
-        }
-      );
-    } */
     
   ngOnInit() {
 
   }
 
   logar(){
-    localStorage.setItem('USER', this.user);
+    localStorage.setItem('USER', this.username);
     localStorage.setItem("PASSWORD", this.password)
     this.router.navigate(['/loja']);
   }
