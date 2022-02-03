@@ -23,18 +23,17 @@ class CheckLogged implements CanActivate{
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot,
         ): Observable<boolean> | Promise<boolean> | boolean {
-            console.log("Dentro")
  
-            let username = localStorage.getItem("USER")
+            let username = localStorage.getItem('USER')
             let password = localStorage.getItem('PASSWORD')
 
             const user = this.usuarios.find((item) => item.username === username);
 
             if(user.password == password && user.username == username){
-                return true;
-            }else{
                 localStorage.removeItem('USER');
                 localStorage.removeItem('PASSWORD')
+                return true;
+            }else{
                 alert('Usuário não cadastrado')
                 this.router.navigate([''])
                 return false;
