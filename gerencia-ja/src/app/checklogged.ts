@@ -13,8 +13,10 @@ class CheckLogged implements CanActivate{
         private router: Router
     ){}
  
-    usuarios = [{username: "thiago", password: "123"},
-                {username:"a", password: "a"}]
+    usuarios = [
+        {username: "thiago", password: "123"},
+        {username:"a", password: "a"}
+    ];
 
  
     canActivate(
@@ -27,16 +29,6 @@ class CheckLogged implements CanActivate{
             let password = localStorage.getItem('PASSWORD')
 
             const user = this.usuarios.find((item) => item.username === username);
-
-
-
-            // if(this.login == username && this.senha == password){
-            //     return true;
-
-            if(password && username){
-                localStorage.removeItem('USER');
-                localStorage.removeItem('PASSWORD')
-            }
 
             if(user.password == password && user.username == username){
                 return true;
