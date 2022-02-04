@@ -30,10 +30,10 @@ class CheckLogged implements CanActivate{
             const user = this.usuarios.find((item) => item.username === username);
 
             if(user.password == password && user.username == username){
-                localStorage.removeItem('USER');
-                localStorage.removeItem('PASSWORD')
                 return true;
             }else{
+                username = ''
+                password = ''
                 alert('Usuário não cadastrado')
                 this.router.navigate([''])
                 return false;
