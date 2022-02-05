@@ -19,6 +19,7 @@
 }
 
 .opcao1 {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,6 +33,7 @@
 }
 
 .opcao2 {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,6 +47,7 @@
 }
 
 .opcao3 {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -77,17 +80,17 @@
 
 .botao1 {
     position: absolute;
-    margin-left: 28%;
+    right: 35px;
 }
 
 .botao2 {
     position: absolute;
-    margin-left: 28%;
+    right: 37px;
 }
 
 .botao3 {
     position: absolute;
-    margin-left: 28%;
+    right: 37px;
 }
 
 .icone1 {
