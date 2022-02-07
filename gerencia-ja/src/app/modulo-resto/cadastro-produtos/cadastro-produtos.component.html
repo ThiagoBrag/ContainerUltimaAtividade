@@ -18,20 +18,24 @@
       </div>
     </div>
   </div>
-  <div class="ContainerADD">
-    <div class="InputNome">
-    <input placeholder="Nome" [(ngModel)]="name" />
-  </div>
-
-    <input placeholder="Preço" [(ngModel)]="price" type="number" />
-    <br />
-    <button (click)="cadastrar()">
-      <span *ngIf="id == 'novo'">
-        cadastrar
-      </span>
-      <span *ngIf="id != 'novo'">
-        editar
-      </span>
-    </button>
+  <div class="TudoContainerADD">
+    <div class="ContainerADD">
+      <div class="InputNome">
+        <input placeholder="Nome" [(ngModel)]="name" />
+      </div>
+      <div class="InputPreco">
+        <input placeholder="Preço" [(ngModel)]="price" type="number" />
+      </div>
+      <div class="BotaoCadastro">
+        <button (click)="cadastrar()">
+          <span *ngIf="id == 'novo'">
+            cadastrar
+          </span>
+          <span *ngIf="id != 'novo'">
+            Editar
+          </span>
+        </button>
+      </div>
+    </div>
   </div>
 </div>
