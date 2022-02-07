@@ -72,8 +72,19 @@
     justify-content: center;
 }
 
-.ContainerADD {
+.ContainerRGB {
     margin-top: 3%;
+    background: rgb(255, 0, 0);
+    background: linear-gradient(90deg, rgba(255, 0, 0, 1) 0%, rgba(255, 142, 2, 1) 11%, rgba(255, 235, 0, 1) 24%, rgba(185, 255, 0, 1) 38%, rgba(18, 255, 0, 1) 50%, rgba(0, 255, 244, 1) 57%, rgba(0, 39, 251, 1) 65%, rgba(117, 0, 251, 1) 75%, rgba(249, 0, 243, 1) 87%, rgba(255, 0, 0, 1) 100%);
+    width: 31vw;
+    height: 51.8vh;
+    border: solid 2px black;
+    border-radius: 15px;
+}
+
+.ContainerADD {
+    margin-left: 5px;
+    margin-top: 1%;
     background-color: rgb(0, 0, 0);
     width: 30vw;
     height: 50vh;
@@ -81,11 +92,41 @@
     border-radius: 15px;
 }
 
+.InputImagem {
+    display: flex;
+    justify-content:center;
+    margin-left: 39%;
+    margin-top: 20%;
+    margin-bottom: 20%;
+}
+
+.IconePerson {
+    color: white;
+    margin-right: 7px;
+    cursor: default;
+}
+
 .InputNome {
     margin-top: 1%;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.InputName {
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.IconeCifrao {
+    color: white;
+    margin-right: 7px;
+    cursor: default;
+}
+
+.InputValor {
+    padding: 3px;
+    border-radius: 5px;
 }
 
 .InputPreco {
@@ -96,8 +137,14 @@
 }
 
 .BotaoCadastro {
-    margin-top: 1%;
+    margin-top: 4%;
+    margin-left: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.Button {
+    background-color: white;
+    cursor: pointer;
 }

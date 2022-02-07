@@ -30,8 +30,27 @@ export class CadastroProdutosComponent implements OnInit {
   name: '';
   price: 0;
 
+  
+
   ngOnInit() {
+    
   }
+
+  imageURL
+
+  mostrarImagem(event){
+    const file = new FileReader
+    file.onload = (e) => {
+      this.imageURL = e.target.result;
+      var item = document.createElement('li');
+      var image = document.createElement('img');
+      image.src = this.imageURL;
+      console.log(item)
+      item.appendChild(image);
+    }
+    file.readAsDataURL(event.target.files[0])
+  }
+
 
   cadastrar() {
     if (this.name && this.price) {
