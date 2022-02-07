@@ -18,6 +18,19 @@ inserirRota('/buscar_usuario', function(dados, resposta) {
 // body: JSON.stringify({produtoId: 1, pessoaId: 1}), 
 // headers: {'Content-Type': 'application/json'}})
 
+
+
+// fetch('/api/buscar_usuario', 
+// {method: 'POST', 
+// body: JSON.stringify({nome: "Thiago", nickname: "THI", idade: 23}), 
+// headers: {'Content-Type': 'application/json'}}).then(function (result) {
+//     return result.json();
+// }).then(function(dados) {
+//     console.log(dados);
+// }).catch(function(erro) {
+//     console.log(erro);
+// })
+
 inserirRota('/criar_usuario', function(dados, resposta) {
     console.log(dados)
 
