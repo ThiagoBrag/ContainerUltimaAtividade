@@ -36,7 +36,9 @@ export class CadastroProdutosComponent implements OnInit {
     
   }
 
-  imageURL
+  imageURL 
+  teste
+  openModal
 
   mostrarImagem(event){
     const file = new FileReader
@@ -48,6 +50,7 @@ export class CadastroProdutosComponent implements OnInit {
       console.log(item)
       item.appendChild(image);
     }
+    this.teste = 1
     file.readAsDataURL(event.target.files[0])
   }
 

@@ -1,48 +1,48 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 <div class="Tudo">
-  <div class="Container">
-    <div class="retanguloRGB">
-      <div class="retangulopreto">
-        <div class="containerIcone2" (click)="router.navigate(['/produtos'])">
-          <div class="IconeVoltar">
-            <span class="material-icons">
+    <div class="Container">
+        <div class="retanguloRGB">
+            <div class="retangulopreto">
+                <div class="containerIcone2" (click)="router.navigate(['/produtos'])">
+                    <div class="IconeVoltar">
+                        <span class="material-icons">
               reply
             </span>
-          </div>
+                    </div>
+                </div>
+                <div class="containerPalavra">
+                    <div class="textoProdutos">
+                        Cadastrar Produto
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="containerPalavra">
-          <div class="textoProdutos">
-            Cadastrar Produto
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
-  <div class="TudoContainerADD">
-    <div class="ContainerRGB">
-      <div class="ContainerADD">
-        <div class="ContainerJunto">
-          <div class="InputImagem">
-            <input type="file" (click) = "mostrarImagem()">
-          </div>
-          <div class="InputNome">
-            <div class="IconePerson">
-              <span class="material-icons">
+    <div class="TudoContainerADD">
+        <div class="ContainerRGB">
+            <div class="ContainerADD">
+                <div class="ContainerJunto">
+                    <div class="InputImagem">
+                        <input type="file" name="arquivo" id="arquivo" (change)="mostrarImagem($event)">
+                    </div>
+                    <div class="InputNome">
+                        <div class="IconePerson">
+                            <span class="material-icons">
                 person_outline
               </span>
-            </div>
-            <input class="InputName" placeholder="Nome" [(ngModel)]="name" />
-          </div>
-          <div class="InputPreco">
-            <div class="IconeCifrao">
-              <span class="material-icons">
+                        </div>
+                        <input class="InputName" placeholder="Nome" [(ngModel)]="name" />
+                    </div>
+                    <div class="InputPreco">
+                        <div class="IconeCifrao">
+                            <span class="material-icons">
                 attach_money
               </span>
-            </div>
-            <input class="InputValor" placeholder="Preço" [(ngModel)]="price" type="number" />
-          </div>
-          <div class="BotaoCadastro">
-            <button (click)="cadastrar()">
+                        </div>
+                        <input class="InputValor" placeholder="Preço" [(ngModel)]="price" type="number" />
+                    </div>
+                    <div class="BotaoCadastro">
+                        <button (click)="cadastrar()">
               <span class="Button" *ngIf="id == 'novo'">
                 cadastrar
               </span>
@@ -50,9 +50,9 @@
                 Editar
               </span>
             </button>
-          </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
