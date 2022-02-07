@@ -38,7 +38,6 @@ export class CadastroProdutosComponent implements OnInit {
 
   imageURL 
   teste
-  openModal
 
   mostrarImagem(event){
     const file = new FileReader
