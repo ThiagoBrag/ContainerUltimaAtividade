@@ -1,21 +1,37 @@
-<div>
-  <button (click)="router.navigate(['/produtos'])">voltar</button>
-  <h3 *ngIf="id == 'novo'">
-    Cadastro Produto
-  </h3>
-  <h3 *ngIf="id != 'novo'">
-    Editando Produto
-  </h3>
-  <input placeholder="Nome" [(ngModel)]="name" />
-  <br />
-  <input placeholder="Preço" [(ngModel)]="price" type="number" />
-  <br />
-  <button (click)="cadastrar()">
-    <span *ngIf="id == 'novo'">
-      cadastrar
-    </span>
-    <span *ngIf="id != 'novo'">
-      editar
-    </span>
-  </button>
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+<div class="Tudo">
+  <div class="Container">
+    <div class="retanguloRGB">
+      <div class="retangulopreto">
+        <div class="containerIcone2" (click)="router.navigate(['/produtos'])">
+          <div class="IconeVoltar">
+            <span class="material-icons">
+              reply
+            </span>
+          </div>
+        </div>
+        <div class="containerPalavra">
+          <div class="textoProdutos">
+            Cadastrar Produto
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ContainerADD">
+    <div class="InputNome">
+    <input placeholder="Nome" [(ngModel)]="name" />
+  </div>
+
+    <input placeholder="Preço" [(ngModel)]="price" type="number" />
+    <br />
+    <button (click)="cadastrar()">
+      <span *ngIf="id == 'novo'">
+        cadastrar
+      </span>
+      <span *ngIf="id != 'novo'">
+        editar
+      </span>
+    </button>
+  </div>
 </div>
