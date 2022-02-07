@@ -1,8 +1,16 @@
 inserirRota('/buscar_usuario', function(dados, resposta) {
     console.log(dados)
 
-    resposta({ ok: "Requisição efetuada com sucesso!" });
-});
+    database(`SELECT * FROM USER`)
+        .then(result => {
+
+            resposta({ list: result })
+
+
+        }).catch(erro => {
+            resposta({ erro: 'Erro ao inserir o usuario!' });
+        });
+})
 
 
 // fetch('http://localhost:3000/api/buscar_usuario', 
