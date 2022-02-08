@@ -7,23 +7,17 @@ export class UsuarioService {
 
   constructor() { }
 
-login(nickname, password) {
-  return new Promise((resolve, reject) => {
-    fetch('/api/login',
+buscarUsuarios() {
+  return new Promise((resolvido, rejeitado) => {
+    fetch('/api/buscar_usuario',
     {
       method: 'POST', 
-      body: JSON.stringify(
-      {
-        nickname: nickname, password: password
-      }
-    ),
-    headers: {
+      headers: {
       'Content-Type': 'application/json'
     }
-  }
-  ).then(function (result) {
-    return result.json();
-  }).then(resolve).catch(reject);
+  }).then(resultado => resultado.json())
+  .then(resolvido)
+  .catch(rejeitado);
   });
 }
 
