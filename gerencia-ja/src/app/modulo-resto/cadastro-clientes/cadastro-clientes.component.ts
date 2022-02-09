@@ -16,7 +16,7 @@ export class CadastroClientesComponent implements OnInit {
   ) {
     const id = this.route.snapshot.paramMap.get('id');
     this.id = id;
-    this.clientes = JSON.parse(localStorage.getItem('CLIENTES'));
+    this.clientes = JSON.parse(localStorage.getItem('CLIENTES'))  || [];
 
     if (id != 'novo') {
       this.id = parseInt(id) - 1;
@@ -28,8 +28,8 @@ export class CadastroClientesComponent implements OnInit {
     }
   }
 
-  name: string = '';
-  surname: string = '';
+  name: '';
+  surname: '';
 
   ngOnInit() {
   }

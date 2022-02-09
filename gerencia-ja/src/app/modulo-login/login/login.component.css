@@ -1,12 +1,6 @@
-.ImagemFundo {
-    background-image: url(./Wallpaper.jfif);
-    width: 100vw;
-    height: 100vh;
-}
-
 .Tudo {
     position: relative;
-    top: 10%;
+    margin-top: 70px;
     display: flex;
     justify-content: center;
 }

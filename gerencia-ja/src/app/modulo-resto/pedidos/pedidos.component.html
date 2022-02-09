@@ -1,15 +1,62 @@
-<div>
-  <button (click)="router.navigate(['/loja'])">Voltar</button>
-  <button (click)="router.navigate(['/pedidos/novo'])">Adicionar Pedido</button>
-  <br />
-  <h3>Lista de Produtos</h3>
-  <br />
-  <div *ngFor="let pedido of pedidos;let i=index">
-    <span>Id: {{i + 1}}</span>
-    <span>Cliente: {{clientes[pedido.clienteId].name}}</span>
-    <span>Valor Total: R$ {{getValue(i)}}</span>
-    <span>Status: R$ {{pedido.status}}</span>
-    <button (click)="router.navigate(['/pedidos',i +1])">Editar</button>
-    <button (click)="removerProduto(i)">Excluir</button>
-  </div>
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+<div class="tudo">
+    <div class="retanguloRGB">
+        <div class="retangulopreto">
+            <div class="containerIcone2" (click)="router.navigate(['/loja'])">
+                <div class="IconeVoltar">
+                    <span class="material-icons">
+                reply
+                </span>
+                </div>
+            </div>
+            <div class="containerPalavra">
+                <div class="textoProdutos">
+                    Pedidos
+                </div>
+            </div>
+            <div class="BotaoAdicionar" (click)="router.navigate(['/pedidos/novo'])">
+                <div class=" containerBotao ">
+                    <div class="PalavraAdd ">
+                        Add
+                    </div>
+                    <div class="containerIcone ">
+                        <div class="iconeAdicionar ">
+                            <span class="material-icons ">
+                              add
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="conteudo">
+        <div class="containerproduto">
+            <div *ngFor="let pedido of pedidos;let i=index" class="produto">
+                <div class="palavraNome">
+                    {{clientes[pedido.clienteId].name}}
+                </div>
+                <div class="palavraPreco">
+                    <strong>R$ {{getValue(i)}}</strong>
+                </div>
+                <div class="EdicaoExclir">
+                    <div class="containerIcone3" (click)="router.navigate(['/pedidos',i +1])">
+                        <div class="iconeLapis">
+                            <span class="material-icons">
+                      edit
+                      </span>
+                        </div>
+                    </div>
+                    <div class="containerIcone4" (click)="removerProduto(i)">
+                        <div class="iconeLixeira">
+                            <span class="material-icons">
+                      delete
+                      </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<!-- <span>Status: R$ {{pedido.status}}</span> -->

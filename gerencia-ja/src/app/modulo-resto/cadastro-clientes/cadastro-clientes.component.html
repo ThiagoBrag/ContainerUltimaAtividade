@@ -1,21 +1,55 @@
-<div>
-  <button (click)="router.navigate(['/clientes'])">voltar</button>
-  <h3 *ngIf="id == 'novo'">
-    Cadastro Cliente
-  </h3>
-  <h3 *ngIf="id != 'novo'">
-    Editando Cliente
-  </h3>
-  <input placeholder="Nome" [(ngModel)]="name" />
-  <br />
-  <input placeholder="Sobrenome" [(ngModel)]="surname" />
-  <br />
-  <button (click)="cadastrar()">
-    <span *ngIf="id == 'novo'">
-      cadastrar
-    </span>
-    <span *ngIf="id != 'novo'">
-      editar
-    </span>
-  </button>
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+<div class="Tudo">
+    <div class="Container">
+        <div class="retanguloRGB">
+            <div class="retangulopreto">
+                <div class="containerIcone2" (click)="router.navigate(['/clientes'])">
+                    <div class="IconeVoltar">
+                        <span class="material-icons">
+              reply
+            </span>
+                    </div>
+                </div>
+                <div class="containerPalavra">
+                    <div class="textoProdutos">
+                        Cadastrar Clientes
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="TudoContainerADD">
+        <div class="ContainerRGB">
+            <div class="ContainerADD">
+                <div class="ContainerJunto">
+                    <div class="InputNome">
+                        <div class="IconePerson">
+                            <span class="material-icons">
+                               person_outline
+                            </span>
+                        </div>
+                        <input class="InputName" placeholder="Nome" [(ngModel)]="name" />
+                    </div>
+                    <div class="InputPreco">
+                        <div class="IconeCifrao">
+                            <span class="material-icons">
+                            badge
+                          </span>
+                        </div>
+                        <input class="InputValor" placeholder="Sobrenome" [(ngModel)]="surname" />
+                    </div>
+                    <div class="BotaoCadastro">
+                        <button (click)="cadastrar()">
+              <span class="Button" *ngIf="id == 'novo'">
+                cadastrar
+              </span>
+              <span class="Button" *ngIf="id != 'novo'">
+                Editar
+              </span>
+            </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
