@@ -23,7 +23,14 @@
             <div class="ContainerADD">
                 <div class="ContainerJunto">
                     <div class="InputImagem">
-                        <input type="file" name="arquivo" id="arquivo" (change)="mostrarImagem($event)">
+                        <div class="ImagemClasse">
+                            <input *ngIf="!imageUrl" type="file" (change)="imagemMudou($event)" />
+
+                            <img *ngIf="imageUrl" [src]="imageUrl" width="200px" height="200px" />
+                        </div>
+                        <div class="BotaoLimparImagem">
+                            <button *ngIf="imageUrl" (click)="limparImagem()">LIMPAR IMAGEM</button>
+                        </div>
                     </div>
                     <div class="InputNome">
                         <div class="IconePerson">

@@ -38,19 +38,30 @@ export class CadastroProdutosComponent implements OnInit {
 
   imageURL 
   teste
+  input;
 
-  mostrarImagem(event){
-    const file = new FileReader
-    file.onload = (e) => {
-      this.imageURL = e.target.result;
-      var item = document.createElement('li');
-      var image = document.createElement('img');
-      image.src = this.imageURL;
-      console.log(item)
-      item.appendChild(image);
+  limparImagem() {
+    console.log('limpar');
+    this.imageUrl = '';
+
+    this.input.value = '';
+
+
+  }
+
+  imageUrl = '';
+
+  imagemMudou(event) {
+    this.input = event.target
+    console.log(event);
+
+    const reader = new FileReader()
+
+    reader.onload = (result) => {
+      this.imageUrl = result.target.result as string;
     }
-    this.teste = 1
-    file.readAsDataURL(event.target.files[0])
+
+    reader.readAsDataURL(event.target.files[0]);
   }
 
 

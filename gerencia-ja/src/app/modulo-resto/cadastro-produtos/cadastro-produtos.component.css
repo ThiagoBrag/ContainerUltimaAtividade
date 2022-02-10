@@ -92,18 +92,11 @@
     border-radius: 15px;
 }
 
-.InputImagem {
-    display: flex;
-    justify-content:center;
-    margin-left: 39%;
-    margin-top: 20%;
-    margin-bottom: 20%;
-}
-
 .IconePerson {
     color: white;
-    margin-right: 7px;
     cursor: default;
+    margin-left: -7px;
+    margin-right: 7px;
 }
 
 .InputNome {
@@ -120,8 +113,9 @@
 
 .IconeCifrao {
     color: white;
-    margin-right: 7px;
     cursor: default;
+    margin-left: -7px;
+    margin-right: 7px;
 }
 
 .InputValor {
@@ -138,7 +132,6 @@
 
 .BotaoCadastro {
     margin-top: 4%;
-    margin-left: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -147,4 +140,16 @@
 .Button {
     background-color: white;
     cursor: pointer;
+}
+
+.ImagemClasse {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.BotaoLimparImagem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
