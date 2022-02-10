@@ -28,7 +28,6 @@ export class CadstroPedidosComponent implements OnInit {
       if (this.pedidos[this.id]) {
         this.clienteId = this.pedidos[this.id].clienteId;
         this.listaProdutosId = this.pedidos[this.id].listaProdutosId;
-        this.status = this.pedidos[this.id].status;
       }
     }
   }
@@ -39,14 +38,14 @@ export class CadstroPedidosComponent implements OnInit {
 
   cadastrar() {
     if (this.clienteId && this.listaProdutosId) {
-      const pedido = { clienteId: this.clienteId, listaProdutosId: this.listaProdutosId, status: this.status }
+      const pedido = { clienteId: this.clienteId, listaProdutosId: this.listaProdutosId}
 
       if (this.id == 'novo') {
         this.pedidos.push(pedido);
       } else {
         this.pedidos[this.id] = pedido;
       }
-
+      console.log(this.pedidos)
       localStorage.setItem('PEDIDOS', JSON.stringify(this.pedidos));
       this.router.navigate(['/pedidos']);
     } else {

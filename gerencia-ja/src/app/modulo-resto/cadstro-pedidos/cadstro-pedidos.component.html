@@ -1,21 +1,56 @@
-<div>
-  <button (click)="router.navigate(['/pedidos'])">voltar</button>
-  <h3 *ngIf="id == 'novo'">
-    Cadastro Pedido
-  </h3>
-  <h3 *ngIf="id != 'novo'">
-    Editando Pedido
-  </h3>
-  <div *ngIf="clientes.length == 0">
-    <button (click)="router.navigate(['clientes/novo'])">Cadastrar Cliente</button>
-  </div>
-  <div *ngIf="clientes.length > 0">
-    <select [(ngModel)]="clienteId">
-      <option *ngFor="let cliente of clientes;let i = index" value='{{i}}'>{{cliente.name}} {{cliente.surname}}</option>
-    </select>
-  </div>
-
-  <div *ngIf="clienteId >= 0">
-    a
-  </div>
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+<div class="Tudo">
+    <div class="Container">
+        <div class="retanguloRGB">
+            <div class="retangulopreto">
+                <div class="containerIcone2" (click)="router.navigate(['/pedidos'])">
+                    <div class="IconeVoltar">
+                        <span class="material-icons">
+              reply
+            </span>
+                    </div>
+                </div>
+                <div class="containerPalavra">
+                    <div class="textoProdutos">
+                        Cadastrar Pedidos
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="TudoContainerADD">
+        <div class="ContainerRGB">
+            <div class="ContainerADD">
+                <div class="ContainerJunto">
+                    <div class="InputNome">
+                        <div class="IconePerson">
+                            <span class="material-icons">
+                               person_outline
+                            </span>
+                        </div>
+                        <div *ngIf="clientes.length > 0">
+                            <select [(ngModel)]="clienteId">
+                            <option *ngFor="let cliente of clientes;let i = index" value='{{i}}'>{{cliente.name}} {{cliente.surname}}</option>
+                          </select>
+                        </div>
+                        <div *ngIf="pedidos.length > 0">
+                            <select [(ngModel)]="listaProdutosId">
+                            <option *ngFor="let pedido of pedidos;let i = index" value='{{i}}'>{{produto.name}}</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="BotaoCadastro">
+                        <button (click)="cadastrar()">
+              <span class="Button" *ngIf="id == 'novo'">
+                cadastrar
+              </span>
+              <span class="Button" *ngIf="id != 'novo'">
+                Editar
+              </span>
+            </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
