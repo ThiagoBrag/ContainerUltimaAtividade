@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CadstroPedidosComponent implements OnInit {
   id = undefined;
   pedidos = [];
+  produtos = []
   clientes = [];
   clienteId = undefined;
   listaProdutosId = [];
@@ -21,6 +22,7 @@ export class CadstroPedidosComponent implements OnInit {
     this.id = id;
     this.pedidos = JSON.parse(localStorage.getItem('PEDIDOS')) || [];
     this.clientes = JSON.parse(localStorage.getItem('CLIENTES')) || [];
+    this.produtos = JSON.parse(localStorage.getItem('PRODUTOS')) || [];
 
     if (id != 'novo') {
       this.id = parseInt(id) - 1;

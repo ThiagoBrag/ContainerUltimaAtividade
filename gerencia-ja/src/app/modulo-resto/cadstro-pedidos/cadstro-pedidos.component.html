@@ -33,12 +33,20 @@
                             <option *ngFor="let cliente of clientes;let i = index" value='{{i}}'>{{cliente.name}} {{cliente.surname}}</option>
                           </select>
                         </div>
-                        <div *ngIf="pedidos.length > 0">
-                            <select [(ngModel)]="listaProdutosId">
-                            <option *ngFor="let pedido of pedidos;let i = index" value='{{i}}'>{{produto.name}}</option>
+                    </div>
+                    <div class="inputprodutos">
+                        <div class="IconePerson">
+                            <span class="material-icons">
+                                shopping_cart
+                            </span>
+                        </div>
+                        <div *ngIf="produtos.length > 0">
+                            <select class="INPUTproduto" [(ngModel)]="listaProdutosId">
+                            <option *ngFor="let produto of produtos;let i = index" value='{{i}}'>{{produto.name}}</option>
                           </select>
                         </div>
                     </div>
+
                     <div class="BotaoCadastro">
                         <button (click)="cadastrar()">
               <span class="Button" *ngIf="id == 'novo'">
