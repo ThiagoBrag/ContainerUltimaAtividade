@@ -143,13 +143,20 @@
 }
 
 .ImagemClasse {
+    margin-top: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .BotaoLimparImagem {
+    margin-top: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.tudoNomePreco {
+    position: absolute;
+    margin-top: 50%;
 }
