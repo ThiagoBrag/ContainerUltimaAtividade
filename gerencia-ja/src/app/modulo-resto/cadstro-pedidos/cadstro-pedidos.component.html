@@ -62,3 +62,43 @@
         </div>
     </div>
 </div>
+<!-- 
+CODIGO TS
+ input;
+
+  limparImagem() {
+    console.log('limpar');
+    this.imageUrl = '';
+
+    this.input.value = '';
+
+
+  }
+
+  imageUrl = '';
+
+  imagemMudou(event) {
+    this.input = event.target
+    console.log(event);
+
+    const reader = new FileReader()
+
+    reader.onload = (result) => {
+      this.imageUrl = result.target.result as string;
+    }
+
+    reader.readAsDataURL(event.target.files[0]);
+  }
+
+HTML 
+
+<h1>DASDA</h1>
+
+
+<input *ngIf="!imageUrl" type="file" (change)="imagemMudou($event)" />
+
+<img *ngIf="imageUrl" [src]="imageUrl" width="200px" height="200px" />
+
+{{ input?.value }}
+
+<button *ngIf="imageUrl" (click)="limparImagem()" >LIMPAR IMAGEM</button> -->
