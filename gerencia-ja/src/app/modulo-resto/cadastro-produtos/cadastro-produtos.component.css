@@ -90,6 +90,12 @@
     height: 50vh;
     border: solid 2px black;
     border-radius: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.TudoSmeImagem {
+    display: relative;
 }
 
 .IconePerson {
@@ -158,5 +164,5 @@
 
 .tudoNomePreco {
     position: absolute;
-    margin-top: 50%;
+    margin-top: 16%;
 }

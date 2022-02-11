@@ -32,33 +32,35 @@
                             <button *ngIf="imageUrl" (click)="limparImagem()">LIMPAR IMAGEM</button>
                         </div>
                     </div>
-                    <div class="tudoNomePreco">
-                        <div class="InputNome">
-                            <div class="IconePerson">
-                                <span class="material-icons">
+                    <div class="TudoSmeImagem">
+                        <div class="tudoNomePreco">
+                            <div class="InputNome">
+                                <div class="IconePerson">
+                                    <span class="material-icons">
                                 person_outline
                             </span>
+                                </div>
+                                <input class="InputName" placeholder="Nome" [(ngModel)]="name" />
                             </div>
-                            <input class="InputName" placeholder="Nome" [(ngModel)]="name" />
-                        </div>
-                        <div class="InputPreco">
-                            <div class="IconeCifrao">
-                                <span class="material-icons">
+                            <div class="InputPreco">
+                                <div class="IconeCifrao">
+                                    <span class="material-icons">
                                 attach_money
                             </span>
+                                </div>
+                                <input class="InputValor" placeholder="Preço" [(ngModel)]="price" type="number" />
                             </div>
-                            <input class="InputValor" placeholder="Preço" [(ngModel)]="price" type="number" />
                         </div>
-                    </div>
-                    <div class="BotaoCadastro">
-                        <button (click)="cadastrar()">
-              <span class="Button" *ngIf="id == 'novo'">
-                cadastrar
-              </span>
-              <span class="Button" *ngIf="id != 'novo'">
-                Editar
-              </span>
-            </button>
+                        <div class="BotaoCadastro">
+                            <button (click)="cadastrar()">
+                                <span class="Button" *ngIf="id == 'novo'">
+                                    cadastrar
+                                </span>
+                                <span class="Button" *ngIf="id != 'novo'">
+                                    Editar
+                                </span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
