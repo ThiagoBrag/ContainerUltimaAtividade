@@ -24,15 +24,16 @@
                 <div class="ContainerJunto">
                     <div class="InputImagem">
                         <div class="ImagemClasse">
-                            <input *ngIf="!imageUrl" type="file" (change)="imagemMudou($event)" />
+                            <button class="ButtonImage" *ngIf="!imageUrl" type="button" mat-raised-button (click)="fileInput.click()">Foto do Produto</button>
+                            <input hidden (change)="onFileSelected()" #fileInput type="file" id="file" (change)="imagemMudou($event)">
 
-                            <img *ngIf="imageUrl" [src]="imageUrl" width="200px" height="200px" />
+                            <img *ngIf="imageUrl" [src]="imageUrl" id="file" width="150px" height="150px" />
                         </div>
                         <div class="BotaoLimparImagem">
                             <button *ngIf="imageUrl" (click)="limparImagem()">LIMPAR IMAGEM</button>
                         </div>
                     </div>
-                    <div class="TudoSmeImagem">
+                    <div class="TudoSemImagem">
                         <div class="tudoNomePreco">
                             <div class="InputNome">
                                 <div class="IconePerson">

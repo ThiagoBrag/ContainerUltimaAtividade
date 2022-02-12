@@ -36,8 +36,23 @@ export class CadastroProdutosComponent implements OnInit {
     
   }
 
+srcResult
+
+  onFileSelected() {
+    const inputNode: any = document.querySelector('#file');
+  
+    if (typeof (FileReader) !== 'undefined') {
+      const reader = new FileReader();
+  
+      reader.onload = (e: any) => {
+        this.srcResult = e.target.result;
+      };
+  
+      reader.readAsArrayBuffer(inputNode.files[0]);
+    }
+  }
+
   imageURL 
-  teste
   input;
 
   limparImagem() {

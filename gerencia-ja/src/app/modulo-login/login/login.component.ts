@@ -1,3 +1,4 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from '../../services/usuario.service';
@@ -30,22 +31,23 @@ export class LoginComponent implements OnInit {
   }
 
   logar() {
+    this.usuarioService.buscarUsuarios()
+    .then((resultado: User[]) =>{
+      console.log(resultado)
+      for(let i=0; i < resultado.length; i++) {
+        if (this.username == resultado[i].NOME && this.password == resultado[i].PASSWORD){
+          this.router.navigate(['/loja']);
+        }
+      }
+    })
 
-    fetch('/api/buscar_usuario',
-      {
-        method: 'POST',
-        body: JSON.stringify({ nome: this.username, password: this.password }),
-        headers: { 'Content-Type': 'application/json' }
-      }).then(function (result) {
-        return result.json();
-      }).then(function (dados) {
-        console.log(dados);
-      }).catch(function (erro) {
-        console.log(erro);
-      })
-
-    localStorage.setItem('USER', this.username);
-    localStorage.setItem('PASSWORD', this.password);
-    this.router.navigate(['/loja']);
+    // localStorage.setItem('USER', this.username);
+    // localStorage.setItem('PASSWORD', this.password);
+    // this.router.navigate(['/loja']);
   }
+}
+
+interface User {
+  NOME: string;
+  PASSWORD: string;
 }

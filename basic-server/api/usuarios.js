@@ -15,16 +15,18 @@ inserirRota('/buscar_usuario', function(dados, resposta) {
 inserirRota('/login', function(dados, resposta) {
     console.log(dados)
 
-    database(`SELECT * FROM USER WHERE NICKNAME = "${dados.nickname}" AND `)
+    database(`SELECT * FROM USER`)
         .then(result => {
 
-            resposta({ list: result })
+            resposta(result)
 
 
         }).catch(erro => {
             resposta({ erro: 'Erro ao inserir o usuario!' });
         });
 })
+
+
 
 
 // fetch('http://localhost:3000/api/buscar_usuario', 
