@@ -20,7 +20,7 @@ database(`CREATE TABLE IF NOT EXISTS USER (
         console.log('TABELA: USER DEU ERRO NA CRIAÇãO');
     });
 
-database(`INSERT INTO USER VALUES (null , 'thiago', '123')`)
+database(`INSERT INTO USER VALUES (null , 'thiago', '123'),(null, 'jao', '321'), (null, 'bonatti', 'a'),(null, 'henrique', 'a')`)
     .then(result => {
         console.log('DADOS CADASTRADOS!');
     }).catch(erro => {
