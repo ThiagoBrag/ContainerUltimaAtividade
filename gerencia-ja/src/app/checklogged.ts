@@ -13,10 +13,6 @@ class CheckLogged implements CanActivate{
         private router: Router
     ){}
  
-    usuarios = [
-        {username: "thiago", password: "123"},
-        {username:"a", password: "a"}
-    ]
 
  
     canActivate(
