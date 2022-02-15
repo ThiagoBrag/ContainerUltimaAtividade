@@ -27,7 +27,7 @@ database(`INSERT INTO USER VALUES (null , 'thiago', '123'),
     .then(result => {
         console.log('DADOS CADASTRADOS!');
     }).catch(erro => {
-        console.log(': ERRO NO CADASTRO');
+        console.log('ERRO NO CADASTRO');
     });
 
 database(`CREATE TABLE IF NOT EXISTS PRODUTO (
@@ -53,16 +53,29 @@ database(`CREATE TABLE IF NOT EXISTS CLIENTE (
         console.log('TABELA: CLIENTE DEU ERRO NA CRIAÇãO');
     });
 
+database(`CREATE TABLE IF NOT EXISTS ENDERECO (
+        ID INTEGER PRIMARY KEY AUTOINCREMENT,
+        PAIS varchar(50),
+        ESTADO varchar(50),
+        CIDADE varchar(50),
+        BAIRRO varchar(50),
+        RUA varchar(50),
+        NUMERO INTEGER
+        )`)
+    .then(result => {
+        console.log('TABELA: ENDERECO CRIADA!');
+    }).catch(erro => {
+        console.log('TABELA: ENDERECO DEU ERRO NA CRIAÇãO');
+    });
+
 database(`CREATE TABLE IF NOT EXISTS PEDIDO (
         ID INTEGER PRIMARY KEY AUTOINCREMENT,
-        CLIENTE_ID INTEGER,
+        CLIENTE_ID INTEGER
         FOREIGN KEY (CLIENTE_ID)
         REFERENCES CLIENTE(ID),
-        PRODUTO_ID INTEGER,
+        PRODUTO_ID INTEGER
         FOREIGN KEY (PRODUTO_ID)
         REFERENCES PRODUTO(ID)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE
         )`)
     .then(result => {
         console.log('TABELA: PEDIDO CRIADA!');
