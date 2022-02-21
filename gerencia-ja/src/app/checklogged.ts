@@ -31,24 +31,11 @@ class CheckLogged implements CanActivate {
                         retorno = 1;
                     }
                 }
-
-
             })
             return true;
         } else {
-            
             return false
         }
-
-
-        // console.log("Aqui jas retorno",retorno)
-        // if (retorno == 0) {
-        //     return true;
-        // } else {
-        // alert('Usuário não cadastrado')
-        // this.router.navigate([''])
-        // return false;
-        // }
     }
 }
 
