@@ -10,9 +10,9 @@
 //     });
 
 database(`CREATE TABLE IF NOT EXISTS USER (
-        ID INTEGER PRIMARY KEY AUTOINCREMENT,
+        ID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
         NOME varchar(30),
-        PASSWORD varchar(30)
+        PASSWORD varchar(30) UNIQUE
         )`)
     .then(result => {
         console.log('TABELA: USER CRIADA!');
@@ -22,7 +22,7 @@ database(`CREATE TABLE IF NOT EXISTS USER (
 
 database(`INSERT INTO USER VALUES (null , 'thiago', '123'),
 (null, 'jao', '321'), 
-(null, 'bonatti', 'a'),
+(null, 'bonatti', 'b'),
 (null, 'henrique', 'a')`)
     .then(result => {
         console.log('DADOS CADASTRADOS!');
@@ -31,10 +31,10 @@ database(`INSERT INTO USER VALUES (null , 'thiago', '123'),
     });
 
 database(`CREATE TABLE IF NOT EXISTS PRODUTO (
-        ID INTEGER PRIMARY KEY AUTOINCREMENT,
-        NOME varchar(30),
+        ID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
+        NOME varchar(30) UNIQUE,
         VALOR double,
-        IMAGEM varchar(1000)
+        IMAGEM varchar(1000) UNIQUE
         )`)
     .then(result => {
         console.log('TABELA: PRODUTO CRIADA!');
@@ -43,9 +43,9 @@ database(`CREATE TABLE IF NOT EXISTS PRODUTO (
     });
 
 database(`CREATE TABLE IF NOT EXISTS CLIENTE (
-        ID INTEGER PRIMARY KEY AUTOINCREMENT,
+        ID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
         NOME varchar(45),
-        SOBRENOME varchar(45)
+        SOBRENOME varchar(45) UNIQUE
         )`)
     .then(result => {
         console.log('TABELA: CLIENTE CRIADA!');
@@ -54,7 +54,7 @@ database(`CREATE TABLE IF NOT EXISTS CLIENTE (
     });
 
 database(`CREATE TABLE IF NOT EXISTS ENDERECO (
-        ID INTEGER PRIMARY KEY AUTOINCREMENT,
+        ID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
         PAIS varchar(50),
         ESTADO varchar(50),
         CIDADE varchar(50),
@@ -69,9 +69,9 @@ database(`CREATE TABLE IF NOT EXISTS ENDERECO (
     });
 
 database(`CREATE TABLE IF NOT EXISTS PEDIDO (
-        ID INTEGER PRIMARY KEY AUTOINCREMENT,
-        CLIENTE_ID INTEGER,
-        PRODUTO_ID INTEGER,
+        ID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
+        CLIENTE_ID INTEGER UNIQUE,
+        PRODUTO_ID INTEGER UNIQUE,
         FOREIGN KEY (CLIENTE_ID) REFERENCES CLIENTE(ID),
         FOREIGN KEY (PRODUTO_ID) REFERENCES PRODUTO(ID)
         )`)

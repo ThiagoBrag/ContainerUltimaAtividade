@@ -29,21 +29,26 @@ export class LoginComponent implements OnInit {
       console.log('ERRO AO BUSCAR USUARIOS:', erro);
     })
   }
-
+  
   logar() {
+    let retorno = 0;
+    localStorage.setItem('USER', this.username);
+    localStorage.setItem('PASSWORD', this.password);
+
     this.usuarioService.buscarUsuarios()
     .then((resultado: User[]) =>{
-      console.log(resultado)
       for(let i=0; i < resultado.length; i++) {
         if (this.username == resultado[i].NOME && this.password == resultado[i].PASSWORD){
           this.router.navigate(['/loja']);
+        } else {
+          retorno = 1;
         }
       }
     })
-
-    // localStorage.setItem('USER', this.username);
-    // localStorage.setItem('PASSWORD', this.password);
-    // this.router.navigate(['/loja']);
+    if (retorno == 1) {
+      alert('Usuário Incorreto');
+    }
+    
   }
 }
 

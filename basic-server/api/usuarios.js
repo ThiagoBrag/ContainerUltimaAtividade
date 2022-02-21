@@ -29,6 +29,7 @@ inserirRota('/login', function(dados, resposta) {
 
 
 
+
 // fetch('http://localhost:3000/api/buscar_usuario', 
 // {method: 'POST', 
 // body: JSON.stringify({produtoId: 1, pessoaId: 1}), 
