@@ -30,7 +30,9 @@
                         </div>
                         <div *ngIf="clientes.length > 0">
                             <select [(ngModel)]="clienteId">
-                            <option *ngFor="let cliente of clientes;let i = index" value='{{i}}'>{{cliente.name}} {{cliente.surname}}</option>
+                            <option *ngFor="let cliente of clientes;let i = index" value='{{i}}'>
+                                {{cliente.nome}} {{cliente.surname}}
+                            </option>
                           </select>
                         </div>
                     </div>
@@ -42,7 +44,7 @@
                         </div>
                         <div *ngIf="produtos.length > 0">
                             <select class="INPUTproduto" [(ngModel)]="listaProdutosId">
-                            <option *ngFor="let produto of produtos;let i = index" value='{{i}}'>{{produto.name}}</option>
+                            <option *ngFor="let produto of produtos;let i = index" value='{{i}}'>{{produto.nome}}</option>
                           </select>
                         </div>
                     </div>
