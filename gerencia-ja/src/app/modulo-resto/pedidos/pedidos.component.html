@@ -34,7 +34,7 @@
         <div class="containerproduto">
             <div *ngFor="let pedido of pedidos;let i=index" class="produto">
                 <div class="palavraNome">
-                    {{clientes[pedido.clienteId].name}}
+                    {{clientes.nome}}
                 </div>
                 <div class="EdicaoExclir">
                     <div class="containerIcone3" (click)="router.navigate(['/pedidos',i +1])">
