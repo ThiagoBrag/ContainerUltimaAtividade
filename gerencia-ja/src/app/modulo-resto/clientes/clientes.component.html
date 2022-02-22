@@ -34,10 +34,10 @@
         <div class="containerproduto">
             <div *ngFor="let cliente of clientes;let i=index" class="produto">
                 <div class="palavraNome">
-                    {{cliente.name}}
+                    {{cliente.nome}}
                 </div>
                 <div class="palavraPreco">
-                    <strong>{{cliente.surname}}</strong>
+                    <strong>{{cliente.sobrenome}}</strong>
                 </div>
                 <div class="EdicaoExclir">
                     <div class="containerIcone3" (click)="router.navigate(['/clientes',i +1])">

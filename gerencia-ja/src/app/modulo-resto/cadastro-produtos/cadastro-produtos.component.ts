@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { UsuarioService } from 'src/app/services/usuario.service';
 @Component({
   selector: 'app-cadastro-produtos',
   templateUrl: './cadastro-produtos.component.html',
@@ -11,7 +11,8 @@ export class CadastroProdutosComponent implements OnInit {
   produtos = [];
   constructor(
     public router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private usuarioService: UsuarioService
   ) {
     const id = this.route.snapshot.paramMap.get('id');
     this.id = id;
@@ -82,20 +83,23 @@ srcResult
 
   cadastrar() {
     if (this.name && this.price) {
-      const produto = { name: this.name, price: this.price }
+      this.usuarioService.inserirProduto(this.name, this.price)
+    this.router.navigate(['/produtos']);
+    //   const produto = { name: this.name, price: this.price }
 
-      if (this.id == 'novo') {
+    //   if (this.id == 'novo') {
 
-        this.produtos.push(produto);
+    //     this.produtos.push(produto);
       } else {
-        this.produtos[this.id] = produto;
-      }
+    //     this.produtos[this.id] = produto;
+    //   }
 
-      localStorage.setItem('PRODUTOS', JSON.stringify(this.produtos));
-      this.router.navigate(['/produtos']);
-    } else {
+    //   localStorage.setItem('PRODUTOS', JSON.stringify(this.produtos));
+    //   this.router.navigate(['/produtos']);
+    // } else {
       alert('É necessário preencher todos os campos!');
     }
+    
   }
 
 }

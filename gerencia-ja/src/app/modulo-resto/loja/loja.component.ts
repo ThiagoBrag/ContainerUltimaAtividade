@@ -17,6 +17,13 @@ export class LojaComponent implements OnInit {
 
   goTo(path) {
     this.router.navigate([path])
+    
+  }
+
+  Logout() {
+    localStorage.removeItem('USER')
+    localStorage.removeItem('PASSWORD')
+    localStorage.removeItem('VALORRETORNO')
   }
 
 }

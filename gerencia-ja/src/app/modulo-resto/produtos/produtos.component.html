@@ -34,10 +34,10 @@
         <div class="containerproduto">
             <div *ngFor="let produto of produtos;let i=index " class="produto">
                 <div class="palavraNome">
-                    {{produto.name}}
+                    {{produto.nome}}
                 </div>
                 <div class="palavraPreco">
-                    <strong>R$ {{produto.price}}</strong>
+                    <strong>R$ {{produto.valor}}</strong>
                 </div>
                 <div class="EdicaoExclir">
                     <div class="containerIcone3" (click)="router.navigate([ '/produtos',i +1]) ">

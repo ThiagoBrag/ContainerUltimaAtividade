@@ -24,18 +24,20 @@ class CheckLogged implements CanActivate {
         let password = localStorage.getItem('PASSWORD')
         let retorno;
 
-        if (username && password) {
             this.usuarios.buscarUsuarios().then((resultado: (Object: "String") => []) => {
                 for (let i = 0; i < resultado.length; i++) {
                     if (resultado[i].NOME == username && resultado[i].PASSWORD == password) {
-                        retorno = 1;
+                        retorno = 1
+                        localStorage.setItem('VALORRETORNO',retorno)
                     }
                 }
             })
-            return true;
-        } else {
-            return false
-        }
+            if (localStorage.getItem('VALORRETORNO') == '1') {
+                console.log("aaa", localStorage.getItem('VALORRETORNO'))
+                return true;
+            } else {
+                return false;
+            }
     }
 }
 

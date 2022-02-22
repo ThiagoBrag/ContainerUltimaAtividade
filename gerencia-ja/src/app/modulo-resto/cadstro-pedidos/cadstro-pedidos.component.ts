@@ -39,20 +39,21 @@ export class CadstroPedidosComponent implements OnInit {
   }
 
   cadastrar() {
-    if (this.clienteId && this.listaProdutosId) {
-      const pedido = { clienteId: this.clienteId, listaProdutosId: this.listaProdutosId}
 
-      if (this.id == 'novo') {
-        this.pedidos.push(pedido);
-      } else {
-        this.pedidos[this.id] = pedido;
-      }
-      console.log(this.pedidos)
-      localStorage.setItem('PEDIDOS', JSON.stringify(this.pedidos));
-      this.router.navigate(['/pedidos']);
-    } else {
-      alert('É necessário preencher todos os campos!');
-    }
+    
+    // if (this.clienteId && this.listaProdutosId) {
+    //   const pedido = { clienteId: this.clienteId, listaProdutosId: this.listaProdutosId}
+
+    //   if (this.id == 'novo') {
+    //     this.pedidos.push(pedido);
+    //   } else {
+    //     this.pedidos[this.id] = pedido;
+    //   }
+    //   localStorage.setItem('PEDIDOS', JSON.stringify(this.pedidos));
+    //   this.router.navigate(['/pedidos']);
+    // } else {
+    //   alert('É necessário preencher todos os campos!');
+    // }
   }
 
 }
