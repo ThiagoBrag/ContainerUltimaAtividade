@@ -10,9 +10,9 @@
 //     });
 
 database(`CREATE TABLE IF NOT EXISTS USER (
-        ID INTEGER PRIMARY KEY AUTOINCREMENT,
+        ID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
         NOME varchar(30),
-        PASSWORD varchar(30)
+        PASSWORD varchar(30) UNIQUE
         )`)
     .then(result => {
         console.log('TABELA: USER CRIADA!');

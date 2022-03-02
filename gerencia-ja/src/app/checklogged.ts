@@ -33,9 +33,10 @@ class CheckLogged implements CanActivate {
                 }
             })
             if (localStorage.getItem('VALORRETORNO') == '1') {
-                console.log("aaa", localStorage.getItem('VALORRETORNO'))
                 return true;
             } else {
+                alert("É necessário um login válido!")
+                this.router.navigate([""]);
                 return false;
             }
     }
