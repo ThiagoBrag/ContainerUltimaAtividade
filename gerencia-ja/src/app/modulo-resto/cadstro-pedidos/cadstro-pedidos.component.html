@@ -48,6 +48,57 @@
                           </select>
                         </div>
                     </div>
+                    <div class="textoEndereco">
+                        Endereço:
+                    </div>
+                    <div class="inputEndereco1">
+                        <div class="inputpais">
+                            <div class="textoPais">
+                                País
+                            </div>
+                            <input class="InputDoPais" placeholder="País" [(ngModel)]='pais'>
+                        </div>
+                        <div class="inputestado">
+                            <div class="textoEstado">
+                                Estado
+                            </div>
+                            <input class="InputDoEstado" placeholder="Estado" [(ngModel)]='estado'>
+                        </div>
+                        <div class="inputcidade">
+                            <div class="textoCidade">
+                                Cidade
+                            </div>
+                            <input class="InputDaCidade" placeholder="Cidade" [(ngModel)]='cidade'>
+                        </div>
+                    </div>
+                    <div class="inputEndereco2">
+                        <div class="inputbairro">
+                            <div class="textoBairro">
+                                Bairro
+                            </div>
+                            <input class="InputDoBairro" placeholder="Bairro" [(ngModel)]='bairro'>
+                        </div>
+                        <div class="inputrua">
+                            <div class="textoRua">
+                                Rua
+                            </div>
+                            <input class="InputDaRua" placeholder="Rua" [(ngModel)]='rua'>
+                        </div>
+                        <div class="inputnumero">
+                            <div class="textoNumero">
+                                Número
+                            </div>
+                            <input class="InputDoNumero" placeholder="Numero" [(ngModel)]='numero'>
+                        </div>
+                    </div>
+                    <div class="inputEndereco3">
+                        <div class="inputcomplemento">
+                            <div class="textoComplemento">
+                                Complemento
+                            </div>
+                            <input class="InputDoComplemento" placeholder="Complemento" [(ngModel)]='complemento'>
+                        </div>
+                    </div>
 
                     <div class="BotaoCadastro">
                         <button (click)="cadastrar()">

@@ -77,7 +77,7 @@
     background: rgb(255, 0, 0);
     background: linear-gradient(90deg, rgba(255, 0, 0, 1) 0%, rgba(255, 142, 2, 1) 11%, rgba(255, 235, 0, 1) 24%, rgba(185, 255, 0, 1) 38%, rgba(18, 255, 0, 1) 50%, rgba(0, 255, 244, 1) 57%, rgba(0, 39, 251, 1) 65%, rgba(117, 0, 251, 1) 75%, rgba(249, 0, 243, 1) 87%, rgba(255, 0, 0, 1) 100%);
     width: 31vw;
-    height: 26.7vh;
+    height: 50.7vh;
     border: solid 2px black;
     border-radius: 15px;
 }
@@ -87,7 +87,7 @@
     margin-top: 1%;
     background-color: rgb(0, 0, 0);
     width: 30vw;
-    height: 25vh;
+    height: 49vh;
     border: solid 2px black;
     border-radius: 15px;
 }
@@ -135,7 +135,6 @@
 
 .BotaoCadastro {
     margin-top: 4%;
-    margin-left: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -154,4 +153,59 @@
 
 .INPUTproduto {
     width: 113px;
+}
+
+.inputEndereco1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.textoPais,
+.textoEstado,
+.textoCidade,
+.textoBairro,
+.textoRua,
+.textoNumero,
+.textoComplemento {
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.InputDoPais,
+.InputDaCidade,
+.InputDoBairro,
+.InputDoNumero {
+    width: 100px;
+}
+
+.InputDoEstado,
+.InputDaRua {
+    width: 95px;
+}
+
+.inputestado,
+.inputrua {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.inputEndereco2,
+.inputEndereco3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.textoEndereco {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    color: white;
+    font-family: system-ui;
+    font-size: x-large;
 }

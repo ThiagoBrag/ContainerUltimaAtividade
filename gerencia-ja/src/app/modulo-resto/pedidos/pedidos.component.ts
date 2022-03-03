@@ -37,8 +37,7 @@ export class PedidosComponent implements OnInit {
     .then((resultado: Cliente[])=> {
       for(let i = 0; i < resultado.length; i++){
         this.objeto = {
-          nome: resultado[i].NOME,
-          sobrenome: resultado[i].SOBRENOME
+          nome: resultado[i].NOME
         }
         console.log(this.pedidos)
         this.pedidos.push(this.objeto)
