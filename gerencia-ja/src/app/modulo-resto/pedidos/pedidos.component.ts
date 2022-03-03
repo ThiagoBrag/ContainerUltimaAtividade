@@ -45,6 +45,7 @@ export class PedidosComponent implements OnInit {
     }).catch(erro => {
       console.log("ERRO AO BUSCAR CLIENTE:", erro)
     })
+
   }
 
   removerProduto(index) {
