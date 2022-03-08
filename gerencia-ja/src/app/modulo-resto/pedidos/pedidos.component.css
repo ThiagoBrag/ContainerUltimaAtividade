@@ -67,35 +67,13 @@
     justify-content: center;
 }
 
-.produto {
-    margin-top: 30px;
-    background-color: rgb(243, 243, 243);
-    padding: 20px 40px 20px 40px;
-    border: solid black 1px;
-    border-radius: 15px;
-    font-size: 25px;
-    cursor: default;
-}
-
-.produto:hover {
-    background-color: rgb(199, 199, 199);
-}
-
 .palavraNome {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: -3px;
-    margin-bottom: 15px;
-    font-family: fantasy;
-    cursor: default;
-}
-
-.palavraPreco {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: sans-serif;
+    margin-bottom: 3px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     cursor: default;
 }
 
@@ -115,4 +93,38 @@
 .iconeLixeira {
     margin-left: 5px;
     cursor: pointer;
+}
+
+.containerproduto {
+    margin-top: 30px;
+    background-color: rgb(243, 243, 243);
+    padding: 30px 70px 30px 70px;
+    border: solid black 1px;
+    border-radius: 15px;
+    font-size: 25px;
+    cursor: default;
+}
+
+.containerproduto:hover {
+    background-color: rgb(199, 199, 199);
+}
+
+.palavraproduto,
+.palavracliente {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -3px;
+    margin-bottom: 3px;
+    font-family: fantasy;
+    cursor: default;
+}
+
+.ladoAlado {
+    display: flex;
+    align-items: center;
+}
+
+.JuntarProduto {
+    margin-right: 30px;
 }

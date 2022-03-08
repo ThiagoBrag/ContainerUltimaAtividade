@@ -1,6 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import {
+  SocialLoginModule,
+  AuthServiceConfig,
+  GoogleLoginProvider,
+} from "angular-6-social-login-v2";
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './modulo-login/login/login.component';
 import { ClientesComponent } from './modulo-resto/clientes/clientes.component';
@@ -27,6 +33,19 @@ const routes: Routes = [
   { path: 'pedidos/:id', component: CadstroPedidosComponent, canActivate: [CheckLogged] }
 ];
 
+export function getAuthServiceConfigs() {
+  let config = new AuthServiceConfig(
+      [
+        
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider("402231336047-9jsgeagvcoa8fqb6eled83fj2hnodt5d.apps.googleusercontent.com")
+        }
+      ]
+  );
+  return config;
+}
+
 @NgModule({
   declarations: [
     LoginComponent,
@@ -40,12 +59,16 @@ const routes: Routes = [
     LojaComponent,
   ],
   imports: [
+    SocialLoginModule,
     CommonModule,
     BrowserModule,
     RouterModule.forRoot(routes),
     FormsModule
   ],
-  providers: [CheckLogged],
+  providers: [CheckLogged,{
+    provide: AuthServiceConfig,
+    useFactory: getAuthServiceConfigs
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

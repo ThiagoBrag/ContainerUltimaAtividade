@@ -103,3 +103,9 @@ button {
     margin-top: 10px;
     color: red;
 }
+
+.GOOGLE {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

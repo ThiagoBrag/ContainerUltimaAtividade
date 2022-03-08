@@ -20,25 +20,29 @@ class CheckLogged implements CanActivate {
         state: RouterStateSnapshot,
     ): Observable<boolean> | Promise<boolean> | boolean {
 
+
         let username = localStorage.getItem('USER')
         let password = localStorage.getItem('PASSWORD')
         let retorno;
 
-            this.usuarios.buscarUsuarios().then((resultado: (Object: "String") => []) => {
-                for (let i = 0; i < resultado.length; i++) {
-                    if (resultado[i].NOME == username && resultado[i].PASSWORD == password) {
-                        retorno = 1
-                        localStorage.setItem('VALORRETORNO',retorno)
-                    }
+        this.usuarios.buscarUsuarios().then((resultado: any) => {
+            for (let i = 0; i < resultado.length; i++) {
+                if (resultado[i].NOME == username && resultado[i].PASSWORD == password) {
+                    retorno = 1
+                    localStorage.setItem('VALORRETORNO', retorno)
+                    break;
                 }
-            })
-            if (localStorage.getItem('VALORRETORNO') == '1') {
-                return true;
-            } else {
-                alert("É necessário um login válido!")
-                this.router.navigate([""]);
-                return false;
             }
+        })
+
+        if (localStorage.getItem('VALORRETORNO') == '1') {
+            return true;
+        } else {
+            alert("É necessário um login válido!")
+            this.router.navigate([""]);
+            return false;
+        }
+
     }
 }
 

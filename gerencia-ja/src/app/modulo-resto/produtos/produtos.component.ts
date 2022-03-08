@@ -14,7 +14,7 @@ export class ProdutosComponent implements OnInit {
   ) {
     this.produtos = JSON.parse(localStorage.getItem('PRODUTOS')) || [];
   }
-
+  
   produtos = [];
   objeto  ={}
   ngOnInit() {

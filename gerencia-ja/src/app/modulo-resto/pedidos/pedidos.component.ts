@@ -13,44 +13,31 @@ export class PedidosComponent implements OnInit {
     public router: Router,
     private usuarioService: UsuarioService
   ) {
-    this.pedidos = JSON.parse(localStorage.getItem('PEDIDOS')) || [];
+    this.produtos = JSON.parse(localStorage.getItem('PRODUTOS')) || [];
+    this.clientes = JSON.parse(localStorage.getItem('CLIENTES')) || [];
   }
 
-  pedidos = [];
+  produtos = [];
+  clientes = [];
   objeto = {};
 
   ngOnInit() {
-    this.usuarioService.buscarProduto()
-    .then((resultado: Produto[])=> {
-      for(let i = 0; i < resultado.length; i++){
-        this.objeto = {
-          nome: resultado[i].NOME,
-        }
-        console.log(this.pedidos)
-        this.pedidos.push(this.objeto)
-      }
-    }).catch(erro => {
-      console.log("ERRO AO BUSCAR PRODUTO:", erro)
-    })
+    this.usuarioService.buscarPedido()
+    .then((resultado: any) => {
+      this.usuarioService.buscarCliente()
+      .then((result: any) => {
+        result.find(Cliente => {
+          if(resultado.cliente_id == Cliente.ID) {
+            this.clientes.push(Cliente.NOME)
+          }
+        })
+      })
 
-    this.usuarioService.buscarCliente()
-    .then((resultado: Cliente[])=> {
-      for(let i = 0; i < resultado.length; i++){
-        this.objeto = {
-          nome: resultado[i].NOME
-        }
-        console.log(this.pedidos)
-        this.pedidos.push(this.objeto)
-      }
-    }).catch(erro => {
-      console.log("ERRO AO BUSCAR CLIENTE:", erro)
     })
-
   }
 
   removerProduto(index) {
-    this.pedidos.splice(index, 1);
-    localStorage.setItem('PEDIDOS', JSON.stringify(this.pedidos))
+    this.produtos.splice(index, 1);
   }
 
   getValue() {
@@ -58,12 +45,3 @@ export class PedidosComponent implements OnInit {
   }
 
 }
-
-interface Produto {
-NOME: "string";
-}
-
-interface Cliente {
-  NOME: "string";
-  SOBRENOME: "String"
-  }

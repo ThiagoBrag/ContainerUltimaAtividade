@@ -32,26 +32,44 @@
     </div>
     <div class="conteudo">
         <div class="containerproduto">
-            <div *ngFor="let pedido of pedidos;let i=index" class="produto">
-                <div class="palavraNome">
-                    {{pedidos.nome}}
+
+            <!-- <div *ngFor="let produto of produtos;let i=index " class="produto">
+                <div class="ladoAlado">
+                    <div class="JuntarProduto">
+                        <div class="palavraproduto">
+                            Produto
+                        </div>
+
+                        <div class="palavraNome">
+                            {{produto.nome}}
+                        </div>
+                    </div>
+                    <div *ngFor="let cliente of clientes;let i=index" class="ForCliente">
+                        <div class="palavracliente">
+                            Cliente
+                        </div>
+                        <div class="palavraNome">
+                            {{cliente.nome}}
+                        </div>
+                    </div>
                 </div>
-                <div class="EdicaoExclir">
-                    <div class="containerIcone3" (click)="router.navigate(['/pedidos',i +1])">
-                        <div class="iconeLapis">
-                            <span class="material-icons">
+            </div> -->
+            <div class="EdicaoExclir">
+                <div class="containerIcone3" (click)="router.navigate(['/pedidos',i +1])">
+                    <div class="iconeLapis">
+                        <span class="material-icons">
                       edit
                       </span>
-                        </div>
-                    </div>
-                    <div class="containerIcone4" (click)="removerProduto(i)">
-                        <div class="iconeLixeira">
-                            <span class="material-icons">
-                      delete
-                      </span>
-                        </div>
                     </div>
                 </div>
+                <div class="containerIcone4" (click)="removerProduto(i)">
+                    <div class="iconeLixeira">
+                        <span class="material-icons">
+                      delete
+                      </span>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

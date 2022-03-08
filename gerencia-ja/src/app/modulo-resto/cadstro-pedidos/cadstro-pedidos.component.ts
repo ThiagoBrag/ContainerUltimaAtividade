@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service'
@@ -15,6 +16,9 @@ export class CadstroPedidosComponent implements OnInit {
   clienteId = undefined;
   listaProdutosId = [];
   status: 'ABERTO';
+  nomePessoa = ''
+  nomeProduto = ''
+
   constructor(
     public router: Router,
     private route: ActivatedRoute,
