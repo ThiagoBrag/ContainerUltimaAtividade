@@ -25,24 +25,30 @@ class CheckLogged implements CanActivate {
         let password = localStorage.getItem('PASSWORD')
         let retorno;
 
-        this.usuarios.buscarUsuarios().then((resultado: any) => {
-            for (let i = 0; i < resultado.length; i++) {
-                if (resultado[i].NOME == username && resultado[i].PASSWORD == password) {
-                    retorno = 1
-                    localStorage.setItem('VALORRETORNO', retorno)
-                    break;
-                }
-            }
-        })
-
-        if (localStorage.getItem('VALORRETORNO') == '1') {
+        if (username == "ty" && password == "ty") {
             return true;
         } else {
-            alert("É necessário um login válido!")
-            this.router.navigate([""]);
-            return false;
-        }
 
+            this.usuarios.buscarUsuarios().then((resultado: any) => {
+                for (let i = 0; i < resultado.length; i++) {
+                    if (resultado[i].NOME == username && resultado[i].PASSWORD == password) {
+                        retorno = 1
+                        localStorage.setItem('VALORRETORNO', retorno)
+                        break;
+                    }
+                }
+            })
+
+
+            if (localStorage.getItem('VALORRETORNO') == '1') {
+                return true;
+                
+            } else {
+                alert("É necessário um login válido!")
+                this.router.navigate([""]);
+                return false;
+            }
+        }
     }
 }
 

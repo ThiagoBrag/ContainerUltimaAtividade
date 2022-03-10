@@ -46,6 +46,8 @@ export class LoginComponent implements OnInit {
       
       this.socialAuthService.signIn(socialPlatformProvider).then(
         (userData) => {
+          localStorage.setItem('USER', "ty");
+          localStorage.setItem('PASSWORD', "ty");
           this.router.navigate(['/loja']);
         }
       );
