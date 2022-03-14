@@ -14,6 +14,7 @@ export class CadstroPedidosComponent implements OnInit {
   produtos = []
   clientes = [];
   clienteId = undefined;
+  produtoId = undefined;
   listaProdutosId = [];
   status: 'ABERTO';
   nomePessoa = ''
@@ -68,23 +69,26 @@ export class CadstroPedidosComponent implements OnInit {
   }
 
   cadastrar() {
-    if (this.clienteId && this.listaProdutosId) {
-      const pedido = { clienteId: this.clienteId, listaProdutosId: this.listaProdutosId}
+    
+    this.usuarioService.inserirPedido(this.clienteId, this.listaProdutosId)
+
+    // if (this.clienteId && this.listaProdutosId) {
+    //   const pedido = { clienteId: this.clienteId, listaProdutosId: this.listaProdutosId}
       
-      console.log("id", pedido,"pedido", this.id)
+    //   console.log("id", pedido,"pedido", this.id)
 
-      if (this.id == 'novo') {
-        this.pedidos.push(pedido);
-      } else {
-        this.pedidos[this.id] = pedido;
-      }
-      localStorage.setItem('PEDIDOS', JSON.stringify(this.pedidos));
+    //   if (this.id == 'novo') {
+    //     this.pedidos.push(pedido);
+    //   } else {
+    //     this.pedidos[this.id] = pedido;
+    //   }
+    //   localStorage.setItem('PEDIDOS', JSON.stringify(this.pedidos));
 
-      console.log("peidsods",this.pedidos)
+    //   console.log("peidsods",this.pedidos)
       this.router.navigate(['/pedidos']);
-    } else {
-      alert('É necessário preencher todos os campos!');
-    }
+    // } else {
+    //   alert('É necessário preencher todos os campos!');
+    // }
   }
 
 }

@@ -19,20 +19,33 @@ export class PedidosComponent implements OnInit {
 
   produtos = [];
   clientes = [];
-  objeto = {};
+  pedidos = [];
 
   ngOnInit() {
     this.usuarioService.buscarPedido()
     .then((resultado: any) => {
-      this.usuarioService.buscarCliente()
-      .then((result: any) => {
-        result.find(Cliente => {
-          if(resultado.cliente_id == Cliente.ID) {
-            this.clientes.push(Cliente.NOME)
-          }
+      resultado.find(valorResultado => {
+        this.usuarioService.buscarCliente()
+        .then((resultadoCLiente: any) => {
+          resultadoCLiente.find( valorCliente => {
+            if(valorCliente.ID - 1 == valorResultado.CLIENTE_ID){
+              this.usuarioService.buscarProduto()
+              .then((resultadoProduto: any) => {
+                resultadoProduto.find( valorProduto => {
+                  if(valorProduto.ID - 1 == valorResultado.PRODUTO_ID){
+                    let pedido = {
+                      nomeCliente: valorCliente.NOME,
+                      nomeProduto: valorProduto.NOME
+                    }
+
+                    this.pedidos.push(pedido)
+                  }
+                })
+              })
+            }
+          })
         })
       })
-
     })
   }
 

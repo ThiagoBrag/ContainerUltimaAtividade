@@ -154,6 +154,18 @@ inserirRota('/inserir_pedido', function(dados, resposta) {
         });
 })
 
+inserirRota('/Pedido', function(dados, resposta) {
+    database(`SELECT * FROM PEDIDO`)
+        .then(result => {
+
+            resposta(result)
+
+
+        }).catch(erro => {
+            resposta({ erro: 'Erro ao inserir o pedido!' });
+        });
+})
+
 // inserirRota('/ExcluirProduto', function(dados, resposta) {
 //     console.log(dados)
 
