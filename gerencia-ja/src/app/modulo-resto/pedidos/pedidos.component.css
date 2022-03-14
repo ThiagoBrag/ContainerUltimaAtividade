@@ -119,12 +119,3 @@
     font-family: fantasy;
     cursor: default;
 }
-
-.ladoAlado {
-    display: flex;
-    align-items: center;
-}
-
-.JuntarProduto {
-    margin-right: 30px;
-}
