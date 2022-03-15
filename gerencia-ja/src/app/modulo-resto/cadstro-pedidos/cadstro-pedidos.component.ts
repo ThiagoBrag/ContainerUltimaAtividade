@@ -45,7 +45,6 @@ export class CadstroPedidosComponent implements OnInit {
   ngOnInit() {
     this.usuarioService.buscarCliente()
     .then((resultado: User[]) => {
-       console.log(resultado)
       for (let i = 0; i < resultado.length; i++) {
         let info = {
           nome: resultado[i].NOME,
@@ -57,14 +56,12 @@ export class CadstroPedidosComponent implements OnInit {
 
     this.usuarioService.buscarProduto()
     .then((resultado: Produto[]) => {
-       console.log(resultado)
       for (let i = 0; i < resultado.length; i++) {
         let info = {
           nome: resultado[i].NOME,
         }
         this.produtos.push(info)
       }
-      console.log( "pridutwo",this.produtos)
     })
   }
 

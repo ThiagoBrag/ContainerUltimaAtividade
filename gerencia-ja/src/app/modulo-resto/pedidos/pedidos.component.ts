@@ -50,7 +50,16 @@ export class PedidosComponent implements OnInit {
   }
 
   removerProduto(index) {
-    this.pedidos.splice(index, 1);
+    // this.usuarioService.buscarPedido()
+    // .then((resultado: any) => {
+    //   resultado.find(valorPedido => {
+    //     if (valorPedido.pedido == this.pedidos[index].nomeProduto) {
+    //       this.usuarioService.excluirProduto(valorPedido.ID)
+    //       document.location.reload();
+    //       alert("Pedido excluído com sucesso!")
+    //     }
+    //   })
+    // })
     
   }
 

@@ -132,6 +132,21 @@ export class UsuarioService {
     });
   }
 
+  excluirPedido(ID) {
+    return new Promise((resolvido, rejeitado) => {
+      fetch('/api/ExcluirPedido',
+        {
+          method: 'POST',
+          body: JSON.stringify({ID}),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(resultado => resultado.json())
+        .then(result => resolvido(result))
+        .catch(rejeitado);
+    });
+  }
+
   checarUser(NOME, PASSWORD){
     return new Promise((resolve, reject) => {
       fetch('/api/checar_user',

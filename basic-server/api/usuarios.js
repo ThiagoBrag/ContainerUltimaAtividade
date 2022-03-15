@@ -180,6 +180,20 @@ inserirRota('/ExcluirProduto', function(dados, resposta) {
         });
 })
 
+inserirRota('/ExcluirPedido', function(dados, resposta) {
+    console.log(dados)
+
+    database(`DELETE FROM PEDIDO WHERE ID = '${dados.ID}'`)
+        .then(result => {
+
+            resposta(result)
+
+
+        }).catch(erro => {
+            resposta({ erro: 'Erro ao excluir um item da tabela produto!' });
+        });
+})
+
 inserirRota('/checar_user', function(dados, resposta) {
     database(`SELECT * FROM USER where NOME = "${dados.NOME}" AND PASSWORD = "${dados.PASSWORD}"`)
         .then(result => {
