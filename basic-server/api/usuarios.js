@@ -166,16 +166,26 @@ inserirRota('/Pedido', function(dados, resposta) {
         });
 })
 
-// inserirRota('/ExcluirProduto', function(dados, resposta) {
-//     console.log(dados)
+inserirRota('/ExcluirProduto', function(dados, resposta) {
+    console.log(dados)
 
-//     database(`DELETE FROM PRODUTO [WHERE Clause]`)
-//         .then(result => {
+    database(`DELETE FROM PRODUTO WHERE ID = '${dados.ID}'`)
+        .then(result => {
 
-//             resposta(result)
+            resposta(result)
 
 
-//         }).catch(erro => {
-//             resposta({ erro: 'Erro ao excluir um item da tabela produto!' });
-//         });
-// })
+        }).catch(erro => {
+            resposta({ erro: 'Erro ao excluir um item da tabela produto!' });
+        });
+})
+
+inserirRota('/checar_user', function(dados, resposta) {
+    database(`SELECT * FROM USER where NOME = "${dados.NOME}" AND PASSWORD = "${dados.PASSWORD}"`)
+        .then(result => {
+            resposta(result)
+        }).catch(erro => {
+            console.log('ERRO AO CHECAR USUÁRIO! ')
+            resposta({ erro })
+        })
+})

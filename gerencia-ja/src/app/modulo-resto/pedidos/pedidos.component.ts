@@ -50,7 +50,8 @@ export class PedidosComponent implements OnInit {
   }
 
   removerProduto(index) {
-    this.produtos.splice(index, 1);
+    this.pedidos.splice(index, 1);
+    
   }
 
   getValue() {

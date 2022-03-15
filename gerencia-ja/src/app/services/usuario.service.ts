@@ -117,18 +117,33 @@ export class UsuarioService {
     });
   }
 
-  // excluirProduto() {
-  //   return new Promise((resolvido, rejeitado) => {
-  //     fetch('/api/Cliente',
-  //       {
-  //         method: 'POST',
-  //         headers: {
-  //           'Content-Type': 'application/json'
-  //         }
-  //       }).then(resultado => resultado.json())
-  //       .then(result => resolvido(result))
-  //       .catch(rejeitado);
-  //   });
-  // }
+  excluirProduto(ID) {
+    return new Promise((resolvido, rejeitado) => {
+      fetch('/api/ExcluirProduto',
+        {
+          method: 'POST',
+          body: JSON.stringify({ID}),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(resultado => resultado.json())
+        .then(result => resolvido(result))
+        .catch(rejeitado);
+    });
+  }
+
+  checarUser(NOME, PASSWORD){
+    return new Promise((resolve, reject) => {
+      fetch('/api/checar_user',
+        {
+          method: 'POST',
+          body: JSON.stringify({NOME, PASSWORD}),
+          headers: { 'Content-Type': 'application/json' }
+        }
+      ).then(result => result.json())
+        .then(resolvido => resolve(resolvido))
+        .catch(reject)
+    })
+  }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { timeStamp } from 'console';
 import { UsuarioService } from 'src/app/services/usuario.service';
 @Component({
   selector: 'app-produtos',
@@ -34,7 +35,17 @@ export class ProdutosComponent implements OnInit {
   }
   
   removerProduto(index) {
-    this.produtos.splice(index, 1);
+    this.usuarioService.buscarProduto()
+    .then((resultado: any) => {
+      resultado.find(valorProduto => {
+        if (valorProduto.NOME == this.produtos[index].nome) {
+          this.usuarioService.excluirProduto(valorProduto.ID)
+          document.location.reload();
+          alert("Produto excluído com sucesso!")
+        }
+      })
+    })
+    
   }
 
 }

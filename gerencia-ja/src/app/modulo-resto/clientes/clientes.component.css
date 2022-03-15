@@ -10,15 +10,13 @@
     background-color: black;
     height: 13vh;
     width: 100vw;
-    cursor: pointer;
 }
 
 .BotaoAdicionar {
-    margin-top: -3.4%;
-    margin-right: 10%;
     cursor: pointer;
     display: flex;
     justify-content: end;
+    align-items: center;
 }
 
 .containerPalavra {
@@ -26,6 +24,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: default;
+}
+
+.containerBotao {
+    position: absolute;
+    margin-bottom: 46px;
 }
 
 .textoProdutos {
