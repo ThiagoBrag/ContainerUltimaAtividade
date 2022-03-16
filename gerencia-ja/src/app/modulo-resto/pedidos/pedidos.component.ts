@@ -17,54 +17,54 @@ export class PedidosComponent implements OnInit {
     this.clientes = JSON.parse(localStorage.getItem('CLIENTES')) || [];
   }
 
+  ValorDoCliente = "";
   produtos = [];
   clientes = [];
   pedidos = [];
 
   ngOnInit() {
     this.usuarioService.buscarPedido()
-    .then((resultado: any) => {
-      resultado.find(valorResultado => {
-        this.usuarioService.buscarCliente()
-        .then((resultadoCLiente: any) => {
-          resultadoCLiente.find( valorCliente => {
-            if(valorCliente.ID - 1 == valorResultado.CLIENTE_ID){
-              this.usuarioService.buscarProduto()
-              .then((resultadoProduto: any) => {
-                resultadoProduto.find( valorProduto => {
-                  if(valorProduto.ID - 1 == valorResultado.PRODUTO_ID){
-                    let pedido = {
-                      nomeCliente: valorCliente.NOME,
-                      nomeProduto: valorProduto.NOME
-                    }
-
-                    this.pedidos.push(pedido)
-                  }
-                })
+      .then((resultado: any) => {
+        resultado.find(valorResultado => {
+          this.usuarioService.buscarCliente()
+            .then((resultadoCLiente: any) => {
+              resultadoCLiente.find(valorCliente => {
+                if (valorCliente.ID - 1 == valorResultado.CLIENTE_ID) {
+                  this.ValorDoCliente = valorResultado.CLIENTE_ID;
+                  this.usuarioService.buscarProduto()
+                    .then((resultadoProduto: any) => {
+                      resultadoProduto.find(valorProduto => {
+                        if (valorProduto.ID - 1 == valorResultado.PRODUTO_ID) {
+                          
+                          let pedido = {
+                            nomeCliente: valorCliente.NOME,
+                            nomeProduto: valorProduto.NOME
+                          }
+                          
+                          this.pedidos.push(pedido)
+                        }
+                      })
+                    })
+                }
               })
-            }
-          })
+            })
         })
       })
-    })
   }
 
   removerProduto(index) {
-    // this.usuarioService.buscarPedido()
-    // .then((resultado: any) => {
-    //   resultado.find(valorPedido => {
-    //     if (valorPedido.pedido == this.pedidos[index].nomeProduto) {
-    //       this.usuarioService.excluirProduto(valorPedido.ID)
-    //       document.location.reload();
-    //       alert("Pedido excluído com sucesso!")
-    //     }
-    //   })
-    // })
+    this.usuarioService.buscarPedido()
+    .then((resultado: any) => {
+      resultado.find(valorPedido => {
+        if (valorPedido.CLIENTE_ID == this.ValorDoCliente) {
+          
+          this.usuarioService.excluirPedido(valorPedido.ID)
+          document.location.reload();
+          alert("Pedido excluído com sucesso!")
+        }
+      })
+    })
     
-  }
-
-  getValue() {
-    return 0;
   }
 
 }

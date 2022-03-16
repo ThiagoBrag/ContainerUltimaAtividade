@@ -180,6 +180,20 @@ inserirRota('/ExcluirProduto', function(dados, resposta) {
         });
 })
 
+inserirRota('/ExcluirCliente', function(dados, resposta) {
+    console.log(dados)
+
+    database(`DELETE FROM CLIENTE WHERE ID = '${dados.ID}'`)
+        .then(result => {
+
+            resposta(result)
+
+
+        }).catch(erro => {
+            resposta({ erro: 'Erro ao excluir um item da tabela produto!' });
+        });
+})
+
 inserirRota('/ExcluirPedido', function(dados, resposta) {
     console.log(dados)
 

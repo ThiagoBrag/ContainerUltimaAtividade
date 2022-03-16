@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { timeStamp } from 'console';
 import { UsuarioService } from 'src/app/services/usuario.service';
 @Component({
   selector: 'app-produtos',
@@ -26,7 +25,6 @@ export class ProdutosComponent implements OnInit {
           nome: resultado[i].NOME,
           valor: resultado[i].VALOR
         }
-        console.log(this.produtos)
         this.produtos.push(this.objeto)
       }
     }).catch(erro => {

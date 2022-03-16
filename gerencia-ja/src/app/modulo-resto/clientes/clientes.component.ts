@@ -35,8 +35,17 @@ export class ClientesComponent implements OnInit {
   }
 
   removerCliente(index) {
-    this.clientes.splice(index, 1);
-    localStorage.setItem('CLIENTES', JSON.stringify(this.clientes))
+    this.usuarioService.buscarCliente()
+    .then((resultado: any) => {
+      resultado.find(valorCliente => {
+        if (valorCliente.NOME == this.clientes[index].nome) {
+          this.usuarioService.excluirCliente(valorCliente.ID)
+          document.location.reload();
+          alert("Cliente excluído com sucesso!")
+        }
+      })
+    })
+    
   }
 
 

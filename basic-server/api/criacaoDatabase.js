@@ -1,14 +1,3 @@
-// database(`CREATE TABLE IF NOT EXISTS TESTE (
-//     ID INTEGER PRIMARY KEY AUTOINCREMENT,
-//     NOME varchar(30),
-//     NUMERO int
-//     )`)
-//     .then(result => {
-//         console.log('TABELA: TESTE CRIADA!');
-//     }).catch(erro => {
-//         console.log('TABELA: TESTE DEU ERRO NA CRIAÇãO');
-//     });
-
 database(`CREATE TABLE IF NOT EXISTS USER (
         ID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
         NOME varchar(30),
@@ -80,14 +69,3 @@ database(`CREATE TABLE IF NOT EXISTS PEDIDO (
     }).catch(erro => {
         console.log('TABELA: PEDIDO DEU ERRO NA CRIAÇãO');
     });
-
-// database(`CREATE TABLE IF NOT EXISTS PEDIDO (
-//         ID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
-//         NOME_CLIENTE varchar(30),
-//         NOME_PRODUTO varchar(30)
-//         )`)
-//     .then(result => {
-//         console.log('TABELA: PEDIDO CRIADA!');
-//     }).catch(erro => {
-//         console.log('TABELA: PEDIDO DEU ERRO NA CRIAÇãO');
-//     });

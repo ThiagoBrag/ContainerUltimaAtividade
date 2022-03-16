@@ -67,9 +67,10 @@ export class CadstroPedidosComponent implements OnInit {
 
   cadastrar() {
     
-    this.usuarioService.inserirPedido(this.clienteId, this.listaProdutosId)
+   
 
-    // if (this.clienteId && this.listaProdutosId) {
+    if (this.clienteId && this.listaProdutosId) {
+      this.usuarioService.inserirPedido(this.clienteId, this.listaProdutosId)
     //   const pedido = { clienteId: this.clienteId, listaProdutosId: this.listaProdutosId}
       
     //   console.log("id", pedido,"pedido", this.id)
@@ -83,9 +84,9 @@ export class CadstroPedidosComponent implements OnInit {
 
     //   console.log("peidsods",this.pedidos)
       this.router.navigate(['/pedidos']);
-    // } else {
-    //   alert('É necessário preencher todos os campos!');
-    // }
+    } else {
+      alert('É necessário preencher todos os campos!');
+    }
   }
 
 }
