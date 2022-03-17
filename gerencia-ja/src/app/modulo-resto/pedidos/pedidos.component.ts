@@ -35,12 +35,12 @@ export class PedidosComponent implements OnInit {
                     .then((resultadoProduto: any) => {
                       resultadoProduto.find(valorProduto => {
                         if (valorProduto.ID - 1 == valorResultado.PRODUTO_ID) {
-                          
+
                           let pedido = {
                             nomeCliente: valorCliente.NOME,
                             nomeProduto: valorProduto.NOME
                           }
-                          
+
                           this.pedidos.push(pedido)
                         }
                       })
@@ -54,17 +54,16 @@ export class PedidosComponent implements OnInit {
 
   removerProduto(index) {
     this.usuarioService.buscarPedido()
-    .then((resultado: any) => {
-      resultado.find(valorPedido => {
-        if (valorPedido.CLIENTE_ID == this.ValorDoCliente) {
-          
-          this.usuarioService.excluirPedido(valorPedido.ID)
-          document.location.reload();
-          alert("Pedido excluído com sucesso!")
-        }
+      .then((resultado: any) => {
+        resultado.find(valorPedido => {
+          if (valorPedido.CLIENTE_ID == this.ValorDoCliente) {
+
+            this.usuarioService.excluirPedido(valorPedido.ID)
+            document.location.reload();
+            alert("Pedido excluído com sucesso!")
+          }
+        })
       })
-    })
-    
   }
 
 }

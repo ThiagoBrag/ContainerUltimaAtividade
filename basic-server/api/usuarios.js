@@ -26,6 +26,20 @@ inserirRota('/login', function(dados, resposta) {
         });
 })
 
+inserirRota('/Endereco', function(dados, resposta) {
+    console.log(dados)
+
+    database(`SELECT * FROM ENDERECO`)
+        .then(result => {
+
+            resposta(result)
+
+
+        }).catch(erro => {
+            resposta({ erro: 'Erro ao inserir o endereco!' });
+        });
+})
+
 inserirRota('/Produto', function(dados, resposta) {
     console.log(dados)
 
@@ -54,39 +68,6 @@ inserirRota('/Cliente', function(dados, resposta) {
         });
 })
 
-// inserirRota('/criar_usuario', function(dados, resposta) {
-//     console.log(dados)
-
-//     if (!dados.nome) {
-//         return resposta({ erro: 'É necessario preencher o nome' })
-//     }
-
-//     if (!dados.nickname) {
-//         return resposta({ erro: 'É necessario preencher o nickname' })
-//     }
-
-//     database(`INSERT INTO USER
-//             (
-//             NOME,
-//             NICKNAME
-//             ) 
-//             VALUES 
-//             (
-//             "${dados.nome}",
-//             "${dados.nickname}"
-//             )`)
-//         .then(result => {
-//             console.log('Usuario inserido com sucesso!');
-
-//             resposta({ message: 'Usuario inserido com sucesso!' })
-
-
-//         }).catch(erro => {
-//             console.log('Erro ao inserir o usuario!');
-//             resposta({ erro: 'Erro ao inserir o usuario!' });
-//         });
-// })
-
 inserirRota('/inserir_produto', function(dados, resposta) {
     database(`INSERT INTO PRODUTO
             (
@@ -107,6 +88,39 @@ inserirRota('/inserir_produto', function(dados, resposta) {
         }).catch(erro => {
             console.log('Erro ao inserir o produto!');
             resposta({ erro: 'Erro ao inserir o produto!' });
+        });
+})
+
+inserirRota('/inserir_endereco', function(dados, resposta) {
+    database(`INSERT INTO ENDERECO
+            (
+            PAIS,
+            ESTADO,
+            CIDADE,
+            BAIRRO,
+            RUA,
+            NUMERO,
+            CEP
+            ) 
+            VALUES 
+            (
+            "${dados.pais}",
+            "${dados.estado}",
+            "${dados.cidade}",
+            "${dados.bairro}",
+            "${dados.rua}",
+            "${dados.numero}",
+            "${dados.cep}"
+            )`)
+        .then(result => {
+            console.log('Endereço inserido com sucesso!');
+
+            resposta({ message: 'Endereço inserido com sucesso!' })
+
+
+        }).catch(erro => {
+            console.log('Erro ao inserir o Endereço!');
+            resposta({ erro: 'Erro ao inserir o Endereço!' });
         });
 })
 

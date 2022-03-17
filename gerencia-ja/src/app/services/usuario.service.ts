@@ -57,13 +57,31 @@ export class UsuarioService {
     });
   }
 
-  inserirPedido(cliente_id, produto_id) {
+  inserirPedido(cliente_id, produto_id, endereco_id) {
     return new Promise((resolvido, rejeitado) => {
       fetch('/api/inserir_pedido',
         {
           method: 'POST',
           body: JSON.stringify({
-            cliente_id, produto_id
+            cliente_id, produto_id, endereco_id
+          }
+          ),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(resultado => resultado.json())
+        .then(result => resolvido(result))
+        .catch(rejeitado);
+    });
+  }
+
+  inserirEndereco(pais, estado, cidade, bairro, rua, numero, cep) {
+    return new Promise((resolvido, rejeitado) => {
+      fetch('/api/inserir_endereco',
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            pais, estado, cidade, bairro, rua, numero, cep
           }
           ),
           headers: {
@@ -78,6 +96,20 @@ export class UsuarioService {
   buscarPedido() {
     return new Promise((resolvido, rejeitado) => {
       fetch('/api/Pedido',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(resultado => resultado.json())
+        .then(result => resolvido(result))
+        .catch(rejeitado);
+    });
+  }
+
+  buscarEndereco() {
+    return new Promise((resolvido, rejeitado) => {
+      fetch('/api/Endereco',
         {
           method: 'POST',
           headers: {

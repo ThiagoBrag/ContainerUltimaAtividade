@@ -49,7 +49,8 @@ database(`CREATE TABLE IF NOT EXISTS ENDERECO (
         CIDADE varchar(50),
         BAIRRO varchar(50),
         RUA varchar(50),
-        NUMERO INTEGER
+        NUMERO varchar(10),
+        CEP varchar(20)
         )`)
     .then(result => {
         console.log('TABELA: ENDERECO CRIADA!');
@@ -61,8 +62,10 @@ database(`CREATE TABLE IF NOT EXISTS PEDIDO (
         ID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
         CLIENTE_ID INTEGER UNIQUE,
         PRODUTO_ID INTEGER UNIQUE,
+        ENDERECO_ID INTEGER UNIQUE,
         FOREIGN KEY (CLIENTE_ID) REFERENCES CLIENTE(ID),
-        FOREIGN KEY (PRODUTO_ID) REFERENCES PRODUTO(ID)
+        FOREIGN KEY (PRODUTO_ID) REFERENCES PRODUTO(ID),
+        FOREIGN KEY (ENDERECO_ID) REFERENCES ENDERECO(ID)
         )`)
     .then(result => {
         console.log('TABELA: PEDIDO CRIADA!');

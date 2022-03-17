@@ -14,40 +14,40 @@ export class ProdutosComponent implements OnInit {
   ) {
     this.produtos = JSON.parse(localStorage.getItem('PRODUTOS')) || [];
   }
-  
+
   produtos = [];
-  objeto  ={}
+  objeto = {}
   ngOnInit() {
     this.usuarioService.buscarProduto()
-    .then((resultado: Produto[])=> {
-      for(let i = 0; i < resultado.length; i++){
-        this.objeto = {
-          nome: resultado[i].NOME,
-          valor: resultado[i].VALOR
+      .then((resultado: Produto[]) => {
+        for (let i = 0; i < resultado.length; i++) {
+          this.objeto = {
+            nome: resultado[i].NOME,
+            valor: resultado[i].VALOR
+          }
+          this.produtos.push(this.objeto)
         }
-        this.produtos.push(this.objeto)
-      }
-    }).catch(erro => {
-      console.log("ERRO AO BUSCAR PRODUTO:", erro)
-    })
+      }).catch(erro => {
+        console.log("ERRO AO BUSCAR PRODUTO:", erro)
+      })
   }
-  
+
   removerProduto(index) {
     this.usuarioService.buscarProduto()
-    .then((resultado: any) => {
-      resultado.find(valorProduto => {
-        if (valorProduto.NOME == this.produtos[index].nome) {
-          this.usuarioService.excluirProduto(valorProduto.ID)
-          document.location.reload();
-          alert("Produto excluído com sucesso!")
-        }
+      .then((resultado: any) => {
+        resultado.find(valorProduto => {
+          if (valorProduto.NOME == this.produtos[index].nome) {
+            this.usuarioService.excluirProduto(valorProduto.ID)
+            document.location.reload();
+            alert("Produto excluído com sucesso!")
+          }
+        })
       })
-    })
-    
+
   }
 
 }
-interface Produto{
+interface Produto {
   NOME: string;
   VALOR: string;
 }

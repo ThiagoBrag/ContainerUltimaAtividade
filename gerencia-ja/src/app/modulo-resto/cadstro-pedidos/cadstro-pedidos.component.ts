@@ -10,6 +10,14 @@ import { UsuarioService } from 'src/app/services/usuario.service'
 })
 export class CadstroPedidosComponent implements OnInit {
   id = undefined;
+  enderecoId;
+  cep = '';
+  pais = '';
+  estado = '';
+  cidade = '';
+  bairro = '';
+  rua = '';
+  numero = '';
   pedidos = [];
   produtos = []
   clientes = [];
@@ -43,6 +51,10 @@ export class CadstroPedidosComponent implements OnInit {
 
 
   ngOnInit() {
+    if (this.id != 'novo') {
+      this.usuarioService.buscarPedidokgui
+    }
+
     this.usuarioService.buscarCliente()
     .then((resultado: User[]) => {
       for (let i = 0; i < resultado.length; i++) {
@@ -66,29 +78,30 @@ export class CadstroPedidosComponent implements OnInit {
   }
 
   cadastrar() {
-    
-   
-
-    if (this.clienteId && this.listaProdutosId) {
-      this.usuarioService.inserirPedido(this.clienteId, this.listaProdutosId)
-    //   const pedido = { clienteId: this.clienteId, listaProdutosId: this.listaProdutosId}
+    if (this.clienteId && this.listaProdutosId && this.pais && this.estado && this.cidade && this.bairro && this.rua && this.numero && this.cep) {
       
-    //   console.log("id", pedido,"pedido", this.id)
-
-    //   if (this.id == 'novo') {
-    //     this.pedidos.push(pedido);
-    //   } else {
-    //     this.pedidos[this.id] = pedido;
-    //   }
-    //   localStorage.setItem('PEDIDOS', JSON.stringify(this.pedidos));
-
-    //   console.log("peidsods",this.pedidos)
+      this.usuarioService.inserirEndereco(this.pais, this.estado, this.cidade, this.bairro, this.rua, this.numero, this.cep)
+      this.usuarioService.buscarEndereco().then((resultado: Endereco[]) => {
+        for (let i = 0; i < resultado.length; i++) {
+          if (this.numero == resultado[i].NUMERO && this.cep == resultado[i].CEP) {
+              this.enderecoId = resultado[i].ID;
+          }
+        }
+      });
+      
+      this.usuarioService.inserirPedido(this.clienteId, this.listaProdutosId, this.enderecoId)
       this.router.navigate(['/pedidos']);
     } else {
       alert('É necessário preencher todos os campos!');
     }
   }
 
+}
+
+interface Endereco {
+NUMERO: string;
+CEP: string;
+ID: string;
 }
 
 interface User {
