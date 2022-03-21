@@ -19,7 +19,7 @@ export class CadstroPedidosComponent implements OnInit {
   rua = '';
   numero = '';
   pedidos = [];
-  produtos = []
+  produtos = [];
   clientes = [];
   clienteId = undefined;
   produtoId = undefined;
@@ -52,7 +52,7 @@ export class CadstroPedidosComponent implements OnInit {
 
   ngOnInit() {
     if (this.id != 'novo') {
-      this.usuarioService.buscarPedidokgui
+      this.usuarioService.buscarPedidokgui;
     }
 
     this.usuarioService.buscarCliente()
@@ -95,7 +95,6 @@ export class CadstroPedidosComponent implements OnInit {
       alert('É necessário preencher todos os campos!');
     }
   }
-
 }
 
 interface Endereco {
@@ -112,3 +111,4 @@ interface User {
 interface Produto {
   NOME: string;
 }
+
