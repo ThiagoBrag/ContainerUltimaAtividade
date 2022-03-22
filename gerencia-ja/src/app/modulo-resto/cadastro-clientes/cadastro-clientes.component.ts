@@ -30,10 +30,23 @@ export class CadastroClientesComponent implements OnInit {
     }
   }
 
+  index
   name: '';
   surname: '';
 
   ngOnInit() {
+    if (this.id != 'novo') {
+      this.index = this.router.url.substring(this.router.url.length - 1);
+      this.usuarioService.buscarCliente()
+        .then((resultado: any) => {
+          resultado.find(valorCliente => {
+            if (valorCliente.ID == this.index) {
+            this.name = valorCliente.NOME;
+            this.surname = valorCliente.SOBRENOME
+            }
+          })
+        })
+      }
   }
 
   cadastrar() {
@@ -43,24 +56,15 @@ export class CadastroClientesComponent implements OnInit {
   } else {
     alert('É necessário preencher todos os campos!');
     }
-    
   }
 
-  //   if (this.name && this.surname) {
-  //     const cliente = { name: this.name, surname: this.surname }
-
-  //     if (this.id == 'novo') {
-
-  //       this.clientes.push(cliente);
-  //     } else {
-  //       this.clientes[this.id] = cliente;
-  //     }
-
-  //     localStorage.setItem('CLIENTES', JSON.stringify(this.clientes));
-  //     this.router.navigate(['/clientes']);
-  //   } else {
-  //     alert('É necessário preencher todos os campos!');
-  //   }
-  // }
+  editar() {
+    if (this.name && this.surname) {
+      this.usuarioService.editarCliente(this.name, this.surname, this.index)
+      this.router.navigate(['/clientes']);
+    } else {
+      alert('É necessário preencher todos os campos!');
+      }
+  }
 
 }

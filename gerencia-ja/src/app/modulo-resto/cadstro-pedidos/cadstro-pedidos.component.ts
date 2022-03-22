@@ -11,6 +11,7 @@ import { UsuarioService } from 'src/app/services/usuario.service'
 export class CadstroPedidosComponent implements OnInit {
   id = undefined;
   enderecoId;
+  index;
   cep = '';
   pais = '';
   estado = '';
@@ -52,8 +53,18 @@ export class CadstroPedidosComponent implements OnInit {
 
   ngOnInit() {
     if (this.id != 'novo') {
-      this.usuarioService.buscarPedidokgui;
-    }
+      this.index = this.router.url.substring(this.router.url.length - 1);
+      this.usuarioService.buscarPedido()
+        .then((resultado: any) => {
+          console.log("AAAAABB",resultado);
+          resultado.find(valorPedido => {
+            if (valorPedido.ID == this.index) {
+            this.nomeProduto = '';
+            this.nomePessoa = '';
+            }
+          })
+        })
+      }
 
     this.usuarioService.buscarCliente()
     .then((resultado: User[]) => {
@@ -95,6 +106,26 @@ export class CadstroPedidosComponent implements OnInit {
       alert('É necessário preencher todos os campos!');
     }
   }
+
+  editar() {
+    if (this.clienteId && this.listaProdutosId && this.pais && this.estado && this.cidade && this.bairro && this.rua && this.numero && this.cep) {
+      
+      this.usuarioService.editarEndereco(this.pais, this.estado, this.cidade, this.bairro, this.rua, this.numero, this.cep, this.index)
+      this.usuarioService.buscarEndereco().then((resultado: Endereco[]) => {
+        for (let i = 0; i < resultado.length; i++) {
+          if (this.numero == resultado[i].NUMERO && this.cep == resultado[i].CEP) {
+              this.enderecoId = resultado[i].ID;
+          }
+        }
+      });
+      
+      this.usuarioService.inserirPedido(this.clienteId, this.listaProdutosId, this.enderecoId)
+      this.router.navigate(['/pedidos']);
+    } else {
+      alert('É necessário preencher todos os campos!');
+    }
+  }
+
 }
 
 interface Endereco {

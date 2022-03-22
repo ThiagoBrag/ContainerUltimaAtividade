@@ -53,11 +53,13 @@
                             </div>
                         </div>
                         <div class="BotaoCadastro">
-                            <button (click)="cadastrar()">
-                                <span class="Button" *ngIf="id == 'novo'">
+                            <button (click)="cadastrar()" *ngIf="id == 'novo'">
+                                <span class="Button">
                                     cadastrar
                                 </span>
-                                <span class="Button" *ngIf="id != 'novo'">
+                            </button>
+                            <button (click)="editar()" *ngIf="id != 'novo'">
+                                <span class="Button" >
                                     Editar
                                 </span>
                             </button>

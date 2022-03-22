@@ -194,6 +194,66 @@ export class UsuarioService {
     });
   }
 
+  editarProduto(nome,preco, ID) {
+    return new Promise((resolvido, rejeitado) => {
+      fetch('/api/EditarProduto',
+        {
+          method: 'POST',
+          body: JSON.stringify({nome, preco, ID}),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(resultado => resultado.json())
+        .then(result => resolvido(result))
+        .catch(rejeitado);
+    });
+  }
+
+  editarCliente(nome,sobrenome, ID) {
+    return new Promise((resolvido, rejeitado) => {
+      fetch('/api/EditarCliente',
+        {
+          method: 'POST',
+          body: JSON.stringify({nome, sobrenome, ID}),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(resultado => resultado.json())
+        .then(result => resolvido(result))
+        .catch(rejeitado);
+    });
+  }
+
+  editarPedido(cliente_id, produto_id, endereco_id, ID) {
+    return new Promise((resolvido, rejeitado) => {
+      fetch('/api/EditarPedido',
+        {
+          method: 'POST',
+          body: JSON.stringify({cliente_id, produto_id, endereco_id, ID}),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(resultado => resultado.json())
+        .then(result => resolvido(result))
+        .catch(rejeitado);
+    });
+  }
+
+  editarEndereco(pais, estado, cidade, bairro, rua, numero, cep, ID) {
+    return new Promise((resolvido, rejeitado) => {
+      fetch('/api/EditarEndereco',
+        {
+          method: 'POST',
+          body: JSON.stringify({pais, estado, cidade, bairro, rua, numero, cep, ID}),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(resultado => resultado.json())
+        .then(result => resolvido(result))
+        .catch(rejeitado);
+    });
+  }
+
   checarUser(NOME, PASSWORD){
     return new Promise((resolve, reject) => {
       fetch('/api/checar_user',

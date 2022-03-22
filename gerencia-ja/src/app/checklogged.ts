@@ -11,8 +11,7 @@ import { UsuarioService } from "./services/usuario.service"
 @Injectable()
 class CheckLogged implements CanActivate {
     constructor(
-        private router: Router,
-        private usuarios: UsuarioService
+        private router: Router
     ) { }
 
     canActivate(
@@ -23,7 +22,6 @@ class CheckLogged implements CanActivate {
 
         let username = localStorage.getItem('NOME')
         let password = localStorage.getItem('PASSWORD')
-        let retorno;
 
         if (username == "ty" && password == "ty") {
             return true;

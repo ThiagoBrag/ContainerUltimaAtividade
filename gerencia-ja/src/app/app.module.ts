@@ -36,7 +36,6 @@ const routes: Routes = [
 export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(
       [
-        
         {
           id: GoogleLoginProvider.PROVIDER_ID,
           provider: new GoogleLoginProvider("402231336047-9jsgeagvcoa8fqb6eled83fj2hnodt5d.apps.googleusercontent.com")

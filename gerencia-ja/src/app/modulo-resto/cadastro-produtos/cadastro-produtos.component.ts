@@ -16,7 +16,6 @@ export class CadastroProdutosComponent implements OnInit {
   ) {
     const id = this.route.snapshot.paramMap.get('id');
     this.id = id;
-    this.produtos = JSON.parse(localStorage.getItem('PRODUTOS')) || [];
 
     if (id != 'novo') {
       this.id = parseInt(id) - 1;
@@ -30,30 +29,43 @@ export class CadastroProdutosComponent implements OnInit {
 
   name: '';
   price: 0;
+  index
 
-  
 
   ngOnInit() {
-    
+
+    if (this.id != 'novo') {
+    this.index = this.router.url.substring(this.router.url.length - 1);
+    this.usuarioService.buscarProduto()
+      .then((resultado: any) => {
+        resultado.find(valorProduto => {
+          if (valorProduto.ID == this.index) {
+          this.name = valorProduto.NOME;
+          this.price = valorProduto.VALOR
+          }
+        })
+      })
+    }
   }
 
-srcResult
+
+  srcResult
 
   onFileSelected() {
     const inputNode: any = document.querySelector('#file');
-  
+
     if (typeof (FileReader) !== 'undefined') {
       const reader = new FileReader();
-  
+
       reader.onload = (e: any) => {
         this.srcResult = e.target.result;
       };
-  
+
       reader.readAsArrayBuffer(inputNode.files[0]);
     }
   }
 
-  imageURL 
+  imageURL
   input;
 
   limparImagem() {
@@ -84,22 +96,19 @@ srcResult
   cadastrar() {
     if (this.name && this.price) {
       this.usuarioService.inserirProduto(this.name, this.price)
-    this.router.navigate(['/produtos']);
-    //   const produto = { name: this.name, price: this.price }
-
-    //   if (this.id == 'novo') {
-
-    //     this.produtos.push(produto);
-      } else {
-    //     this.produtos[this.id] = produto;
-    //   }
-
-    //   localStorage.setItem('PRODUTOS', JSON.stringify(this.produtos));
-    //   this.router.navigate(['/produtos']);
-    // } else {
+      this.router.navigate(['/produtos']);
+    } else {
       alert('É necessário preencher todos os campos!');
     }
-    
+  }
+
+  editar() {
+    if (this.name && this.price) {
+      this.usuarioService.editarProduto(this.name, this.price, this.index)
+      this.router.navigate(['/produtos']);
+    } else {
+      alert('É necessário preencher todos os campos!')
+    }
   }
 
 }

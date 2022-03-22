@@ -25,7 +25,8 @@ export class ClientesComponent implements OnInit {
       for(let i = 0; i < resultado.length; i++){
         this.objeto = {
           nome: resultado[i].NOME,
-          sobrenome: resultado[i].SOBRENOME
+          sobrenome: resultado[i].SOBRENOME,
+          id: resultado[i].ID
         }
         this.clientes.push(this.objeto)
       }
@@ -48,10 +49,15 @@ export class ClientesComponent implements OnInit {
     
   }
 
+  verCliente(i){
+    this.router.navigate([ '/clientes', this.clientes[i].id])
+  }
+
 
 }
 
 interface Cliente{
   NOME: string;
   SOBRENOME: string;
+  ID: number;
 }
