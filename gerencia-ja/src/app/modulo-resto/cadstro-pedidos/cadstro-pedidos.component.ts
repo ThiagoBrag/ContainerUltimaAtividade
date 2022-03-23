@@ -1,6 +1,7 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TouchSequence } from 'selenium-webdriver';
 import { UsuarioService } from 'src/app/services/usuario.service'
 
 @Component({
@@ -56,11 +57,26 @@ export class CadstroPedidosComponent implements OnInit {
       this.index = this.router.url.substring(this.router.url.length - 1);
       this.usuarioService.buscarPedido()
         .then((resultado: any) => {
-          console.log("AAAAABB",resultado);
           resultado.find(valorPedido => {
             if (valorPedido.ID == this.index) {
-            this.nomeProduto = '';
-            this.nomePessoa = '';
+            this.clienteId = valorPedido.CLIENTE_ID;
+            this.listaProdutosId = valorPedido.PRODUTO_ID;
+            this.enderecoId = valorPedido.ENDERECO_ID;
+            this.usuarioService.buscarEndereco().then((resultado: any) => {
+              resultado.find(valorEndereco => {
+                
+                if (valorEndereco.ID == this.enderecoId) {
+                  
+                  this.pais = valorEndereco.PAIS;
+                  this.estado = valorEndereco.ESTADO;
+                  this.cidade = valorEndereco.CIDADE;
+                  this.bairro = valorEndereco.BAIRRO;
+                  this.rua = valorEndereco.RUA;
+                  this.numero = valorEndereco.NUMERO;
+                  this.cep = valorEndereco.CEP;
+                }
+              })
+            })
             }
           })
         })

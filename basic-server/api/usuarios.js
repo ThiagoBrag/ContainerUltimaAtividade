@@ -151,12 +151,14 @@ inserirRota('/inserir_pedido', function(dados, resposta) {
     database(`INSERT INTO PEDIDO
             (
             CLIENTE_ID,
-            PRODUTO_ID
+            PRODUTO_ID,
+            ENDERECO_ID
             ) 
             VALUES 
             (
             "${dados.cliente_id}",
-            "${dados.produto_id}"
+            "${dados.produto_id}",
+            "${dados.endereco_id}"
             )`)
         .then(result => {
 
@@ -274,7 +276,7 @@ inserirRota('/EditarEndereco', function(dados, resposta) {
 
 
         }).catch(erro => {
-            resposta({ erro: 'Erro ao editar a tabela pedido!' });
+            resposta({ erro: 'Erro ao editar a tabela endereco!' });
         });
 })
 
