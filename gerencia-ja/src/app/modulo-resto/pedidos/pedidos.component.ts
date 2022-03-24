@@ -17,6 +17,7 @@ export class PedidosComponent implements OnInit {
     this.clientes = JSON.parse(localStorage.getItem('CLIENTES')) || [];
   }
 
+  ValorDoEndereco = "";
   ValorDoCliente = "";
   produtos = [];
   clientes = [];
@@ -26,6 +27,13 @@ export class PedidosComponent implements OnInit {
     this.usuarioService.buscarPedido()
       .then((resultado: any) => {
         resultado.find(valorResultado => {
+          this.usuarioService.buscarEndereco().then((resultadoEndereco: any) => {
+            resultadoEndereco.find(valorEndereco => {
+              if (valorEndereco.ID - 1 == valorResultado.ENDERECO_ID) {
+                this.ValorDoEndereco = valorResultado.ENDERECO_ID
+              }
+            })
+          })
           this.usuarioService.buscarCliente()
             .then((resultadoCLiente: any) => {
               resultadoCLiente.find(valorCliente => {
@@ -50,7 +58,6 @@ export class PedidosComponent implements OnInit {
             })
         })
       })
-      console.log("VER")
   }
 
   removerProduto(index) {
@@ -58,10 +65,11 @@ export class PedidosComponent implements OnInit {
       .then((resultado: any) => {
         resultado.find(valorPedido => {
           if (valorPedido.CLIENTE_ID == this.ValorDoCliente) {
-
-            this.usuarioService.excluirPedido(valorPedido.ID)
-            document.location.reload();
-            alert("Pedido excluído com sucesso!")
+            if (valorPedido.ENDERECO_ID == this.ValorDoEndereco) {
+              this.usuarioService.excluirPedido(valorPedido.ID)
+              document.location.reload();
+              alert("Pedido excluído com sucesso!")
+            }
           }
         })
       })
