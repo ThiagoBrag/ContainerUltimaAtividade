@@ -104,8 +104,10 @@ export class CadastroProdutosComponent implements OnInit {
 
   editar() {
     if (this.name && this.price) {
-      this.usuarioService.editarProduto(this.name, this.price, this.index)
-      this.router.navigate(['/produtos']);
+      this.usuarioService.editarProduto(this.name, this.price, this.index).then((result) => {
+        this.router.navigate(['/produtos']);
+      })
+      
     } else {
       alert('É necessário preencher todos os campos!')
     }

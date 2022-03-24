@@ -225,14 +225,10 @@ inserirRota('/ExcluirPedido', function(dados, resposta) {
 })
 
 inserirRota('/EditarProduto', function(dados, resposta) {
-    console.log(dados)
 
     database(`UPDATE PRODUTO SET NOME = '${dados.nome}', VALOR = '${dados.preco}' WHERE ID = '${dados.ID}'`)
         .then(result => {
-
-            resposta(result)
-
-
+            resposta({ message: 'Salvo com sucesso!' })
         }).catch(erro => {
             resposta({ erro: 'Erro ao editar a tabela produto!' });
         });
@@ -244,7 +240,7 @@ inserirRota('/EditarCliente', function(dados, resposta) {
     database(`UPDATE CLIENTE SET NOME = '${dados.nome}', SOBRENOME = '${dados.sobrenome}' WHERE ID = '${dados.ID}'`)
         .then(result => {
 
-            resposta(result)
+            resposta({ message: 'Salvo com sucesso!' })
 
 
         }).catch(erro => {
@@ -253,12 +249,12 @@ inserirRota('/EditarCliente', function(dados, resposta) {
 })
 
 inserirRota('/EditarPedido', function(dados, resposta) {
-    console.log(dados)
+    console.log("Esses dados: ", dados)
 
     database(`UPDATE PEDIDO SET CLIENTE_ID = '${dados.cliente_id}', PRODUTO_ID = '${dados.produto_id}',ENDERECO_ID = '${dados.endereco_id}'  WHERE ID = '${dados.ID}'`)
         .then(result => {
 
-            resposta(result)
+            resposta({ message: 'Salvo com sucesso!' })
 
 
         }).catch(erro => {
@@ -272,7 +268,7 @@ inserirRota('/EditarEndereco', function(dados, resposta) {
     database(`UPDATE ENDERECO SET PAIS = '${dados.pais}', ESTADO = '${dados.estado}', CIDADE = '${dados.cidade}', BAIRRO = '${dados.bairro}', RUA = '${dados.rua}', NUMERO = '${dados.numero}', CEP = '${dados.cep}'  WHERE ID = '${dados.ID}'`)
         .then(result => {
 
-            resposta(result)
+            resposta({ message: 'Salvo com sucesso!' })
 
 
         }).catch(erro => {

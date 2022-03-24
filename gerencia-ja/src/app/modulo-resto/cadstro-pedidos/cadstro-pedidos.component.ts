@@ -59,103 +59,101 @@ export class CadstroPedidosComponent implements OnInit {
         .then((resultado: any) => {
           resultado.find(valorPedido => {
             if (valorPedido.ID == this.index) {
-            this.clienteId = valorPedido.CLIENTE_ID;
-            this.listaProdutosId = valorPedido.PRODUTO_ID;
-            this.enderecoId = valorPedido.ENDERECO_ID;
-            this.usuarioService.buscarEndereco().then((resultado: any) => {
-              resultado.find(valorEndereco => {
-                
-                if (valorEndereco.ID == this.enderecoId) {
-                  
-                  this.pais = valorEndereco.PAIS;
-                  this.estado = valorEndereco.ESTADO;
-                  this.cidade = valorEndereco.CIDADE;
-                  this.bairro = valorEndereco.BAIRRO;
-                  this.rua = valorEndereco.RUA;
-                  this.numero = valorEndereco.NUMERO;
-                  this.cep = valorEndereco.CEP;
-                }
+              this.clienteId = valorPedido.CLIENTE_ID;
+              this.listaProdutosId = valorPedido.PRODUTO_ID;
+              this.enderecoId = valorPedido.ENDERECO_ID;
+              this.usuarioService.buscarEndereco().then((resultado: any) => {
+                resultado.find(valorEndereco => {
+
+                  if (valorEndereco.ID == this.enderecoId) {
+
+                    this.pais = valorEndereco.PAIS;
+                    this.estado = valorEndereco.ESTADO;
+                    this.cidade = valorEndereco.CIDADE;
+                    this.bairro = valorEndereco.BAIRRO;
+                    this.rua = valorEndereco.RUA;
+                    this.numero = valorEndereco.NUMERO;
+                    localStorage.setItem('NUMEROANTIGO', this.numero);
+                    this.cep = valorEndereco.CEP;
+                  }
+                })
               })
-            })
             }
           })
         })
-      }
+    }
 
     this.usuarioService.buscarCliente()
-    .then((resultado: User[]) => {
-      for (let i = 0; i < resultado.length; i++) {
-        let info = {
-          nome: resultado[i].NOME,
-          surname: resultado[i].SOBRENOME
+      .then((resultado: any) => {
+        for (let i = 0; i < resultado.length; i++) {
+          let info = {
+            nome: resultado[i].NOME,
+            surname: resultado[i].SOBRENOME
+          }
+          this.clientes.push(info)
         }
-        this.clientes.push(info)
-      }
-    })
+      })
 
     this.usuarioService.buscarProduto()
-    .then((resultado: Produto[]) => {
-      for (let i = 0; i < resultado.length; i++) {
-        let info = {
-          nome: resultado[i].NOME,
+      .then((resultado: any) => {
+        for (let i = 0; i < resultado.length; i++) {
+          let info = {
+            nome: resultado[i].NOME,
+          }
+          this.produtos.push(info)
         }
-        this.produtos.push(info)
-      }
-    })
+      })
   }
 
   cadastrar() {
     if (this.clienteId && this.listaProdutosId && this.pais && this.estado && this.cidade && this.bairro && this.rua && this.numero && this.cep) {
-      
+
       this.usuarioService.inserirEndereco(this.pais, this.estado, this.cidade, this.bairro, this.rua, this.numero, this.cep)
-      this.usuarioService.buscarEndereco().then((resultado: Endereco[]) => {
+      this.usuarioService.buscarEndereco().then((resultado: any) => {
         for (let i = 0; i < resultado.length; i++) {
           if (this.numero == resultado[i].NUMERO && this.cep == resultado[i].CEP) {
-              this.enderecoId = resultado[i].ID;
+            this.enderecoId = resultado[i].ID;
+            this.usuarioService.inserirPedido(this.clienteId, this.listaProdutosId, this.enderecoId)
+            this.router.navigate(['/pedidos']);
+            break;
           }
         }
       });
-      
-      this.usuarioService.inserirPedido(this.clienteId, this.listaProdutosId, this.enderecoId)
-      this.router.navigate(['/pedidos']);
+
+
     } else {
       alert('É necessário preencher todos os campos!');
     }
   }
 
   editar() {
-    if (this.clienteId && this.listaProdutosId && this.pais && this.estado && this.cidade && this.bairro && this.rua && this.numero && this.cep) {
+    if (this.pais && this.estado && this.cidade && this.bairro && this.rua && this.numero && this.cep) {
       
-      this.usuarioService.editarEndereco(this.pais, this.estado, this.cidade, this.bairro, this.rua, this.numero, this.cep, this.index)
-      this.usuarioService.buscarEndereco().then((resultado: Endereco[]) => {
+      this.usuarioService.buscarEndereco().then((resultado: any) => {
         for (let i = 0; i < resultado.length; i++) {
-          if (this.numero == resultado[i].NUMERO && this.cep == resultado[i].CEP) {
-              this.enderecoId = resultado[i].ID;
+          let NumeroAntigo = localStorage.getItem('NUMEROANTIGO')
+          if (NumeroAntigo == resultado[i].NUMERO && this.cep == resultado[i].CEP) {
+            this.enderecoId = resultado[i].ID;
+            this.usuarioService.editarEndereco(this.pais, this.estado, this.cidade, this.bairro, this.rua, this.numero, this.cep, this.enderecoId)
+            this.usuarioService.buscarEndereco().then((resultado: any) => {
+              for (let i = 0; i < resultado.length; i++) {
+                if (this.numero == resultado[i].NUMERO && this.cep == resultado[i].CEP) {
+                  this.enderecoId = resultado[i].ID;
+                  this.usuarioService.editarPedido(this.clienteId, this.listaProdutosId, this.enderecoId, this.index).then((resultado: any) => {
+                    this.router.navigate(['/pedidos']);
+                  })
+                  break;
+                }
+              }
+            });
           }
         }
       });
-      
-      this.usuarioService.inserirPedido(this.clienteId, this.listaProdutosId, this.enderecoId)
-      this.router.navigate(['/pedidos']);
+
     } else {
       alert('É necessário preencher todos os campos!');
     }
   }
 
-}
-
-interface Endereco {
-NUMERO: string;
-CEP: string;
-ID: string;
-}
-
-interface User {
-  NOME: string;
-  SOBRENOME: string
-}
-
-interface Produto {
-  NOME: string;
 }
 

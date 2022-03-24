@@ -50,6 +50,7 @@ export class PedidosComponent implements OnInit {
             })
         })
       })
+      console.log("VER")
   }
 
   removerProduto(index) {
