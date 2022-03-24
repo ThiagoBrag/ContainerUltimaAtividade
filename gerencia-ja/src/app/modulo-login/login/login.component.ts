@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.usuarioService.buscarUsuarios()
       .then(resultado => {
-        console.log('RESULTADO:', resultado);
       }).catch(erro => {
         console.log('ERRO AO BUSCAR USUARIOS:', erro);
       })
