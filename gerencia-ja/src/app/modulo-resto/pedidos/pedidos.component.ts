@@ -27,13 +27,6 @@ export class PedidosComponent implements OnInit {
     this.usuarioService.buscarPedido()
       .then((resultado: any) => {
         resultado.find(valorResultado => {
-          this.usuarioService.buscarEndereco().then((resultadoEndereco: any) => {
-            resultadoEndereco.find(valorEndereco => {
-              if (valorEndereco.ID - 1 == valorResultado.ENDERECO_ID) {
-                this.ValorDoEndereco = valorResultado.ENDERECO_ID
-              }
-            })
-          })
           this.usuarioService.buscarCliente()
             .then((resultadoCLiente: any) => {
               resultadoCLiente.find(valorCliente => {
@@ -60,13 +53,18 @@ export class PedidosComponent implements OnInit {
       })
   }
 
-  removerProduto(index) {
+  removerProduto(i) {
+    
     this.usuarioService.buscarPedido()
       .then((resultado: any) => {
-        resultado.find(valorPedido => {
-          if (valorPedido.CLIENTE_ID == this.ValorDoCliente) {
-            if (valorPedido.ENDERECO_ID == this.ValorDoEndereco) {
-              this.usuarioService.excluirPedido(valorPedido.ID)
+        resultado.find(valorResultado => {
+          console.log("valorResultado", valorResultado)
+          console.log("CLIENTE_ID:",valorResultado.CLIENTE_ID) 
+          if (valorResultado.CLIENTE_ID == this.ValorDoCliente) {
+            console.log("valorEndereID: ", valorResultado.ENDERECO_ID, "valorDoEndereco: ", this.ValorDoEndereco)
+            if (valorResultado.ENDERECO_ID == this.ValorDoEndereco) {
+              
+              this.usuarioService.excluirPedido(valorResultado.ID)
               document.location.reload();
               alert("Pedido excluído com sucesso!")
             }
