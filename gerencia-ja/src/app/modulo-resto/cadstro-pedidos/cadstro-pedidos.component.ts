@@ -53,12 +53,12 @@ export class CadstroPedidosComponent implements OnInit {
 
 
   ngOnInit() {
+    console.log("INDEX", this.index)
     if (this.id != 'novo') {
       this.index = this.router.url.substring(this.router.url.length - 1);
       this.usuarioService.buscarPedido()
         .then((resultado: any) => {
           resultado.find(valorPedido => {
-            console.log("index",this.index)
             if (valorPedido.ID == this.index) {
               console.log("CLIENTE ID",valorPedido.CLIENTE_ID)
               this.clienteId = valorPedido.CLIENTE_ID;
@@ -109,7 +109,7 @@ export class CadstroPedidosComponent implements OnInit {
 
   cadastrar() {
     if (this.clienteId && this.listaProdutosId && this.pais && this.estado && this.cidade && this.bairro && this.rua && this.numero && this.cep) {
-      console.log("ValorInputCliente", this.clienteId)
+      console.log("ID CLIENTE_ID", this.clienteId)
       this.usuarioService.inserirEndereco(this.pais, this.estado, this.cidade, this.bairro, this.rua, this.numero, this.cep)
       this.usuarioService.buscarEndereco().then((resultado: any) => {
         for (let i = 0; i < resultado.length; i++) {

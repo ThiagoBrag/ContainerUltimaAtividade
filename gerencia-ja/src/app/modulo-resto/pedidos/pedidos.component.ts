@@ -54,14 +54,12 @@ export class PedidosComponent implements OnInit {
   }
 
   removerProduto(i) {
-    
+    // NAO CADASTRA ID NO CLIENTE E NAO BUSCA OUTROS IP DE ENDEREÇOS, SÓ O PRIMEIRO
+    dfg 
     this.usuarioService.buscarPedido()
       .then((resultado: any) => {
         resultado.find(valorResultado => {
-          console.log("valorResultado", valorResultado)
-          console.log("CLIENTE_ID:",valorResultado.CLIENTE_ID) 
-          if (valorResultado.CLIENTE_ID == this.ValorDoCliente) {
-            console.log("valorEndereID: ", valorResultado.ENDERECO_ID, "valorDoEndereco: ", this.ValorDoEndereco)
+          if (valorResultado.CLIENTE_ID + 1 == this.ValorDoCliente) {
             if (valorResultado.ENDERECO_ID == this.ValorDoEndereco) {
               
               this.usuarioService.excluirPedido(valorResultado.ID)
