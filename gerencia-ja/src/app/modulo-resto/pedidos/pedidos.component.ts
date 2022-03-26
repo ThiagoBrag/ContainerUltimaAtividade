@@ -17,7 +17,6 @@ export class PedidosComponent implements OnInit {
     this.clientes = JSON.parse(localStorage.getItem('CLIENTES')) || [];
   }
 
-  ValorDoEndereco = "";
   ValorDoCliente = "";
   produtos = [];
   clientes = [];
@@ -54,18 +53,22 @@ export class PedidosComponent implements OnInit {
   }
 
   removerProduto(i) {
-    // NAO CADASTRA ID NO CLIENTE E NAO BUSCA OUTROS IP DE ENDEREÇOS, SÓ O PRIMEIRO
     this.usuarioService.buscarPedido()
       .then((resultado: any) => {
         resultado.find(valorResultado => {
-          if (valorResultado.CLIENTE_ID + 1 == this.ValorDoCliente) {
-            if (valorResultado.ENDERECO_ID == this.ValorDoEndereco) {
+          if (i + 1 == valorResultado.ID) {
+            
+            if (valorResultado.CLIENTE_ID + 1 == this.ValorDoCliente) {
+              console.log("CLIENTE", valorResultado.CLIENTE_ID)
+                
+                console.log("ENDERECO", valorResultado.ENDERECO_ID  )
+                this.usuarioService.excluirPedido(valorResultado.ID)
+                document.location.reload();
+                alert("Pedido excluído com sucesso!")
               
-              this.usuarioService.excluirPedido(valorResultado.ID)
-              document.location.reload();
-              alert("Pedido excluído com sucesso!")
             }
           }
+          
         })
       })
   }

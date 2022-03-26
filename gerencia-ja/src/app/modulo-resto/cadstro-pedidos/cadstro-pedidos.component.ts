@@ -53,16 +53,20 @@ export class CadstroPedidosComponent implements OnInit {
 
 
   ngOnInit() {
+    
+    NÃO PEGA OS IDS DO INDX QUE CLIQUEI CASO EU EXCLUA UM PEDIDO
+
     if (this.id != 'novo') {
       this.index = this.router.url.substring(this.router.url.length - 1);
+      console.log(this.index)
       this.usuarioService.buscarPedido()
         .then((resultado: any) => {
           resultado.find(valorPedido => {
+            console.log(valorPedido)
             if (valorPedido.ID == this.index) {
               console.log("ID DO PEDIDO", valorPedido.ID)
-              
-              this.clienteId = valorPedido.CLIENTE_ID + 1;
-              this.listaProdutosId = valorPedido.PRODUTO_ID + 1;
+              this.clienteId = valorPedido.CLIENTE_ID ;
+              this.listaProdutosId = valorPedido.PRODUTO_ID;
               this.enderecoId = valorPedido.ENDERECO_ID;
               console.log("CLIENTE ID ",this.clienteId, "PRODUTO_ID ", this.listaProdutosId, "ENDERECO_ID ", this.enderecoId)
               this.usuarioService.buscarEndereco().then((resultado: any) => {
@@ -115,6 +119,8 @@ export class CadstroPedidosComponent implements OnInit {
         for (let i = 0; i < resultado.length; i++) {
           if (this.numero == resultado[i].NUMERO && this.cep == resultado[i].CEP) {
             console.log("ENDEREÇO ID: ",resultado[i].ID)
+            console.log("CLIENTE ID: ", this.clienteId)
+            console.log("PRODUTO ID: ", this.listaProdutosId)
             this.enderecoId = resultado[i].ID;
             this.usuarioService.inserirPedido(this.clienteId, this.listaProdutosId, this.enderecoId)
             this.router.navigate(['/pedidos']);
