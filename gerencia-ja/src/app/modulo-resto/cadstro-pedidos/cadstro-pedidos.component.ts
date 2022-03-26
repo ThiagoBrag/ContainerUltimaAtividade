@@ -42,7 +42,7 @@ export class CadstroPedidosComponent implements OnInit {
     this.produtos = JSON.parse(localStorage.getItem('PRODUTOS')) || [];
 
     if (id != 'novo') {
-      this.id = parseInt(id) - 1;
+      this.id = parseInt(id);
 
       if (this.pedidos[this.id]) {
         this.clienteId = this.pedidos[this.id].clienteId;
@@ -53,17 +53,18 @@ export class CadstroPedidosComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log("INDEX", this.index)
     if (this.id != 'novo') {
       this.index = this.router.url.substring(this.router.url.length - 1);
       this.usuarioService.buscarPedido()
         .then((resultado: any) => {
           resultado.find(valorPedido => {
             if (valorPedido.ID == this.index) {
-              console.log("CLIENTE ID",valorPedido.CLIENTE_ID)
-              this.clienteId = valorPedido.CLIENTE_ID;
-              this.listaProdutosId = valorPedido.PRODUTO_ID;
+              console.log("ID DO PEDIDO", valorPedido.ID)
+              
+              this.clienteId = valorPedido.CLIENTE_ID + 1;
+              this.listaProdutosId = valorPedido.PRODUTO_ID + 1;
               this.enderecoId = valorPedido.ENDERECO_ID;
+              console.log("CLIENTE ID ",this.clienteId, "PRODUTO_ID ", this.listaProdutosId, "ENDERECO_ID ", this.enderecoId)
               this.usuarioService.buscarEndereco().then((resultado: any) => {
                 resultado.find(valorEndereco => {
 
@@ -109,11 +110,11 @@ export class CadstroPedidosComponent implements OnInit {
 
   cadastrar() {
     if (this.clienteId && this.listaProdutosId && this.pais && this.estado && this.cidade && this.bairro && this.rua && this.numero && this.cep) {
-      console.log("ID CLIENTE_ID", this.clienteId)
       this.usuarioService.inserirEndereco(this.pais, this.estado, this.cidade, this.bairro, this.rua, this.numero, this.cep)
       this.usuarioService.buscarEndereco().then((resultado: any) => {
         for (let i = 0; i < resultado.length; i++) {
           if (this.numero == resultado[i].NUMERO && this.cep == resultado[i].CEP) {
+            console.log("ENDEREÇO ID: ",resultado[i].ID)
             this.enderecoId = resultado[i].ID;
             this.usuarioService.inserirPedido(this.clienteId, this.listaProdutosId, this.enderecoId)
             this.router.navigate(['/pedidos']);

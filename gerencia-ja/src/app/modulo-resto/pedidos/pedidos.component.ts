@@ -55,7 +55,6 @@ export class PedidosComponent implements OnInit {
 
   removerProduto(i) {
     // NAO CADASTRA ID NO CLIENTE E NAO BUSCA OUTROS IP DE ENDEREÇOS, SÓ O PRIMEIRO
-    dfg 
     this.usuarioService.buscarPedido()
       .then((resultado: any) => {
         resultado.find(valorResultado => {

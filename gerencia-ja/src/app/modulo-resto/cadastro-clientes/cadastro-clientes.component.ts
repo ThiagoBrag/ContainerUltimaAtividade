@@ -43,6 +43,7 @@ export class CadastroClientesComponent implements OnInit {
             if (valorCliente.ID == this.index) {
             this.name = valorCliente.NOME;
             this.surname = valorCliente.SOBRENOME
+            console.log("ID CLIENTE ", valorCliente.ID)
             }
           })
         })

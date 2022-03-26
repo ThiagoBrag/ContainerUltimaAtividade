@@ -42,6 +42,7 @@ export class CadastroProdutosComponent implements OnInit {
           if (valorProduto.ID == this.index) {
           this.name = valorProduto.NOME;
           this.price = valorProduto.VALOR
+          console.log("PRODUTO ID ", valorProduto.ID)
           }
         })
       })

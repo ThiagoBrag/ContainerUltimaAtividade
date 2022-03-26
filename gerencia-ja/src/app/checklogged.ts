@@ -24,6 +24,7 @@ class CheckLogged implements CanActivate {
         let password = localStorage.getItem('PASSWORD')
 
         if (username == "ty" && password == "ty") {
+           
             return true;
         } else {
             if (username && password) {
