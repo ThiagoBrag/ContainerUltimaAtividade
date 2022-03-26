@@ -53,8 +53,8 @@ export class CadstroPedidosComponent implements OnInit {
 
 
   ngOnInit() {
-    
-    NÃO PEGA OS IDS DO INDX QUE CLIQUEI CASO EU EXCLUA UM PEDIDO
+
+    NÃO PEGA OS IDS DO INDEX QUE CLIQUEI CASO EU EXCLUA UM PEDIDO
 
     if (this.id != 'novo') {
       this.index = this.router.url.substring(this.router.url.length - 1);
