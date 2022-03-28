@@ -43,7 +43,7 @@
                             </span>
                         </div>
                         <div *ngIf="produtos.length > 0">
-                            <select class="INPUTproduto" [(ngModel)]="listaProdutosId">
+                            <select class="INPUTproduto" [(ngModel)]="ProdutoId">
                             <option *ngFor="let produto of produtos;let i = index" value='{{i}}'>{{produto.nome}}</option>
                           </select>
                         </div>
