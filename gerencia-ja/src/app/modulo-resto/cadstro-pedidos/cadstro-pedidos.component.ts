@@ -65,7 +65,7 @@ export class CadstroPedidosComponent implements OnInit {
             console.log(valorPedido)
             if (valorPedido.ID == this.index) {
               console.log("ID DO PEDIDO", valorPedido.ID)
-              this.clienteId = valorPedido.CLIENTE_ID ;
+              this.clienteId = valorPedido.CLIENTE_ID;
               this.listaProdutosId = valorPedido.PRODUTO_ID;
               this.enderecoId = valorPedido.ENDERECO_ID;
               console.log("CLIENTE ID ",this.clienteId, "PRODUTO_ID ", this.listaProdutosId, "ENDERECO_ID ", this.enderecoId)
@@ -114,6 +114,7 @@ export class CadstroPedidosComponent implements OnInit {
 
   cadastrar() {
     if (this.clienteId && this.listaProdutosId && this.pais && this.estado && this.cidade && this.bairro && this.rua && this.numero && this.cep) {
+      
       this.usuarioService.inserirEndereco(this.pais, this.estado, this.cidade, this.bairro, this.rua, this.numero, this.cep)
       this.usuarioService.buscarEndereco().then((resultado: any) => {
         for (let i = 0; i < resultado.length; i++) {
