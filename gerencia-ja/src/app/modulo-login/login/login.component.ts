@@ -64,7 +64,6 @@ export class LoginComponent implements OnInit {
       } else {
         alert('Usuário ou senha incorreta!');
       }
-    
     })
   } else {
     alert('Preencha todos os campos!');

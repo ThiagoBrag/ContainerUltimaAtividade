@@ -1,6 +1,15 @@
-inserirRota('/teste_busca', (dados, resposta) => {
+inserirRota('/teste_buscaPedido', (dados, resposta) => {
     console.log(dados);
     database('SELECT * FROM PEDIDO').then(result => {
+        resposta({ resposta: result });
+    }).catch(erro => {
+        resposta({ resposta: erro });
+    });
+});
+
+inserirRota('/teste_buscaCliente', (dados, resposta) => {
+    console.log(dados);
+    database('SELECT * FROM CLIENTE').then(result => {
         resposta({ resposta: result });
     }).catch(erro => {
         resposta({ resposta: erro });

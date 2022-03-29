@@ -29,6 +29,8 @@ export class PedidosComponent implements OnInit {
           this.usuarioService.buscarCliente()
             .then((resultadoCLiente: any) => {
               resultadoCLiente.find(valorCliente => {
+                // console.log("AQUII",valorCliente.ID);
+                // console.log("Resultado pedido", valorResultado.CLIENTE_ID)
                 if (valorCliente.ID - 1 == valorResultado.CLIENTE_ID) {
                   this.ValorDoCliente = valorResultado.CLIENTE_ID;
                   this.usuarioService.buscarProduto()
@@ -52,23 +54,27 @@ export class PedidosComponent implements OnInit {
       })
   }
 
+  TESTAR O REMOVER PEDIDO, E EDITAR DEPOIS
+
   removerProduto(i) {
     this.usuarioService.buscarPedido()
       .then((resultado: any) => {
         resultado.find(valorResultado => {
-          if (i + 1 == valorResultado.ID) {
-            
-            if (valorResultado.CLIENTE_ID + 1 == this.ValorDoCliente) {
-              console.log("CLIENTE", valorResultado.CLIENTE_ID)
-                
-                console.log("ENDERECO", valorResultado.ENDERECO_ID  )
-                this.usuarioService.excluirPedido(valorResultado.ID)
-                document.location.reload();
-                alert("Pedido excluído com sucesso!")
+
+          this.usuarioService.buscarCliente().then((resultado: any) => {
+            resultado.find(valorCliente => {
+                if (valorCliente.ID - 1 == valorResultado.CLIENTE_ID) {
+
+                  console.log("AAAAAAATTTTTTTTT")
+
+                  this.usuarioService.excluirPedido(valorResultado.ID)
+                  document.location.reload();
+                  alert("Pedido excluído com sucesso!")
+
+                }
               
-            }
-          }
-          
+            })
+          })
         })
       })
   }
