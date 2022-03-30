@@ -54,7 +54,7 @@ export class PedidosComponent implements OnInit {
       })
   }
 
-  TESTAR O REMOVER PEDIDO, E EDITAR DEPOIS
+  // TESTAR O REMOVER PEDIDO, E EDITAR DEPOIS
 
   removerProduto(i) {
     this.usuarioService.buscarPedido()
