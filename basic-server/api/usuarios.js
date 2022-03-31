@@ -224,6 +224,20 @@ inserirRota('/ExcluirPedido', function(dados, resposta) {
         });
 })
 
+inserirRota('/ExcluirEndereco', function(dados, resposta) {
+    console.log(dados)
+
+    database(`DELETE FROM ENDERECO WHERE ID = '${dados.ID}'`)
+        .then(result => {
+
+            resposta(result)
+
+
+        }).catch(erro => {
+            resposta({ erro: 'Erro ao excluir um item da tabela pedido!' });
+        });
+})
+
 inserirRota('/EditarProduto', function(dados, resposta) {
 
     database(`UPDATE PRODUTO SET NOME = '${dados.nome}', VALOR = '${dados.preco}' WHERE ID = '${dados.ID}'`)

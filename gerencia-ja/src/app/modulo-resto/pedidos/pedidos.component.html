@@ -32,23 +32,23 @@
     </div>
     <div class="conteudo">
         <div class="produto">
-            <div *ngFor="let pedido of pedidos;let i=index " class="containerproduto">
+            <div *ngFor="let pedido of pedidos;let i= index " class="containerproduto">
                 <div class="ladoAlado">
                     <div class="JuntarProduto">
                         <div class="palavraproduto">
                             Produto
                         </div>
                         <div class="palavraNome">
-                            {{pedido.nomeProduto}}
+                            {{pedido.nomeDoProduto}}
                         </div>
                         <div class="palavracliente">
                             Cliente
                         </div>
                         <div class="palavraNome">
-                            {{pedido.nomeCliente}}
+                            {{pedido.nomeDoCliente}}
                         </div>
                         <div class="EdicaoExclir">
-                            <div class="containerIcone3" (click)="router.navigate(['/pedidos',i + 1])">
+                            <div class="containerIcone3" (click)="editarPedido(pedido.nomeDoProduto, pedido.nomeDoCliente)">
                                 <div class="iconeLapis">
                                     <span class="material-icons">
                                   edit

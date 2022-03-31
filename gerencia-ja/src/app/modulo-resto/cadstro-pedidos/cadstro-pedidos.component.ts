@@ -23,9 +23,8 @@ export class CadstroPedidosComponent implements OnInit {
   pedidos = [];
   produtos = [];
   clientes = [];
-  clienteId = undefined;
-  produtoId = undefined;
-  ProdutoId = undefined;
+  clienteId
+  ProdutoId
   status: 'ABERTO';
   nomePessoa = ''
   nomeProduto = ''
@@ -60,10 +59,9 @@ export class CadstroPedidosComponent implements OnInit {
         .then((resultado: any) => {
           resultado.find(valorBusca => {
             if (valorBusca.ID == this.index) {
-              this.clienteId = valorBusca.CLIENTE_ID;
-              this.ProdutoId = valorBusca.PRODUTO_ID;
+              this.clienteId = valorBusca.CLIENTE_ID - 1;
+              this.ProdutoId = valorBusca.PRODUTO_ID - 1;
               this.enderecoId = valorBusca.ENDERECO_ID;
-              console.log("ID CLIENTE ", valorBusca.CLIENTE_ID, "ID PRODUTO ", valorBusca.PRODUTO_ID, "ID ENDERECO ", valorBusca.ENDERECO_ID)
 
               this.usuarioService.buscarEndereco().then((resultado: any) => {
                 resultado.find(valorEndereco => {
@@ -118,9 +116,8 @@ export class CadstroPedidosComponent implements OnInit {
       this.usuarioService.buscarEndereco().then((resultado: any) => {
         for (let i = 0; i < resultado.length; i++) {
           if (this.numero == resultado[i].NUMERO && this.cep == resultado[i].CEP) {
-
             this.enderecoId = resultado[i].ID;
-            this.usuarioService.inserirPedido(this.clienteId, this.ProdutoId, this.enderecoId)
+            this.usuarioService.inserirPedido(parseInt(this.clienteId) + 1, parseInt(this.ProdutoId) + 1, this.enderecoId)
             this.router.navigate(['/pedidos']);
             break;
           }
@@ -134,32 +131,26 @@ export class CadstroPedidosComponent implements OnInit {
   editar() {
 
     if (this.pais && this.estado && this.cidade && this.bairro && this.rua && this.numero && this.cep) {
-      
+
       this.usuarioService.buscarEndereco().then((resultado: any) => {
-        
+        console.log("PASSSSS")
         for (let i1 = 0; i1 < resultado.length; i1++) {
           let NumeroAntigo = localStorage.getItem('NUMEROANTIGO')
           let CepAntigo = localStorage.getItem('CEPANTIGO')
-          
           if (NumeroAntigo == resultado[i1].NUMERO && CepAntigo == resultado[i1].CEP) {
             let idAntigo = resultado[i1].ID;
-            
-            this.usuarioService.editarEndereco(this.pais, this.estado, this.cidade, this.bairro, this.rua, this.numero, this.cep, idAntigo)
 
+            this.usuarioService.editarEndereco(this.pais, this.estado, this.cidade, this.bairro, this.rua, this.numero, this.cep, idAntigo)
             this.usuarioService.buscarEndereco().then((resultado: any) => {
               for (let i2 = 0; i2 < resultado.length; i2++) {
-                
                 if (this.numero == resultado[i2].NUMERO && this.cep == resultado[i2].CEP) {
                   this.enderecoId = resultado[i2].ID;
-                  
                   this.usuarioService.buscarPedido().then((resultado: any) => {
-                    
                     for (let i3 = 0; i3 < resultado.length; i3++) {
-                      
                       if (resultado[i3].ENDERECO_ID == this.enderecoId) {
-                        
+
                         let PedidoId = resultado[i3].ID;
-                        this.usuarioService.editarPedido(this.clienteId, this.ProdutoId , this.enderecoId, PedidoId)
+                        this.usuarioService.editarPedido(parseInt(this.clienteId) + 1, parseInt(this.ProdutoId) + 1, this.enderecoId, PedidoId)
                         console.log("PEDIDOS DEPOIS DE EDITADO: ", resultado)
                         this.router.navigate(['/pedidos']);
                         break;

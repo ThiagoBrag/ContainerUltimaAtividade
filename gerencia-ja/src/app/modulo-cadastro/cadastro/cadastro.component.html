@@ -1,0 +1,43 @@
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+<div class="Tudo">
+    <div class="Degrade">
+        <div class="loginInfos">
+            <p class="LoginPalavra">
+                Login!
+            </p>
+            <p class="UsernamePalavra">
+                Nome de usuário:
+            </p>
+            <div class="user">
+                <div class="IconeUser">
+                    <span class="material-icons">
+                        person
+                    </span>
+                </div>
+                <div class="InputUser">
+                    <input placeholder="Username" [(ngModel)]='user'>
+                </div>
+            </div>
+
+            <p class="PasswordPalavra">
+                Senha:
+            </p>
+            <div class="password">
+                <div class="IconePassword">
+                    <span class="material-icons">
+                    lock
+                    </span>
+                </div>
+                <div class="InputPassword">
+                    <input placeholder="Password" [(ngModel)]='password' type="password">
+                </div>
+            </div>
+            <div class="BotaoLogar">
+                <button (click)="logar()">Logar</button>
+            </div>
+            <div class="GOOGLE">
+                <button (click)="Google('google')">Logar com o Google</button>
+            </div>
+        </div>
+    </div>
+</div>

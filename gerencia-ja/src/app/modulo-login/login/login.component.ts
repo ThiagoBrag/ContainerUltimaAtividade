@@ -29,11 +29,6 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.usuarioService.buscarUsuarios()
-      .then(resultado => {
-      }).catch(erro => {
-        console.log('ERRO AO BUSCAR USUARIOS:', erro);
-      })
   }
 
  public Google(socialPlatform : string) {

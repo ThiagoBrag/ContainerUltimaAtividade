@@ -194,6 +194,21 @@ export class UsuarioService {
     });
   }
 
+  excluirEndereco(ID) {
+    return new Promise((resolvido, rejeitado) => {
+      fetch('/api/ExcluirEndereco',
+        {
+          method: 'POST',
+          body: JSON.stringify({ID}),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(resultado => resultado.json())
+        .then(result => resolvido(result))
+        .catch(rejeitado);
+    });
+  }
+
   editarProduto(nome,preco, ID) {
     return new Promise((resolvido, rejeitado) => {
       fetch('/api/EditarProduto',
