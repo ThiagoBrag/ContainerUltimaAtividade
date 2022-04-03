@@ -34,7 +34,7 @@
     align-items: center;
 }
 
-.textoProdutos {
+.textoCadastro {
     color: white;
     font-size: 50px;
     font-family: sans-serif;
@@ -114,19 +114,19 @@
     border-radius: 5px;
 }
 
-.IconeCifrao {
+.IconeBagagem {
     color: white;
     margin-top: 4px;
     margin-right: 7px;
     cursor: default;
 }
 
-.InputValor {
+.InputSobrenome {
     padding: 3px;
     border-radius: 5px;
 }
 
-.InputPreco {
+.InputSobrenome {
     margin-top: 1%;
     display: flex;
     align-items: center;

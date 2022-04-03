@@ -1,4 +1,3 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from '../../services/usuario.service';
@@ -16,8 +15,6 @@ import {
 
 export class LoginComponent implements OnInit {
 
-
-  username = '';
   user = '';
   password = '';
 
@@ -36,8 +33,6 @@ export class LoginComponent implements OnInit {
       if(socialPlatform == "google"){
         socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
       }
-      
-      
       this.socialAuthService.signIn(socialPlatformProvider).then(
         (userData) => {
           localStorage.setItem('USER', "ty");
@@ -48,7 +43,6 @@ export class LoginComponent implements OnInit {
     }
 
   logar() {
-
     if (this.user && this.password) {
     this.usuarioService.checarUser(this.user, this.password)
     .then((resultado: any) => {

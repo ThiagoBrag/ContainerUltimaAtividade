@@ -20,7 +20,7 @@ p {
     border-radius: 5%;
 }
 
-.loginInfos {
+.CadastroInfos {
     position: absolute;
     background-color: rgb(0, 0, 0);
     width: 500px;
@@ -30,7 +30,7 @@ p {
     margin-top: 3px;
 }
 
-.LoginPalavra {
+.CadastroPalavra {
     display: flex;
     justify-content: center;
     color: white;
@@ -38,25 +38,7 @@ p {
     cursor: default;
 }
 
-.UsernamePalavra {
-    display: flex;
-    justify-content: center;
-    color: white;
-    font-size: 30px;
-    cursor: default;
-}
-
-.user {
-    display: flex;
-    justify-content: center;
-}
-
-.IconeUser {
-    margin-right: 5px;
-    color: white;
-    cursor: default;
-}
-
+.UsernamePalavra,
 .PasswordPalavra {
     display: flex;
     justify-content: center;
@@ -65,12 +47,14 @@ p {
     cursor: default;
 }
 
+.user,
 .password {
     display: flex;
     justify-content: center;
 }
 
-.IconePassword {
+.IconePassword,
+.IconeUser {
     display: flex;
     align-items: center;
     margin-right: 5px;
@@ -78,17 +62,14 @@ p {
     cursor: default;
 }
 
-.InputPassword {
-    display: flex;
-    align-items: center;
-}
-
+.InputPassword,
 .InputPasswordRepetido {
     display: flex;
     align-items: center;
 }
 
-.BotaoLogar {
+.BotaoLogar,
+.BotaoCadastro {
     margin-top: 0.3em;
     display: flex;
     justify-content: center;
@@ -98,18 +79,6 @@ button {
     padding: 3px 7px;
     cursor: pointer;
     margin: 0.5em;
-}
-
-.DivVermelha {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-}
-
-.TextoAviso {
-    position: absolute;
-    font-size: large;
-    color: red;
 }
 
 .GOOGLE {

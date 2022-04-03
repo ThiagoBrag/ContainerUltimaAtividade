@@ -6,12 +6,12 @@
                 <div class="containerIcone2" (click)="router.navigate(['/clientes'])">
                     <div class="IconeVoltar">
                         <span class="material-icons">
-              reply
-            </span>
+                            reply
+                        </span>
                     </div>
                 </div>
                 <div class="containerPalavra">
-                    <div class="textoProdutos">
+                    <div class="textoCadastro">
                         Cadastrar Clientes
                     </div>
                 </div>
@@ -30,18 +30,18 @@
                         </div>
                         <input class="InputName" placeholder="Nome" [(ngModel)]="name" />
                     </div>
-                    <div class="InputPreco">
-                        <div class="IconeCifrao">
+                    <div class="InputSobrenome">
+                        <div class="IconeBagagem">
                             <span class="material-icons">
-                            badge
-                          </span>
+                                badge
+                            </span>
                         </div>
-                        <input class="InputValor" placeholder="Sobrenome" [(ngModel)]="surname" />
+                        <input class="InputSobrenome" placeholder="Sobrenome" [(ngModel)]="surname" />
                     </div>
                     <div class="BotaoCadastro">
                         <button (click)="cadastrar()" *ngIf="id == 'novo'">
                             <span class="Button">
-                                cadastrar
+                                Cadastrar
                             </span>
                         </button>
                         <button (click)="editar()" *ngIf="id != 'novo'">

@@ -10,7 +10,7 @@ database(`CREATE TABLE IF NOT EXISTS USER (
     });
 
 database(`INSERT INTO USER VALUES (null , 'thiago', '123'),
-(null, 'jao', '321'),`)
+(null, 'jao', '321')`)
     .then(result => {
         console.log('DADOS CADASTRADOS!');
     }).catch(erro => {

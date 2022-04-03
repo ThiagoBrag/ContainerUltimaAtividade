@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { UsuarioService } from '../../services/usuario.service';
 import {
   AuthService,
@@ -13,7 +13,6 @@ import {
 })
 export class CadastroComponent implements OnInit {
 
-  username = '';
   user = '';
   password = '';
   passwordrepetido = '';
@@ -22,7 +21,6 @@ export class CadastroComponent implements OnInit {
     private socialAuthService: AuthService,
     private usuarioService: UsuarioService,
     private router: Router,
-    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
