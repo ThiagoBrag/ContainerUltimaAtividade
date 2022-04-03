@@ -1,3 +1,8 @@
+p {
+    margin: 20px;
+    margin-bottom: 0.3em;
+}
+
 .Tudo {
     position: relative;
     margin-top: 70px;
@@ -22,7 +27,7 @@
     height: 500px;
     border: solid black 2px;
     border-radius: 5%;
-    margin-top: 2.5px;
+    margin-top: 3px;
 }
 
 .LoginPalavra {
@@ -38,7 +43,6 @@
     justify-content: center;
     color: white;
     font-size: 30px;
-    margin-bottom: 10px;
     cursor: default;
 }
 
@@ -58,7 +62,6 @@
     justify-content: center;
     color: white;
     font-size: 30px;
-    margin-bottom: 10px;
     cursor: default;
 }
 
@@ -80,15 +83,21 @@
     align-items: center;
 }
 
+.InputPasswordRepetido {
+    display: flex;
+    align-items: center;
+}
+
 .BotaoLogar {
+    margin-top: 0.3em;
     display: flex;
     justify-content: center;
-    margin: 50px;
 }
 
 button {
     padding: 3px 7px;
     cursor: pointer;
+    margin: 0.5em;
 }
 
 .DivVermelha {
@@ -100,7 +109,6 @@ button {
 .TextoAviso {
     position: absolute;
     font-size: large;
-    margin-top: 10px;
     color: red;
 }
 

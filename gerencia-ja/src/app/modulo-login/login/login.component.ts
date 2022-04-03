@@ -64,4 +64,8 @@ export class LoginComponent implements OnInit {
     alert('Preencha todos os campos!');
   }
   }
+
+  cadastro() {
+    this.router.navigate([""])
+  }
 }

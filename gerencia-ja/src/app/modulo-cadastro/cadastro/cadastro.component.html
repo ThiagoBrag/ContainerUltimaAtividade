@@ -3,7 +3,7 @@
     <div class="Degrade">
         <div class="loginInfos">
             <p class="LoginPalavra">
-                Login!
+                Cadastro!
             </p>
             <p class="UsernamePalavra">
                 Nome de usuário:
@@ -32,11 +32,27 @@
                     <input placeholder="Password" [(ngModel)]='password' type="password">
                 </div>
             </div>
+            <p class="PasswordPalavra">
+                Repita a senha:
+            </p>
+            <div class="password">
+                <div class="IconePassword">
+                    <span class="material-icons">
+                    lock
+                    </span>
+                </div>
+                <div class="InputPasswordRepetido">
+                    <input placeholder="Password" [(ngModel)]='passwordrepetido' type="password">
+                </div>
+            </div>
             <div class="BotaoLogar">
-                <button (click)="logar()">Logar</button>
+                <button (click)="cadastrar()">Cadastrar</button>
             </div>
             <div class="GOOGLE">
-                <button (click)="Google('google')">Logar com o Google</button>
+                <button (click)="Google('google')">Continuar com o Google</button>
+            </div>
+            <div class="BotaoLogar">
+                <button (click)="logarse()">Já tem cadastro? Logar-se</button>
             </div>
         </div>
     </div>

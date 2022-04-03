@@ -39,6 +39,24 @@ export class UsuarioService {
     });
   }
 
+  inserirUsuario(nome, password) {
+    return new Promise((resolvido, rejeitado) => {
+      fetch('/api/inserir_usuario',
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            nome, password
+          }
+          ),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(resultado => resultado.json())
+        .then(result => resolvido(result))
+        .catch(rejeitado);
+    });
+  }
+
   inserirCliente(nome, sobrenome) {
     return new Promise((resolvido, rejeitado) => {
       fetch('/api/inserir_cliente',

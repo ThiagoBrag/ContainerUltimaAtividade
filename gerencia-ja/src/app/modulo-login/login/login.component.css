@@ -83,7 +83,7 @@
 .BotaoLogar {
     display: flex;
     justify-content: center;
-    margin: 50px;
+    margin: 20px;
 }
 
 button {
@@ -108,4 +108,23 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 1em;
+}
+
+.SemCadastro {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0em;
+    cursor: default;
+}
+
+.CliqueAqui {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: underline;
+    cursor: pointer;
 }

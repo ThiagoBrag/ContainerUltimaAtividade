@@ -16,6 +16,7 @@ export class CadastroComponent implements OnInit {
   username = '';
   user = '';
   password = '';
+  passwordrepetido = '';
 
   constructor(
     private socialAuthService: AuthService,
@@ -27,13 +28,13 @@ export class CadastroComponent implements OnInit {
   ngOnInit() {
   }
 
-  public Google(socialPlatform : string) {
+  public Google(socialPlatform: string) {
     let socialPlatformProvider;
-    if(socialPlatform == "google"){
+    if (socialPlatform == "google") {
       socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
     }
-    
-    
+
+
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
         localStorage.setItem('USER', "ty");
@@ -43,23 +44,23 @@ export class CadastroComponent implements OnInit {
     );
   }
 
-logar() {
-
-  if (this.user && this.password) {
-  this.usuarioService.checarUser(this.user, this.password)
-  .then((resultado: any) => {
-    if (resultado != "") {
-      localStorage.setItem("NOME", resultado[0].NOME)
-      localStorage.setItem("PASSWORD", resultado[0].PASSWORD)
-      this.router.navigate(['/loja']);
+  cadastrar() {
+    if (this.user && this.password && this.passwordrepetido) {
+      if (this.password == this.passwordrepetido) {
+        this.usuarioService.inserirUsuario(this.user, this.password)
+            alert('Usuário cadastrado!');
+            this.router.navigate(['/login']);
+      } else {
+        alert('Senhas inseridas diferentes!')
+        this.password = '';
+        this.passwordrepetido = '';
+      }
     } else {
-      alert('Usuário ou senha incorreta!');
+      alert('Preencha todos os campos!');
     }
-  })
-} else {
-  alert('Preencha todos os campos!');
-}
-}
-}
+  }
 
-TERMINAR O CODIGO NA PARTE DE CADASTRO
+  logarse() {
+    this.router.navigate(['/login'])
+  }
+}
