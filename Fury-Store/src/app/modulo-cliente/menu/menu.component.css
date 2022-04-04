@@ -1,0 +1,122 @@
+.Container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.retanguloRGB {
+    background: rgb(255, 0, 0);
+    background: linear-gradient(90deg, rgba(255, 0, 0, 1) 0%, rgba(255, 142, 2, 1) 11%, rgba(255, 235, 0, 1) 24%, rgba(185, 255, 0, 1) 38%, rgba(18, 255, 0, 1) 50%, rgba(0, 255, 244, 1) 57%, rgba(0, 39, 251, 1) 65%, rgba(117, 0, 251, 1) 75%, rgba(249, 0, 243, 1) 87%, rgba(255, 0, 0, 1) 100%);
+    height: 14vh;
+    width: 100vw;
+}
+
+.retangulopreto {
+    position: fixed;
+    background-color: black;
+    height: 13vh;
+    width: 100vw;
+    cursor: pointer;
+}
+
+.containerproduto {
+    display: flex;
+    flex-flow: wrap;
+}
+
+.textoProdutos {
+    color: white;
+    font-size: 50px;
+    font-family: sans-serif;
+}
+
+.containerPalavra {
+    margin-top: 1%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: default;
+}
+
+.conteudo {
+    margin-top: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.produto {
+    margin: 2rem;
+    background-color: rgb(243, 243, 243);
+    padding: 20px 40px 20px 40px;
+    border: solid black 1px;
+    border-radius: 15px;
+    font-size: 25px;
+    cursor: default;
+}
+
+.produto:hover {
+    background-color: rgb(199, 199, 199);
+}
+
+.palavraNome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -3px;
+    margin-bottom: 15px;
+    font-family: fantasy;
+    cursor: default;
+}
+
+.palavraPreco {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+    cursor: default;
+}
+
+.EdicaoExclir {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: -5px;
+}
+
+.iconeLapis,
+.iconeLixeira {
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.IconeVoltar {
+    margin-top: 2%;
+    position: absolute;
+    margin-left: 32px;
+    color: white;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    cursor: pointer;
+}
+
+.BotaoAdicionar {
+    cursor: pointer;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.containerBotao {
+    position: absolute;
+    margin-bottom: 46px;
+}
+
+.iconeAdicionar {
+    margin-right: 32px;
+    color: white;
+    display: flex;
+    align-items: center;
+}

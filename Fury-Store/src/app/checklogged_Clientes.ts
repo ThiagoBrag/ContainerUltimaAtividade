@@ -9,7 +9,7 @@ import { Observable } from "rxjs";
 import { UsuarioService } from "./services/usuario.service"
 
 @Injectable()
-class CheckLogged implements CanActivate {
+class CheckLogged_Clientes implements CanActivate {
     constructor(
         private router: Router
     ) { }
@@ -28,7 +28,9 @@ class CheckLogged implements CanActivate {
             return true;
         } else {
             if (username && password) {
-                return true
+                if (username != 'Thiago' && password != '123') {
+                    return true
+                }
             } else {
                 alert("É necessário um login válido!")
                 this.router.navigate([""]);
@@ -38,4 +40,4 @@ class CheckLogged implements CanActivate {
     }
 }
 
-export default CheckLogged;
+export default CheckLogged_Clientes;

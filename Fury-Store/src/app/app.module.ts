@@ -18,13 +18,18 @@ import { CadstroPedidosComponent } from './modulo-resto/cadastro-pedidos/cadstro
 import { CadastroComponent } from './modulo-cadastro/cadastro/cadastro.component';
 import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { LojaComponent } from './modulo-resto/lista-loja/loja.component';
+import { LojaComponent } from './modulo-resto/loja/loja.component';
+import { MenuComponent} from './modulo-cliente/menu/menu.component';
+import { CarrinhoComponent } from './modulo-cliente/carrinho/carrinho.component';
 import { FormsModule} from '@angular/forms';
-import CheckLogged from './checklogged';
+import CheckLogged from './checklogged_ADM';
+import CheckLogged_Clientes from './checklogged_Clientes';
 
 const routes: Routes = [
   { path: '', component: CadastroComponent, canActivate: [] },
   { path: 'login', component: LoginComponent, canActivate: [] },
+  { path: 'menu', component: MenuComponent, canActivate: [CheckLogged_Clientes] },
+  { path: 'carrinho', component: CarrinhoComponent, canActivate: [CheckLogged_Clientes] },
   { path: 'loja', component: LojaComponent, canActivate: [CheckLogged] },
   { path: 'clientes', component: ClientesComponent, canActivate: [CheckLogged] },
   { path: 'clientes/:id', component: CadastroClientesComponent, canActivate: [CheckLogged] },
@@ -58,6 +63,8 @@ export function getAuthServiceConfigs() {
     CadstroPedidosComponent,
     LojaComponent,
     CadastroComponent,
+    MenuComponent,
+    CarrinhoComponent,
   ],
   imports: [
     SocialLoginModule,
@@ -69,7 +76,8 @@ export function getAuthServiceConfigs() {
   providers: [CheckLogged,{
     provide: AuthServiceConfig,
     useFactory: getAuthServiceConfigs
-  }],
+  },
+  CheckLogged_Clientes],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

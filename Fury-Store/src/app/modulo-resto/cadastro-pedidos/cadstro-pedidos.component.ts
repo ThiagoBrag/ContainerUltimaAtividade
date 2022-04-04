@@ -1,7 +1,5 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TouchSequence } from 'selenium-webdriver';
 import { UsuarioService } from 'src/app/services/usuario.service'
 
 @Component({
