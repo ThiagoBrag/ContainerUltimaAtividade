@@ -9,16 +9,16 @@ import {
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './modulo-login/login/login.component';
-import { ClientesComponent } from './modulo-resto/clientes/clientes.component';
+import { ClientesComponent } from './modulo-resto/lista-clientes/clientes.component';
 import { CadastroClientesComponent } from './modulo-resto/cadastro-clientes/cadastro-clientes.component';
 import { CadastroProdutosComponent } from './modulo-resto/cadastro-produtos/cadastro-produtos.component';
-import { ProdutosComponent } from './modulo-resto/produtos/produtos.component';
-import { PedidosComponent } from './modulo-resto/pedidos/pedidos.component';
-import { CadstroPedidosComponent } from './modulo-resto/cadstro-pedidos/cadstro-pedidos.component';
+import { ProdutosComponent } from './modulo-resto/lista-produtos/produtos.component';
+import { PedidosComponent } from './modulo-resto/lista-pedidos/pedidos.component';
+import { CadstroPedidosComponent } from './modulo-resto/cadastro-pedidos/cadstro-pedidos.component';
 import { CadastroComponent } from './modulo-cadastro/cadastro/cadastro.component';
 import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { LojaComponent } from './modulo-resto/loja/loja.component';
+import { LojaComponent } from './modulo-resto/lista-loja/loja.component';
 import { FormsModule} from '@angular/forms';
 import CheckLogged from './checklogged';
 
