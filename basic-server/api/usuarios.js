@@ -91,6 +91,29 @@ inserirRota('/inserir_produto', function(dados, resposta) {
         });
 })
 
+inserirRota('/inserir_usuario', function(dados, resposta) {
+    database(`INSERT INTO USER
+            (
+            NOME,
+            PASSWORD
+            ) 
+            VALUES 
+            (
+            "${dados.nome}",
+            "${dados.password}"
+            )`)
+        .then(result => {
+            console.log('Usuário inserido com sucesso!');
+
+            resposta({ message: 'Usuário inserido com sucesso!' })
+
+
+        }).catch(erro => {
+            console.log('Erro ao inserir o Usuário!');
+            resposta({ erro: 'Erro ao inserir o Usuário!' });
+        });
+})
+
 inserirRota('/inserir_endereco', function(dados, resposta) {
     database(`INSERT INTO ENDERECO
             (

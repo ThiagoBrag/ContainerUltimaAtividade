@@ -33,26 +33,7 @@
     cursor: default;
 }
 
-.UsernamePalavra {
-    display: flex;
-    justify-content: center;
-    color: white;
-    font-size: 30px;
-    margin-bottom: 10px;
-    cursor: default;
-}
-
-.user {
-    display: flex;
-    justify-content: center;
-}
-
-.IconeUser {
-    margin-right: 5px;
-    color: white;
-    cursor: default;
-}
-
+.UsernamePalavra,
 .PasswordPalavra {
     display: flex;
     justify-content: center;
@@ -62,12 +43,17 @@
     cursor: default;
 }
 
-.password {
+.user,
+.password,
+.InputPassword,
+.BotaoLogar {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
-.IconePassword {
+.IconePassword,
+.IconeUser {
     display: flex;
     align-items: center;
     margin-right: 5px;
@@ -75,37 +61,32 @@
     cursor: default;
 }
 
-.InputPassword {
-    display: flex;
-    align-items: center;
-}
-
-.BotaoLogar {
-    display: flex;
-    justify-content: center;
-    margin: 50px;
-}
-
 button {
+    margin: 0.5em;
     padding: 3px 7px;
     cursor: pointer;
-}
-
-.DivVermelha {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-}
-
-.TextoAviso {
-    position: absolute;
-    font-size: large;
-    margin-top: 10px;
-    color: red;
 }
 
 .GOOGLE {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 1em;
+}
+
+.SemCadastro {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: default;
+}
+
+.CliqueAqui {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: underline;
+    cursor: pointer;
 }
