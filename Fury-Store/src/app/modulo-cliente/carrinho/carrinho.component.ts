@@ -17,6 +17,7 @@ export class CarrinhoComponent implements OnInit {
   ) {
   }
 
+  idCarrinho
   carrinho = [];
   objeto = {}
   ngOnInit() {
@@ -37,6 +38,13 @@ export class CarrinhoComponent implements OnInit {
       })
   }
 
+  removerCarrinho(i) {
+    this.idCarrinho = this.carrinho[i].id
+    this.usuarioService.excluirCarrinho(this.idCarrinho)
+    alert("Produto removido com sucesso!")
+    document.location.reload();
+  }
+
 }
 
-CONTINUAR A FAZER O CARRINHO (COLOCAR O MARK TASK E FAZER TOTAL)
+// CONTINUAR A FAZER O CARRINHO (COLOCAR O MARK TASK E FAZER TOTAL)
