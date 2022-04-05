@@ -20,18 +20,28 @@
     </div>
     <div class="conteudo">
         <div class="containerproduto">
-            <div *ngFor="let car of carrinho;let i=index " class="produto">
+            <div *ngFor="let car of carrinho;let i=index " class="produto" #mudarCor>
                 <div class="palavraNome">
                     {{car.nome}}
                 </div>
                 <div class="palavraPreco">
                     <strong>R$ {{car.valor}}</strong>
                 </div>
+                <div class="InputQTD">
+                    <input placeholder="Quantidade" [(ngModel)]='quantidade' type="number" class="InputQuantidade">
+                </div>
                 <div class="EdicaoExclir">
                     <div class="containerIcone3" (click)="removerCarrinho(i)">
                         <div class="iconeLapis" title="Remover do Carrinho!">
                             <span class="material-icons">
                                 remove_circle_outline
+                            </span>
+                        </div>
+                    </div>
+                    <div class="containerIcone3" (click)="selecionarProduto(i)">
+                        <div class="iconeLapis" title="Selecionar Produto!">
+                            <span class="material-icons">
+                                check_circle_outline
                             </span>
                         </div>
                     </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild  } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
@@ -8,6 +8,10 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styleUrls: ['./carrinho.component.css']
 })
 export class CarrinhoComponent implements OnInit {
+
+  @ViewChild('mudarCor', { read: ElementRef })
+  private modalElement: ElementRef
+
   id = undefined;
   produtos = [];
   constructor(
@@ -17,13 +21,13 @@ export class CarrinhoComponent implements OnInit {
   ) {
   }
 
+  quantidade = 1
   idCarrinho
   carrinho = [];
   objeto = {}
   ngOnInit() {
     this.usuarioService.buscarCarrinho()
       .then((resultado: any) => {
-        console.log(resultado)
         for (let i = 0; i < resultado.length; i++) {
           this.objeto = {
             id: resultado[i].ID,
@@ -45,6 +49,12 @@ export class CarrinhoComponent implements OnInit {
     document.location.reload();
   }
 
+  selecionarProduto(i) {
+    this.idCarrinho = this.carrinho[i].id
+    const htmlElement: HTMLElement = this.modalElement.nativeElement;
+    htmlElement.classList.add('color');
+  }
+
 }
 
-CONTINUAR A FAZER O CARRINHO (COLOCAR O MARK TASK E FAZER TOTAL)
+// CONTINUAR A FAZER O CARRINHO (COLOCAR O MARK TASK E FAZER TOTAL)

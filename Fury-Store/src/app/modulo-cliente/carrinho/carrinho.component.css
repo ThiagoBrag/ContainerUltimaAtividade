@@ -65,6 +65,10 @@
     cursor: default;
 }
 
+.produto.color {
+    background-color: rgba(0, 104, 201, 0.671);
+}
+
 .palavraNome {
     display: flex;
     align-items: center;
@@ -83,6 +87,15 @@
     cursor: default;
 }
 
+.InputQTD {
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+    cursor: default;
+}
+
 .EdicaoExclir {
     display: flex;
     align-items: center;
@@ -94,4 +107,11 @@
 .iconeLapis {
     margin-right: 5px;
     cursor: pointer;
+}
+
+.InputQuantidade {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16%;
 }
