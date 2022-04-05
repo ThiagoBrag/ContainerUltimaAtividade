@@ -21,6 +21,20 @@ export class UsuarioService {
     });
   }
 
+  buscarCarrinho() {
+    return new Promise((resolvido, rejeitado) => {
+      fetch('/api/Carrinho',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(resultado => resultado.json())
+        .then(result => resolvido(result))
+        .catch(rejeitado);
+    });
+  }
+
   inserirProduto(nome, preco) {
     return new Promise((resolvido, rejeitado) => {
       fetch('/api/inserir_produto',
@@ -82,6 +96,24 @@ export class UsuarioService {
           method: 'POST',
           body: JSON.stringify({
             cliente_id, produto_id, endereco_id
+          }
+          ),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(resultado => resultado.json())
+        .then(result => resolvido(result))
+        .catch(rejeitado);
+    });
+  }
+
+  inserirCarrinho(user_id, produto_id, produto_nome, produto_valor) {
+    return new Promise((resolvido, rejeitado) => {
+      fetch('/api/inserir_carrinho',
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            user_id, produto_id, produto_nome, produto_valor
           }
           ),
           headers: {
@@ -200,6 +232,21 @@ export class UsuarioService {
   excluirPedido(ID) {
     return new Promise((resolvido, rejeitado) => {
       fetch('/api/ExcluirPedido',
+        {
+          method: 'POST',
+          body: JSON.stringify({ID}),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(resultado => resultado.json())
+        .then(result => resolvido(result))
+        .catch(rejeitado);
+    });
+  }
+
+  excluirCarrinho(ID) {
+    return new Promise((resolvido, rejeitado) => {
+      fetch('/api/ExcluirCarrinho',
         {
           method: 'POST',
           body: JSON.stringify({ID}),

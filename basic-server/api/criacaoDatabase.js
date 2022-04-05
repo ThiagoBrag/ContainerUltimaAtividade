@@ -70,3 +70,16 @@ database(`CREATE TABLE IF NOT EXISTS PEDIDO (
     }).catch(erro => {
         console.log('TABELA: PEDIDO DEU ERRO NA CRIAÇãO');
     });
+
+database(`CREATE TABLE IF NOT EXISTS CARRINHO (
+        ID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
+        USER_ID INTEGER,
+        PRODUTO_ID INTEGER,
+        PRODUTO_NOME varchar(30),
+        PRODUTO_VALOR double
+        )`)
+    .then(result => {
+        console.log('TABELA: CARRINHO CRIADA!');
+    }).catch(erro => {
+        console.log('TABELA: CARRINHO DEU ERRO NA CRIAÇÃO');
+    });

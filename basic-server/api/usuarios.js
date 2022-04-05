@@ -193,6 +193,31 @@ inserirRota('/inserir_pedido', function(dados, resposta) {
         });
 })
 
+inserirRota('/inserir_carrinho', function(dados, resposta) {
+    database(`INSERT INTO CARRINHO
+            (
+            USER_ID,
+            PRODUTO_ID,
+            PRODUTO_NOME,
+            PRODUTO_VALOR
+            ) 
+            VALUES 
+            (
+            "${dados.user_id}",
+            "${dados.produto_id}",
+            "${dados.produto_nome}",
+            "${dados.produto_valor}"
+            )`)
+        .then(result => {
+
+            resposta({ message: 'Carrinho inserido com sucesso!' })
+
+
+        }).catch(erro => {
+            resposta({ erro: 'Erro ao inserir o Carrinho!' });
+        });
+})
+
 inserirRota('/Pedido', function(dados, resposta) {
     database(`SELECT * FROM PEDIDO`)
         .then(result => {
@@ -202,6 +227,18 @@ inserirRota('/Pedido', function(dados, resposta) {
 
         }).catch(erro => {
             resposta({ erro: 'Erro ao inserir o pedido!' });
+        });
+})
+
+inserirRota('/Carrinho', function(dados, resposta) {
+    database(`SELECT * FROM CARRINHO`)
+        .then(result => {
+
+            resposta(result)
+
+
+        }).catch(erro => {
+            resposta({ erro: 'Erro ao buscar carrinho!' });
         });
 })
 
@@ -244,6 +281,17 @@ inserirRota('/ExcluirPedido', function(dados, resposta) {
 
         }).catch(erro => {
             resposta({ erro: 'Erro ao excluir um item da tabela pedido!' });
+        });
+})
+
+inserirRota('/ExcluirCarrinho', function(dados, resposta) {
+    console.log(dados)
+
+    database(`DELETE FROM CARRINHO WHERE ID = '${dados.ID}'`)
+        .then(result => {
+            resposta(result)
+        }).catch(erro => {
+            resposta({ erro: 'Erro ao excluir um item da tabela carrinho!' });
         });
 })
 

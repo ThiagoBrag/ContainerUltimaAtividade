@@ -131,7 +131,6 @@ export class CadstroPedidosComponent implements OnInit {
     if (this.pais && this.estado && this.cidade && this.bairro && this.rua && this.numero && this.cep) {
 
       this.usuarioService.buscarEndereco().then((resultado: any) => {
-        console.log("PASSSSS")
         for (let i1 = 0; i1 < resultado.length; i1++) {
           let NumeroAntigo = localStorage.getItem('NUMEROANTIGO')
           let CepAntigo = localStorage.getItem('CEPANTIGO')

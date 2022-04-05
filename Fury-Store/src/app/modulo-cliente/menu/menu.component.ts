@@ -15,9 +15,21 @@ export class MenuComponent implements OnInit {
     private usuarioService: UsuarioService
   ) { }
 
+  idUser
   produtos = [];
   objeto = {}
   ngOnInit() {
+
+    let nomeUser = localStorage.getItem('NOME')
+    let senhaUser = localStorage.getItem('PASSWORD')
+    this.usuarioService.buscarUsuarios().then((resultado: any) => {
+      resultado.find(ValorUsuario => {
+        if (ValorUsuario.NOME == nomeUser && ValorUsuario.PASSWORD == senhaUser) {
+          this.idUser = ValorUsuario.ID
+        }
+      })
+
+    })
     this.usuarioService.buscarProduto()
       .then((resultado: Produto[]) => {
         for (let i = 0; i < resultado.length; i++) {
@@ -38,6 +50,11 @@ export class MenuComponent implements OnInit {
     localStorage.removeItem('PASSWORD')
     localStorage.removeItem('VALORRETORNO')
     this.router.navigate(['/login'])
+  }
+
+  cadastrarCarrinho(index) {
+    this.usuarioService.inserirCarrinho(this.idUser, this.produtos[index].id, this.produtos[index].nome, this.produtos[index].valor)
+    alert("Produto inserido ao carrinho!")
   }
 
 }

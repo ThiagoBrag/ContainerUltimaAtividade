@@ -44,8 +44,7 @@ export class PedidosComponent implements OnInit {
                       nomeDoProduto: nomeProduto,
                       nomeDoCliente: nomeCliente
                     }
-                    this.pedidos.push(pedido),
-                    console.log("LENFII", this.pedidos)
+                    this.pedidos.push(pedido)
                   }
                 })
               })
