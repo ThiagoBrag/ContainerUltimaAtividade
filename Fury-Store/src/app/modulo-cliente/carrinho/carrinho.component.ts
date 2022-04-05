@@ -26,9 +26,9 @@ export class CarrinhoComponent implements OnInit {
         for (let i = 0; i < resultado.length; i++) {
           this.objeto = {
             id: resultado[i].ID,
-            idProduto: resultado[i].ID_PRODUTO,
-            nome: resultado[i].NOME_PRODUTO,
-            valor: resultado[i].VALOR_PRODUTO,
+            idProduto: resultado[i].PRODUTO_ID,
+            nome: resultado[i].PRODUTO_NOME,
+            valor: resultado[i].PRODUTO_VALOR,
           }
           this.carrinho.push(this.objeto)
         }
@@ -38,3 +38,5 @@ export class CarrinhoComponent implements OnInit {
   }
 
 }
+
+CONTINUAR A FAZER O CARRINHO (COLOCAR O MARK TASK E FAZER TOTAL)

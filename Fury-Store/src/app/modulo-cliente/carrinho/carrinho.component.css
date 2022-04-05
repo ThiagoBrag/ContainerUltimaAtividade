@@ -43,3 +43,55 @@
     align-items: center;
     cursor: pointer;
 }
+
+.conteudo {
+    margin-top: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerproduto {
+    flex-flow: wrap;
+}
+
+.produto {
+    margin: 2rem;
+    background-color: rgb(243, 243, 243);
+    padding: 20px 40px 20px 40px;
+    border: solid black 1px;
+    border-radius: 15px;
+    font-size: 25px;
+    cursor: default;
+}
+
+.palavraNome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -3px;
+    margin-bottom: 15px;
+    font-family: fantasy;
+    cursor: default;
+}
+
+.palavraPreco {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+    cursor: default;
+}
+
+.EdicaoExclir {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: -5px;
+}
+
+.iconeLapis {
+    margin-right: 5px;
+    cursor: pointer;
+}
