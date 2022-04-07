@@ -39,11 +39,14 @@ export class MenuComponent implements OnInit {
             imagem: resultado[i].IMAGEM,
             id: resultado[i].ID
           }
+          
           this.produtos.push(this.objeto)
         }
       }).catch(erro => {
         console.log("ERRO AO BUSCAR PRODUTO:", erro)
       })
+
+      
   }
 
   logout() {
@@ -54,7 +57,7 @@ export class MenuComponent implements OnInit {
   }
 
   cadastrarCarrinho(index) {
-    this.usuarioService.inserirCarrinho(this.idUser, this.produtos[index].id, this.produtos[index].nome, this.produtos[index].valor)
+    this.usuarioService.inserirCarrinho(this.idUser, this.produtos[index].id, this.produtos[index].nome, this.produtos[index].valor, this.produtos[index].imagem)
     alert("Produto inserido ao carrinho!")
   }
 

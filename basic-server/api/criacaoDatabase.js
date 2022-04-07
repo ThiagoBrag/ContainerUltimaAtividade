@@ -76,7 +76,8 @@ database(`CREATE TABLE IF NOT EXISTS CARRINHO (
         USER_ID INTEGER,
         PRODUTO_ID INTEGER UNIQUE,
         PRODUTO_NOME varchar(30),
-        PRODUTO_VALOR double
+        PRODUTO_VALOR double,
+        PRODUTO_IMAGEM varchar(9999999)
         )`)
     .then(result => {
         console.log('TABELA: CARRINHO CRIADA!');

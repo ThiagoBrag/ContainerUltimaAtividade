@@ -201,14 +201,16 @@ inserirRota('/inserir_carrinho', function(dados, resposta) {
             USER_ID,
             PRODUTO_ID,
             PRODUTO_NOME,
-            PRODUTO_VALOR
+            PRODUTO_VALOR,
+            PRODUTO_IMAGEM
             ) 
             VALUES 
             (
             "${dados.user_id}",
             "${dados.produto_id}",
             "${dados.produto_nome}",
-            "${dados.produto_valor}"
+            "${dados.produto_valor}",
+            "${dados.produto_imagem}"
             )`)
         .then(result => {
 

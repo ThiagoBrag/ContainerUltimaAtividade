@@ -21,6 +21,9 @@
     <div class="conteudo">
         <div class="containerproduto">
             <div *ngFor="let car of carrinho;let i=index " class="produto" #mudarCor>
+                <div class="imagem">
+                    <img src={{car.imagem}}>
+                </div>
                 <div class="palavraNome">
                     {{car.nome}}
                 </div>

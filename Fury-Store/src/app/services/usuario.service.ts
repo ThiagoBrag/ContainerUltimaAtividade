@@ -107,13 +107,13 @@ export class UsuarioService {
     });
   }
 
-  inserirCarrinho(user_id, produto_id, produto_nome, produto_valor) {
+  inserirCarrinho(user_id, produto_id, produto_nome, produto_valor, produto_imagem) {
     return new Promise((resolvido, rejeitado) => {
       fetch('/api/inserir_carrinho',
         {
           method: 'POST',
           body: JSON.stringify({
-            user_id, produto_id, produto_nome, produto_valor
+            user_id, produto_id, produto_nome, produto_valor, produto_imagem
           }
           ),
           headers: {

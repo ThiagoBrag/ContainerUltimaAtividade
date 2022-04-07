@@ -34,6 +34,7 @@ export class CarrinhoComponent implements OnInit {
             idProduto: resultado[i].PRODUTO_ID,
             nome: resultado[i].PRODUTO_NOME,
             valor: resultado[i].PRODUTO_VALOR,
+            imagem: resultado[i].PRODUTO_IMAGEM
           }
           this.carrinho.push(this.objeto)
         }
