@@ -115,3 +115,8 @@
     justify-content: center;
     width: 16%;
 }
+
+img {
+    width: 200px;
+    height: 200px;
+}
