@@ -23,14 +23,15 @@ export class CadastroProdutosComponent implements OnInit {
       if (this.produtos[this.id]) {
         this.name = this.produtos[this.id].name;
         this.price = this.produtos[this.id].price;
+        this.image = this.produtos[this.id].image;
       }
     }
   }
 
   name: '';
   price: 0;
+  image
   index
-
 
   ngOnInit() {
 
@@ -41,32 +42,26 @@ export class CadastroProdutosComponent implements OnInit {
         resultado.find(valorProduto => {
           if (valorProduto.ID == this.index) {
           this.name = valorProduto.NOME;
-          this.price = valorProduto.VALOR
-          console.log("PRODUTO ID ", valorProduto.ID)
+          this.price = valorProduto.VALOR;
+
           }
         })
       })
     }
   }
 
-
+  imgURL;
   srcResult
 
-  onFileSelected() {
-    const inputNode: any = document.querySelector('#file');
-
-    if (typeof (FileReader) !== 'undefined') {
-      const reader = new FileReader();
-
-      reader.onload = (e: any) => {
-        this.srcResult = e.target.result;
-      };
-
-      reader.readAsArrayBuffer(inputNode.files[0]);
-    }
+  onFileSelected(event) {
+    const file = new FileReader();
+    file.onload = (e) => {
+      this.imgURL = e.target.result;
+    };
+    file.readAsDataURL(event.target.files[0]);
   }
 
-  imageURL
+
   input;
 
   limparImagem() {
@@ -82,7 +77,6 @@ export class CadastroProdutosComponent implements OnInit {
 
   imagemMudou(event) {
     this.input = event.target
-    console.log(event);
 
     const reader = new FileReader()
 
@@ -96,7 +90,7 @@ export class CadastroProdutosComponent implements OnInit {
 
   cadastrar() {
     if (this.name && this.price) {
-      this.usuarioService.inserirProduto(this.name, this.price)
+      this.usuarioService.inserirProduto(this.name, this.price, this.imgURL)
       this.router.navigate(['/produtos']);
     } else {
       alert('É necessário preencher todos os campos!');

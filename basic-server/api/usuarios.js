@@ -72,12 +72,14 @@ inserirRota('/inserir_produto', function(dados, resposta) {
     database(`INSERT INTO PRODUTO
             (
             NOME,
-            VALOR
+            VALOR,
+            IMAGEM
             ) 
             VALUES 
             (
             "${dados.nome}",
-            "${dados.preco}"
+            "${dados.preco}",
+            "${dados.imagem}"
             )`)
         .then(result => {
             console.log('Produto inserido com sucesso!');

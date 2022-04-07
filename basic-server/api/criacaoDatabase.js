@@ -19,9 +19,9 @@ database(`INSERT INTO USER VALUES (null , 'thiago', '123'),
 
 database(`CREATE TABLE IF NOT EXISTS PRODUTO (
         ID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
-        NOME varchar(30) UNIQUE,
+        NOME varchar(30),
         VALOR double,
-        IMAGEM varchar(1000) UNIQUE
+        IMAGEM varchar(99999999)
         )`)
     .then(result => {
         console.log('TABELA: PRODUTO CRIADA!');

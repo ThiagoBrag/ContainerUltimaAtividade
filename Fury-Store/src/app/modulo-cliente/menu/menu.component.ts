@@ -36,6 +36,7 @@ export class MenuComponent implements OnInit {
           this.objeto = {
             nome: resultado[i].NOME,
             valor: resultado[i].VALOR,
+            imagem: resultado[i].IMAGEM,
             id: resultado[i].ID
           }
           this.produtos.push(this.objeto)
@@ -62,5 +63,6 @@ export class MenuComponent implements OnInit {
 interface Produto {
   NOME: string;
   VALOR: string;
+  IMAGEM: string;
   ID: number;
 }

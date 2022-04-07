@@ -24,42 +24,42 @@
                 <div class="ContainerJunto">
                     <div class="InputImagem">
                         <div class="ImagemClasse">
-                            <button class="ButtonImage" *ngIf="!imageUrl" type="button" mat-raised-button (click)="fileInput.click()">Foto do Produto</button>
-                            <input hidden (change)="onFileSelected()" #fileInput type="file" id="file" (change)="imagemMudou($event)">
+                            <button class="ButtonImage" *ngIf="!imageUrl" type="button" mat-raised-button (click)="fileInput.click()" (change)="mudanca($event.target.files[0])">Foto do Produto</button>
+                            <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="file" (change)="imagemMudou($event)" [(ngModel)]="image ">
 
-                            <img *ngIf="imageUrl" [src]="imageUrl" id="file" width="150px" height="150px" />
+                            <img *ngIf=" imageUrl " [src]="imageUrl " id="file " width="150px " height="150px " />
                         </div>
-                        <div class="BotaoLimparImagem">
-                            <button *ngIf="imageUrl" (click)="limparImagem()">LIMPAR IMAGEM</button>
+                        <div class="BotaoLimparImagem ">
+                            <button *ngIf="imageUrl " (click)="limparImagem() ">LIMPAR IMAGEM</button>
                         </div>
                     </div>
-                    <div class="TudoSemImagem">
-                        <div class="tudoNomePreco">
-                            <div class="InputNome">
-                                <div class="IconePerson">
-                                    <span class="material-icons">
+                    <div class="TudoSemImagem ">
+                        <div class="tudoNomePreco ">
+                            <div class="InputNome ">
+                                <div class="IconePerson ">
+                                    <span class="material-icons ">
                                         local_grocery_store
                             </span>
                                 </div>
-                                <input class="InputName" placeholder="Nome" [(ngModel)]="name" />
+                                <input class="InputName " placeholder="Nome " [(ngModel)]="name " />
                             </div>
-                            <div class="InputPreco">
-                                <div class="IconeCifrao">
-                                    <span class="material-icons">
+                            <div class="InputPreco ">
+                                <div class="IconeCifrao ">
+                                    <span class="material-icons ">
                                 attach_money
                             </span>
                                 </div>
-                                <input class="InputValor" placeholder="Preço" [(ngModel)]="price" type="number" />
+                                <input class="InputValor " placeholder="Preço " [(ngModel)]="price " type="number " />
                             </div>
                         </div>
-                        <div class="BotaoCadastro">
-                            <button (click)="cadastrar()" *ngIf="id == 'novo'">
-                                <span class="Button">
+                        <div class="BotaoCadastro ">
+                            <button (click)="cadastrar() " *ngIf="id=='novo' ">
+                                <span class="Button ">
                                     cadastrar
                                 </span>
                             </button>
-                            <button (click)="editar()" *ngIf="id != 'novo'">
-                                <span class="Button" >
+                            <button (click)="editar() " *ngIf="id !='novo' ">
+                                <span class="Button " >
                                     Editar
                                 </span>
                             </button>

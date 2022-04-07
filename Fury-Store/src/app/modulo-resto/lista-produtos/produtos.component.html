@@ -33,6 +33,9 @@
     <div class="conteudo">
         <div class="containerproduto">
             <div *ngFor="let produto of produtos;let i=index " class="produto">
+                <div class="imagem">
+                    <img src={{produto.imagem}}>
+                </div>
                 <div class="palavraNome">
                     {{produto.nome}}
                 </div>

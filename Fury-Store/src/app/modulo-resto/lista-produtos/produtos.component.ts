@@ -20,10 +20,12 @@ export class ProdutosComponent implements OnInit {
   ngOnInit() {
     this.usuarioService.buscarProduto()
       .then((resultado: Produto[]) => {
+        console.log(resultado)
         for (let i = 0; i < resultado.length; i++) {
           this.objeto = {
             nome: resultado[i].NOME,
             valor: resultado[i].VALOR,
+            imagem: resultado[i].IMAGEM,
             id: resultado[i].ID
           }
           this.produtos.push(this.objeto)
@@ -47,13 +49,14 @@ export class ProdutosComponent implements OnInit {
 
   }
 
-  verProduto(i){
-    this.router.navigate([ '/produtos', this.produtos[i].id])
+  verProduto(i) {
+    this.router.navigate(['/produtos', this.produtos[i].id])
   }
 
 }
 interface Produto {
   NOME: string;
   VALOR: string;
+  IMAGEM: string;
   ID: number;
 }

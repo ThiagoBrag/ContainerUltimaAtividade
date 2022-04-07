@@ -35,13 +35,13 @@ export class UsuarioService {
     });
   }
 
-  inserirProduto(nome, preco) {
+  inserirProduto(nome, preco, imagem) {
     return new Promise((resolvido, rejeitado) => {
       fetch('/api/inserir_produto',
         {
           method: 'POST',
           body: JSON.stringify({
-            nome, preco
+            nome, preco, imagem
           }
           ),
           headers: {
