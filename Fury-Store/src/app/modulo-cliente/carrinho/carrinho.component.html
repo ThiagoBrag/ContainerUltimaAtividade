@@ -15,6 +15,15 @@
                         Carrinho
                     </div>
                 </div>
+                <div class="BotaoAdicionar" (click)="comprar()">
+                    <div class=" containerBotao ">
+                        <div class="containerIcone ">
+                            <div class="iconeAdicionar ">
+                                <button class="BotaoComprar">FINALIZAR <br/>COMPRA</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -31,7 +40,7 @@
                     <strong>R$ {{car.valor}}</strong>
                 </div>
                 <div class="InputQTD">
-                    <input placeholder="Quantidade" [(ngModel)]='quantidade' type="number" class="InputQuantidade">
+                    <input [(ngModel)]='quantidade' type="number" class="InputQuantidade">
                 </div>
                 <div class="EdicaoExclir">
                     <div class="containerIcone3" (click)="removerCarrinho(i)">

@@ -52,8 +52,13 @@ export class CarrinhoComponent implements OnInit {
 
   selecionarProduto(i) {
     this.idCarrinho = this.carrinho[i].id
+    console.log("ID CARRINHO: ", this.carrinho[i].nome)
     const htmlElement: HTMLElement = this.modalElement.nativeElement;
     htmlElement.classList.add('color');
+  }
+
+  comprar() {
+
   }
 
 }
