@@ -30,6 +30,9 @@
     <div class="conteudo">
         <div class="containerproduto">
             <div *ngFor="let car of carrinho;let i=index " class="produto" #mudarCor>
+                <div class="containerIcone3" title="Selecionar Produto!">
+                    <input class="CheckBox" (click)="selecionarProduto(i)" type="checkbox" value="on">
+                </div>
                 <div class="imagem">
                     <img src={{car.imagem}}>
                 </div>
@@ -46,14 +49,7 @@
                     <div class="containerIcone3" (click)="removerCarrinho(i)">
                         <div class="iconeLapis" title="Remover do Carrinho!">
                             <span class="material-icons">
-                                remove_circle_outline
-                            </span>
-                        </div>
-                    </div>
-                    <div class="containerIcone3" (click)="selecionarProduto(i)">
-                        <div class="iconeLapis" title="Selecionar Produto!">
-                            <span class="material-icons">
-                                check_circle_outline
+                                remove_shopping_cart 
                             </span>
                         </div>
                     </div>

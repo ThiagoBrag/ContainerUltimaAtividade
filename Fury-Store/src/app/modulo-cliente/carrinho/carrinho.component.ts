@@ -21,6 +21,7 @@ export class CarrinhoComponent implements OnInit {
   ) {
   }
 
+  selecionado
   quantidade = 1
   idCarrinho
   carrinho = [];
@@ -49,16 +50,34 @@ export class CarrinhoComponent implements OnInit {
     alert("Produto removido com sucesso!")
     document.location.reload();
   }
-
+  
+  check = document.getElementById('compra');
   selecionarProduto(i) {
     this.idCarrinho = this.carrinho[i].id
-    console.log("ID CARRINHO: ", this.carrinho[i].nome)
-    const htmlElement: HTMLElement = this.modalElement.nativeElement;
-    htmlElement.classList.add('color');
+    
+     
+          var  carrinhoo;
+            if(this.check.checked){
+              carrinhoo = 'sim'
+            }else{
+              carrinhoo = 'nao'
+            }
+            localStorage.setItem("CARRINHOO", carrinhoo)
+        this.selecionado = localStorage.getItem("CARRINHOO")
+        console.log("TA AQUI", this.selecionado)
+        if (this.selecionado == 'sim') {
+          const htmlElement: HTMLElement = this.modalElement.nativeElement;
+          htmlElement.classList.add('color');
+
+        } else {
+          const htmlElement: HTMLElement = this.modalElement.nativeElement;
+          htmlElement.classList.add('nocolor');
+        }
+    
   }
 
   comprar() {
-
+    console.log("COMPRADO")
   }
 
 }

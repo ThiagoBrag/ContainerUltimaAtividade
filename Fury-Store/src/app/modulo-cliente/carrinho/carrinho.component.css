@@ -69,6 +69,10 @@
     background-color: rgba(0, 104, 201, 0.329);
 }
 
+.produto.nocolor {
+    background-color: rgb(243, 243, 243);
+}
+
 .palavraNome {
     display: flex;
     align-items: center;
@@ -141,6 +145,18 @@
     cursor: pointer;
     font-family: sans-serif;
     font-weight: bold;
+}
+
+.containerIcone3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.CheckBox {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-bottom: 1.2rem;
 }
 
 img {
