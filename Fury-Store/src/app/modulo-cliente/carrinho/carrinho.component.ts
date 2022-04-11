@@ -21,6 +21,7 @@ export class CarrinhoComponent implements OnInit {
   ) {
   }
 
+  listaQuantidade = []
   selecionado
   quantidade = 1
   idCarrinho
@@ -37,6 +38,7 @@ export class CarrinhoComponent implements OnInit {
             valor: resultado[i].PRODUTO_VALOR,
             imagem: resultado[i].PRODUTO_IMAGEM
           }
+          this.listaQuantidade[i] = 1
           this.carrinho.push(this.objeto)
         }
       }).catch(erro => {
@@ -51,32 +53,31 @@ export class CarrinhoComponent implements OnInit {
     document.location.reload();
   }
   
-  check = document.getElementById('compra');
-  selecionarProduto(i) {
-    this.idCarrinho = this.carrinho[i].id
-    
+  
+  selecionarProduto() {
+    var check = document.querySelector("#myCheck:checked");
      
-          var  carrinhoo;
-            if(this.check.checked){
-              carrinhoo = 'sim'
-            }else{
-              carrinhoo = 'nao'
-            }
-            localStorage.setItem("CARRINHOO", carrinhoo)
-        this.selecionado = localStorage.getItem("CARRINHOO")
-        console.log("TA AQUI", this.selecionado)
-        if (this.selecionado == 'sim') {
-          const htmlElement: HTMLElement = this.modalElement.nativeElement;
-          htmlElement.classList.add('color');
-
-        } else {
-          const htmlElement: HTMLElement = this.modalElement.nativeElement;
-          htmlElement.classList.add('nocolor');
-        }
+    var carrinhoo;
+      if(check){
+        carrinhoo = 'sim'
+      }else{
+        carrinhoo = 'nao'
+      }
+      console.log("TA AQUI", carrinhoo)
+      if (carrinhoo == 'sim') {
+        const htmlElement: HTMLElement = this.modalElement.nativeElement;
+        htmlElement.classList.add('color');
+        htmlElement.classList.remove('nocolor');
+      } else {
+        const htmlElement: HTMLElement = this.modalElement.nativeElement;
+        htmlElement.classList.add('nocolor');
+        htmlElement.classList.remove('color');
+      }
     
   }
 
   comprar() {
+    
     console.log("COMPRADO")
   }
 

@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
       if (resultado != "") {
         localStorage.setItem("NOME", resultado[0].NOME)
         localStorage.setItem("PASSWORD", resultado[0].PASSWORD)
+        localStorage.setItem("ID", resultado[0].ID)
         if (this.user == "thiago" && this.password == "123") {
           this.router.navigate(['/loja']);
         } else {

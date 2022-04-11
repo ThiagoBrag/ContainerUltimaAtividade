@@ -31,7 +31,7 @@
         <div class="containerproduto">
             <div *ngFor="let car of carrinho;let i=index " class="produto" #mudarCor>
                 <div class="containerIcone3" title="Selecionar Produto!">
-                    <input class="CheckBox" (click)="selecionarProduto(i)" type="checkbox" value="on">
+                    <input class="CheckBox" (click)="selecionarProduto(i)" type="checkbox" id="myCheck">
                 </div>
                 <div class="imagem">
                     <img src={{car.imagem}}>
@@ -43,12 +43,12 @@
                     <strong>R$ {{car.valor}}</strong>
                 </div>
                 <div class="InputQTD">
-                    <input [(ngModel)]='quantidade' type="number" class="InputQuantidade">
+                    <input type="number" min="1" class="InputQuantidade" [(ngModel)]="listaQuantidade[i]">
                 </div>
-                <div class="EdicaoExclir">
-                    <div class="containerIcone3" (click)="removerCarrinho(i)">
-                        <div class="iconeLapis" title="Remover do Carrinho!">
-                            <span class="material-icons">
+                <div class="EdicaoExclir ">
+                    <div class="containerIcone3 " (click)="removerCarrinho(i) ">
+                        <div class="iconeLapis " title="Remover do Carrinho! ">
+                            <span class="material-icons ">
                                 remove_shopping_cart 
                             </span>
                         </div>
