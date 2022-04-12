@@ -53,13 +53,13 @@ export class UsuarioService {
     });
   }
 
-  inserirUsuario(nome, password) {
+  inserirUsuario(nome,sobrenome, password) {
     return new Promise((resolvido, rejeitado) => {
       fetch('/api/inserir_usuario',
         {
           method: 'POST',
           body: JSON.stringify({
-            nome, password
+            nome, sobrenome,password
           }
           ),
           headers: {
@@ -89,13 +89,31 @@ export class UsuarioService {
     });
   }
 
-  inserirPedido(cliente_id, cliente_nome, produto_id, produto_nome,produto_valor,produto_imagem) {
+  inserirPedido(cliente_id, produto_id) {
     return new Promise((resolvido, rejeitado) => {
       fetch('/api/inserir_pedido',
         {
           method: 'POST',
           body: JSON.stringify({
-            cliente_id, cliente_nome, produto_id, produto_nome,produto_valor,produto_imagem
+            cliente_id, produto_id
+          }
+          ),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(resultado => resultado.json())
+        .then(result => resolvido(result))
+        .catch(rejeitado);
+    });
+  }
+
+  inserirPedido2(cliente_id,cliente_nome ,produto_id, produto_nome, produto_valor) {
+    return new Promise((resolvido, rejeitado) => {
+      fetch('/api/inserir_pedido2',
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            cliente_id,cliente_nome ,produto_id, produto_nome, produto_valor
           }
           ),
           headers: {
@@ -143,23 +161,23 @@ export class UsuarioService {
     });
   }
 
-  inserirEndereco(pais, estado, cidade, bairro, rua, numero, cep) {
-    return new Promise((resolvido, rejeitado) => {
-      fetch('/api/inserir_endereco',
-        {
-          method: 'POST',
-          body: JSON.stringify({
-            pais, estado, cidade, bairro, rua, numero, cep
-          }
-          ),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }).then(resultado => resultado.json())
-        .then(result => resolvido(result))
-        .catch(rejeitado);
-    });
-  }
+  // inserirEndereco(pais, estado, cidade, bairro, rua, numero, cep) {
+  //   return new Promise((resolvido, rejeitado) => {
+  //     fetch('/api/inserir_endereco',
+  //       {
+  //         method: 'POST',
+  //         body: JSON.stringify({
+  //           pais, estado, cidade, bairro, rua, numero, cep
+  //         }
+  //         ),
+  //         headers: {
+  //           'Content-Type': 'application/json'
+  //         }
+  //       }).then(resultado => resultado.json())
+  //       .then(result => resolvido(result))
+  //       .catch(rejeitado);
+  //   });
+  // }
 
   buscarPedido() {
     return new Promise((resolvido, rejeitado) => {
@@ -189,19 +207,19 @@ export class UsuarioService {
     });
   }
 
-  buscarEndereco() {
-    return new Promise((resolvido, rejeitado) => {
-      fetch('/api/Endereco',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }).then(resultado => resultado.json())
-        .then(result => resolvido(result))
-        .catch(rejeitado);
-    });
-  }
+  // buscarEndereco() {
+  //   return new Promise((resolvido, rejeitado) => {
+  //     fetch('/api/Endereco',
+  //       {
+  //         method: 'POST',
+  //         headers: {
+  //           'Content-Type': 'application/json'
+  //         }
+  //       }).then(resultado => resultado.json())
+  //       .then(result => resolvido(result))
+  //       .catch(rejeitado);
+  //   });
+  // }
 
   buscarProduto() {
     return new Promise((resolvido, rejeitado) => {
@@ -291,20 +309,20 @@ export class UsuarioService {
     });
   }
 
-  excluirEndereco(ID) {
-    return new Promise((resolvido, rejeitado) => {
-      fetch('/api/ExcluirEndereco',
-        {
-          method: 'POST',
-          body: JSON.stringify({ID}),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }).then(resultado => resultado.json())
-        .then(result => resolvido(result))
-        .catch(rejeitado);
-    });
-  }
+  // excluirEndereco(ID) {
+  //   return new Promise((resolvido, rejeitado) => {
+  //     fetch('/api/ExcluirEndereco',
+  //       {
+  //         method: 'POST',
+  //         body: JSON.stringify({ID}),
+  //         headers: {
+  //           'Content-Type': 'application/json'
+  //         }
+  //       }).then(resultado => resultado.json())
+  //       .then(result => resolvido(result))
+  //       .catch(rejeitado);
+  //   });
+  // }
 
   editarProduto(nome,preco, ID) {
     return new Promise((resolvido, rejeitado) => {

@@ -28,9 +28,11 @@ export class CadastroProdutosComponent implements OnInit {
     }
   }
 
+  
   name: '';
   price: 0;
   image
+  imageUrl
   index
 
   ngOnInit() {
@@ -43,6 +45,7 @@ export class CadastroProdutosComponent implements OnInit {
           if (valorProduto.ID == this.index) {
           this.name = valorProduto.NOME;
           this.price = valorProduto.VALOR;
+          this.imageUrl = valorProduto.IMAGEM;
 
           }
         })

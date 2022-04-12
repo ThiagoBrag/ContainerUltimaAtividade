@@ -47,6 +47,10 @@ p {
     cursor: default;
 }
 
+.PasswordPalavra {
+    margin-top: 0.2em;
+}
+
 .user,
 .password {
     display: flex;
@@ -66,6 +70,10 @@ p {
 .InputPasswordRepetido {
     display: flex;
     align-items: center;
+}
+
+.InputSobrenome {
+    margin-top: 0.5rem;
 }
 
 .BotaoLogar,

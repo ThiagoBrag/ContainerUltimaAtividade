@@ -59,25 +59,6 @@ export class CadstroPedidosComponent implements OnInit {
             if (valorBusca.ID == this.index) {
               this.clienteId = valorBusca.CLIENTE_ID - 1;
               this.ProdutoId = valorBusca.PRODUTO_ID - 1;
-              this.enderecoId = valorBusca.ENDERECO_ID;
-
-              this.usuarioService.buscarEndereco().then((resultado: any) => {
-                resultado.find(valorEndereco => {
-                  if (valorEndereco.ID == this.enderecoId) {
-
-                    this.pais = valorEndereco.PAIS;
-                    this.estado = valorEndereco.ESTADO;
-                    this.cidade = valorEndereco.CIDADE;
-                    this.bairro = valorEndereco.BAIRRO;
-                    this.rua = valorEndereco.RUA;
-                    this.numero = valorEndereco.NUMERO;
-                    localStorage.setItem('NUMEROANTIGO', this.numero);
-                    this.cep = valorEndereco.CEP;
-                    localStorage.setItem('CEPANTIGO', this.cep)
-
-                  }
-                })
-              })
             }
           })
         })
@@ -107,66 +88,10 @@ export class CadstroPedidosComponent implements OnInit {
   }
 
   cadastrar() {
-
-    if (this.clienteId && this.ProdutoId && this.pais && this.estado && this.cidade && this.bairro && this.rua && this.numero && this.cep) {
-
-      this.usuarioService.inserirEndereco(this.pais, this.estado, this.cidade, this.bairro, this.rua, this.numero, this.cep)
-      this.usuarioService.buscarEndereco().then((resultado: any) => {
-        for (let i = 0; i < resultado.length; i++) {
-          if (this.numero == resultado[i].NUMERO && this.cep == resultado[i].CEP) {
-            this.enderecoId = resultado[i].ID;
-            this.usuarioService.inserirPedido(parseInt(this.clienteId) + 1, parseInt(this.ProdutoId) + 1, this.enderecoId)
-            this.router.navigate(['/pedidos']);
-            break;
-          }
-        }
-      });
-    } else {
-      alert('É necessário preencher todos os campos!');
-    }
   }
 
   editar() {
 
-    if (this.pais && this.estado && this.cidade && this.bairro && this.rua && this.numero && this.cep) {
-
-      this.usuarioService.buscarEndereco().then((resultado: any) => {
-        for (let i1 = 0; i1 < resultado.length; i1++) {
-          let NumeroAntigo = localStorage.getItem('NUMEROANTIGO')
-          let CepAntigo = localStorage.getItem('CEPANTIGO')
-          if (NumeroAntigo == resultado[i1].NUMERO && CepAntigo == resultado[i1].CEP) {
-            let idAntigo = resultado[i1].ID;
-
-            this.usuarioService.editarEndereco(this.pais, this.estado, this.cidade, this.bairro, this.rua, this.numero, this.cep, idAntigo)
-            this.usuarioService.buscarEndereco().then((resultado: any) => {
-              for (let i2 = 0; i2 < resultado.length; i2++) {
-                if (this.numero == resultado[i2].NUMERO && this.cep == resultado[i2].CEP) {
-                  this.enderecoId = resultado[i2].ID;
-                  this.usuarioService.buscarPedido().then((resultado: any) => {
-                    for (let i3 = 0; i3 < resultado.length; i3++) {
-                      if (resultado[i3].ENDERECO_ID == this.enderecoId) {
-
-                        let PedidoId = resultado[i3].ID;
-                        this.usuarioService.editarPedido(parseInt(this.clienteId) + 1, parseInt(this.ProdutoId) + 1, this.enderecoId, PedidoId)
-                        console.log("PEDIDOS DEPOIS DE EDITADO: ", resultado)
-                        this.router.navigate(['/pedidos']);
-                        break;
-                      }
-
-                    }
-                  })
-
-
-                }
-              }
-            });
-          }
-        }
-      });
-
-    } else {
-      alert('É necessário preencher todos os campos!');
-    }
   }
 
 }

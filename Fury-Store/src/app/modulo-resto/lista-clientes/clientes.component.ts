@@ -35,22 +35,8 @@ export class ClientesComponent implements OnInit {
     })
   }
 
-  removerCliente(index) {
-    this.usuarioService.buscarCliente()
-    .then((resultado: any) => {
-      resultado.find(valorCliente => {
-        if (valorCliente.NOME == this.clientes[index].nome) {
-          this.usuarioService.excluirCliente(valorCliente.ID)
-          document.location.reload();
-          alert("Cliente excluído com sucesso!")
-        }
-      })
-    })
-    
-  }
-
-  verCliente(i){
-    this.router.navigate([ '/clientes', this.clientes[i].id])
+  banCliente(i){
+    alert("CLIENTE BANIDO!")
   }
 
 

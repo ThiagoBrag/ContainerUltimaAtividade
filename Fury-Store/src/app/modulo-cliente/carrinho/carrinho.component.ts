@@ -62,9 +62,10 @@ export class CarrinhoComponent implements OnInit {
   
   
   selecionarProduto(car, i) {
+    
     localStorage.setItem("ID_PRODUTO", car.idProduto)
     localStorage.setItem("QUANTIDADE_PRODUTO", this.listaQuantidade[i])
-  this.usuarioService.inserirFinalizarCompra(this.userId, car.idProduto, this.listaQuantidade[i])
+    this.usuarioService.inserirFinalizarCompra(this.userId, car.idProduto, this.listaQuantidade[i])
 
     // var check = document.querySelector("#myCheck:checked");
      
@@ -89,18 +90,21 @@ export class CarrinhoComponent implements OnInit {
   comprar() {
     this.idProduto = localStorage.getItem('ID_PRODUTO')
     this.qtdProduto = localStorage.getItem('QUANTIDADE_PRODUTO')
+
     this.usuarioService.buscarFinalizarCompra().then((resultado: any) => {
       resultado.find(ValorFinalizarCompra => {
         if (this.userId == ValorFinalizarCompra.USER_ID) {
-          this.usuarioService.buscarCliente().then((resultado: any) => {
-            resultado.find(ValorCliente => {
-              if (ValorCliente.ID == this.userId) {
-                this.nome = ValorCliente.NOME
+          this.usuarioService.buscarUsuarios().then((resultado: any) => {
+            resultado.find(ValorUsuario => {
+              if (ValorUsuario.ID == this.userId) {
+                this.nome = ValorUsuario.NOME
                 this.usuarioService.buscarProduto().then((resultado: any) => {
                   resultado.find(ValorProduto => {
                     if (ValorProduto.ID == this.idProduto) {
                       this.valorTotal = ValorProduto.VALOR * this.qtdProduto
-                      this.usuarioService.inserirPedido(ValorFinalizarCompra.USER_ID, this.nome, ValorProduto.ID, ValorProduto.NOME, this.valorTotal, ValorProduto.IMAGEM)
+                      this.usuarioService.inserirPedido2(ValorFinalizarCompra.USER_ID, this.nome, ValorProduto.ID, ValorProduto.NOME, this.valorTotal, ValorProduto.IMAGEM)
+                      alert("Produto comprado com sucesso!")
+                      this.router.navigate(['/menu']);
                     }
                   })
                 })

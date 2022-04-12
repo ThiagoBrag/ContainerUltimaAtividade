@@ -13,6 +13,7 @@ import {
 })
 export class CadastroComponent implements OnInit {
 
+  sobrenome = '';
   user = '';
   password = '';
   passwordrepetido = '';
@@ -43,9 +44,9 @@ export class CadastroComponent implements OnInit {
   }
 
   cadastrar() {
-    if (this.user && this.password && this.passwordrepetido) {
+    if (this.user && this.sobrenome && this.password && this.passwordrepetido) {
       if (this.password == this.passwordrepetido) {
-        this.usuarioService.inserirUsuario(this.user, this.password)
+        this.usuarioService.inserirUsuario(this.user,this.sobrenome ,this.password)
             alert('Usuário cadastrado!');
             this.router.navigate(['/login']);
       } else {

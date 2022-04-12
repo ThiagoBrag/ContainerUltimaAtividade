@@ -14,20 +14,6 @@
                     Clientes
                 </div>
             </div>
-            <div class="BotaoAdicionar" (click)="router.navigate(['/clientes/novo'])">
-                <div class=" containerBotao ">
-                    <div class="PalavraAdd ">
-                        Add
-                    </div>
-                    <div class="containerIcone ">
-                        <div class="iconeAdicionar ">
-                            <span class="material-icons ">
-                              add
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <div class="conteudo">
@@ -40,18 +26,11 @@
                     <strong>{{cliente.sobrenome}}</strong>
                 </div>
                 <div class="EdicaoExclir">
-                    <div class="containerIcone3" (click)="verCliente(i)">
+                    <div class="containerIcone3" (click)="banCliente(i)">
                         <div class="iconeLapis">
                             <span class="material-icons">
-                      edit
-                      </span>
-                        </div>
-                    </div>
-                    <div class="containerIcone4" (click)="removerCliente(i)">
-                        <div class="iconeLixeira">
-                            <span class="material-icons">
-                      delete
-                      </span>
+                                person_off
+                            </span>
                         </div>
                     </div>
                 </div>

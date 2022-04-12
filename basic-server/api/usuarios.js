@@ -97,11 +97,13 @@ inserirRota('/inserir_usuario', function(dados, resposta) {
     database(`INSERT INTO USER
             (
             NOME,
+            SOBRENOME,
             PASSWORD
             ) 
             VALUES 
             (
             "${dados.nome}",
+            "${dados.sobrenome}",
             "${dados.password}"
             )`)
         .then(result => {
@@ -116,38 +118,38 @@ inserirRota('/inserir_usuario', function(dados, resposta) {
         });
 })
 
-inserirRota('/inserir_endereco', function(dados, resposta) {
-    database(`INSERT INTO ENDERECO
-            (
-            PAIS,
-            ESTADO,
-            CIDADE,
-            BAIRRO,
-            RUA,
-            NUMERO,
-            CEP
-            ) 
-            VALUES 
-            (
-            "${dados.pais}",
-            "${dados.estado}",
-            "${dados.cidade}",
-            "${dados.bairro}",
-            "${dados.rua}",
-            "${dados.numero}",
-            "${dados.cep}"
-            )`)
-        .then(result => {
-            console.log('Endereço inserido com sucesso!');
+// inserirRota('/inserir_endereco', function(dados, resposta) {
+//     database(`INSERT INTO ENDERECO
+//             (
+//             PAIS,
+//             ESTADO,
+//             CIDADE,
+//             BAIRRO,
+//             RUA,
+//             NUMERO,
+//             CEP
+//             ) 
+//             VALUES 
+//             (
+//             "${dados.pais}",
+//             "${dados.estado}",
+//             "${dados.cidade}",
+//             "${dados.bairro}",
+//             "${dados.rua}",
+//             "${dados.numero}",
+//             "${dados.cep}"
+//             )`)
+//         .then(result => {
+//             console.log('Endereço inserido com sucesso!');
 
-            resposta({ message: 'Endereço inserido com sucesso!' })
+//             resposta({ message: 'Endereço inserido com sucesso!' })
 
 
-        }).catch(erro => {
-            console.log('Erro ao inserir o Endereço!');
-            resposta({ erro: 'Erro ao inserir o Endereço!' });
-        });
-})
+//         }).catch(erro => {
+//             console.log('Erro ao inserir o Endereço!');
+//             resposta({ erro: 'Erro ao inserir o Endereço!' });
+//         });
+// })
 
 inserirRota('/inserir_cliente', function(dados, resposta) {
     database(`INSERT INTO CLIENTE
@@ -176,14 +178,39 @@ inserirRota('/inserir_pedido', function(dados, resposta) {
     database(`INSERT INTO PEDIDO
             (
             CLIENTE_ID,
-            PRODUTO_ID,
-            ENDERECO_ID
+            PRODUTO_ID
             ) 
             VALUES 
             (
             "${dados.cliente_id}",
+            "${dados.produto_id}"
+            )`)
+        .then(result => {
+
+            resposta({ message: 'Pedido inserido com sucesso!' })
+
+
+        }).catch(erro => {
+            resposta({ erro: 'Erro ao inserir o pedido!' });
+        });
+})
+
+inserirRota('/inserir_pedido2', function(dados, resposta) {
+    database(`INSERT INTO PEDIDO
+            (
+            CLIENTE_ID,
+            CLIENTE_NOME,
+            PRODUTO_ID,
+            PRODUTO_NOME,
+            PRODUTO_VALOR
+            ) 
+            VALUES 
+            (
+            "${dados.cliente_id}",
+            "${dados.cliente_nome}",
             "${dados.produto_id}",
-            "${dados.endereco_id}"
+            "${dados.produto_nome}",
+            "${dados.produto_valor}"
             )`)
         .then(result => {
 
@@ -334,19 +361,19 @@ inserirRota('/ExcluirCarrinho', function(dados, resposta) {
         });
 })
 
-inserirRota('/ExcluirEndereco', function(dados, resposta) {
-    console.log(dados)
+// inserirRota('/ExcluirEndereco', function(dados, resposta) {
+//     console.log(dados)
 
-    database(`DELETE FROM ENDERECO WHERE ID = '${dados.ID}'`)
-        .then(result => {
+//     database(`DELETE FROM ENDERECO WHERE ID = '${dados.ID}'`)
+//         .then(result => {
 
-            resposta(result)
+//             resposta(result)
 
 
-        }).catch(erro => {
-            resposta({ erro: 'Erro ao excluir um item da tabela pedido!' });
-        });
-})
+//         }).catch(erro => {
+//             resposta({ erro: 'Erro ao excluir um item da tabela pedido!' });
+//         });
+// })
 
 inserirRota('/EditarProduto', function(dados, resposta) {
 
@@ -375,7 +402,7 @@ inserirRota('/EditarCliente', function(dados, resposta) {
 inserirRota('/EditarPedido', function(dados, resposta) {
     console.log("Esses dados: ", dados)
 
-    database(`UPDATE PEDIDO SET CLIENTE_ID = '${dados.cliente_id}', PRODUTO_ID = '${dados.produto_id}',ENDERECO_ID = '${dados.endereco_id}'  WHERE ID = '${dados.ID}'`)
+    database(`UPDATE PEDIDO SET CLIENTE_ID = '${dados.cliente_id}', PRODUTO_ID = '${dados.produto_id}' WHERE ID = '${dados.ID}'`)
         .then(result => {
 
             resposta({ message: 'Salvo com sucesso!' })
@@ -386,19 +413,19 @@ inserirRota('/EditarPedido', function(dados, resposta) {
         });
 })
 
-inserirRota('/EditarEndereco', function(dados, resposta) {
-    console.log(dados)
+// inserirRota('/EditarEndereco', function(dados, resposta) {
+//     console.log(dados)
 
-    database(`UPDATE ENDERECO SET PAIS = '${dados.pais}', ESTADO = '${dados.estado}', CIDADE = '${dados.cidade}', BAIRRO = '${dados.bairro}', RUA = '${dados.rua}', NUMERO = '${dados.numero}', CEP = '${dados.cep}'  WHERE ID = '${dados.ID}'`)
-        .then(result => {
+//     database(`UPDATE ENDERECO SET PAIS = '${dados.pais}', ESTADO = '${dados.estado}', CIDADE = '${dados.cidade}', BAIRRO = '${dados.bairro}', RUA = '${dados.rua}', NUMERO = '${dados.numero}', CEP = '${dados.cep}'  WHERE ID = '${dados.ID}'`)
+//         .then(result => {
 
-            resposta({ message: 'Salvo com sucesso!' })
+//             resposta({ message: 'Salvo com sucesso!' })
 
 
-        }).catch(erro => {
-            resposta({ erro: 'Erro ao editar a tabela endereco!' });
-        });
-})
+//         }).catch(erro => {
+//             resposta({ erro: 'Erro ao editar a tabela endereco!' });
+//         });
+// })
 
 inserirRota('/checar_user', function(dados, resposta) {
     database(`SELECT * FROM USER where NOME = "${dados.NOME}" AND PASSWORD = "${dados.PASSWORD}"`)

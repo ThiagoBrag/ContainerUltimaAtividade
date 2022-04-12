@@ -27,84 +27,62 @@ export class PedidosComponent implements OnInit {
     this.usuarioService.buscarPedido()
     .then((resultado: any)=> {
       resultado.find(ValorPedido => {
-        let nomeCliente
-        let nomeProduto
-        this.usuarioService.buscarCliente().then((resultado: any) => {
-          resultado.find(ValorCliente => {
-            if (ValorCliente.ID == ValorPedido.CLIENTE_ID) {
-              nomeCliente= ValorCliente.NOME
-              this.usuarioService.buscarProduto().then((resultado: any) => {
-                resultado.forEach(ValorProduto => {
-                  if (ValorProduto.ID == ValorPedido.PRODUTO_ID) {
-                    nomeProduto=  ValorProduto.NOME
-                    let pedido = {
-                      idPedido: ValorPedido.ID,
-                      idProduto: ValorPedido.PRODUTO_ID,
-                      idCliente: ValorPedido.CLIENTE_ID,
-                      nomeDoProduto: nomeProduto,
-                      nomeDoCliente: nomeCliente
-                    }
-                    this.pedidos.push(pedido)
-                  }
-                })
-              })
-            }
-          })
-        })
+        let pedido = {
+          NomeCliente: ValorPedido.CLIENTE_NOME,
+          ValorTotal: ValorPedido.PRODUTO_VALOR
+        }
+        this.pedidos.push(pedido)
+        // this.usuarioService.buscarUsuarios().then((resultadoo: any) => {
+        //   resultadoo.find(ValorUsuario => {
+        //     if (ValorPedido.CLIENTE_ID == ValorUsuario.ID) {
+              
+        //     }
+        //   })
+        // })
+
+      //   let nomeCliente
+      //   let nomeProduto
+      //   this.usuarioService.buscarCliente().then((resultado: any) => {
+      //     resultado.find(ValorCliente => {
+      //       if (ValorCliente.ID == ValorPedido.CLIENTE_ID) {
+      //         nomeCliente= ValorCliente.NOME
+      //         this.usuarioService.buscarProduto().then((resultado: any) => {
+      //           resultado.forEach(ValorProduto => {
+      //             if (ValorProduto.ID == ValorPedido.PRODUTO_ID) {
+      //               nomeProduto=  ValorProduto.NOME
+      //               let pedido = {
+      //                 idPedido: ValorPedido.ID,
+      //                 idProduto: ValorPedido.PRODUTO_ID,
+      //                 idCliente: ValorPedido.CLIENTE_ID,
+      //                 nomeDoProduto: nomeProduto,
+      //                 nomeDoCliente: nomeCliente
+      //               }
+      //               this.pedidos.push(pedido)
+      //             }
+      //           })
+      //         })
+      //       }
+      //     })
+      //   })
       })
     }).catch(erro => {
       console.log("ERRO AO BUSCAR CLIENTE:", erro)
     })
   }
 
-  editarPedido(produto,cliente){
-    let idCliente
-    let idProduto
-    
-    this.usuarioService.buscarCliente().then((resultado: any) =>{
-      resultado.forEach(valorCliente =>{
-        if (valorCliente.NOME == cliente) {
-            idCliente = valorCliente.ID;
-        }
-      })
-    })
-    this.usuarioService.buscarProduto().then((resultado: any) =>{
-      resultado.forEach(ValorProduto => {
-        if (ValorProduto.NOME == produto) {
-          idProduto = ValorProduto.ID;
-        }
-      })
-    })
-    this.usuarioService.buscarPedido()
-    .then((resultado: any) => {
-      resultado.forEach(valorPedido => {
-        if(valorPedido.CLIENTE_ID == idCliente && valorPedido.PRODUTO_ID == idProduto) {
-          this.router.navigate(["pedidos", valorPedido.ID])
-        }
-      })
-    })
-  }
-
-  removerProduto(i) {
-    this.usuarioService.buscarPedido()
-      .then((resultado: any) => {
-        resultado.find(valorPedido => {
-          if (valorPedido.CLIENTE_ID == this.pedidos[i].idProduto) {
-            let valorPedidoId = valorPedido.ID;
-            this.usuarioService.excluirPedido(valorPedidoId)
-            this.usuarioService.buscarEndereco().then((resultado: any) => {
-              resultado.find(valorEndereco => {
-                if (valorEndereco.ID == valorPedido.ENDERECO_ID) {
-                  this.usuarioService.excluirEndereco(valorEndereco.ID);
-                  document.location.reload();
-                  alert("Pedido excluído com sucesso!")
-                }
-              })
-            })
-
+  removerPedido(cliente,valor){
+    this.usuarioService.buscarPedido().then((resultado: any) => {
+      resultado.find(ValorPedido => {
+        if (ValorPedido.CLIENTE_NOME == cliente) {
+          console.log("AAA", cliente)
+          if (ValorPedido.PRODUTO_VALOR == valor) {
+            this.usuarioService.excluirPedido(ValorPedido.ID)
+            alert("Pedido enviado com sucesso!")
+            document.location.reload();
           }
-        })
+        }
+        console.log(ValorPedido)
       })
+    })
   }
-
 }

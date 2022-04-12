@@ -14,10 +14,14 @@ export class LojaComponent implements OnInit {
     private usuarioService: UsuarioService
   ) { }
 
+  idCliente
   ngOnInit() {
+    this.idCliente = localStorage.getItem('ID')
     this.usuarioService.buscarUsuarios().then((resultado: any) => {
       resultado.find(ResultadoUsuarios => {
-        AAAAAAAAAAAAAAAAAA
+          if (ResultadoUsuarios.ID != 1) {
+          this.usuarioService.inserirCliente(ResultadoUsuarios.NOME, ResultadoUsuarios.SOBRENOME);
+          }
       })
     })
   }
@@ -30,6 +34,7 @@ export class LojaComponent implements OnInit {
   Logout() {
     localStorage.removeItem('USER')
     localStorage.removeItem('PASSWORD')
+    localStorage.removeItem('ID')
     localStorage.removeItem('VALORRETORNO')
   }
 

@@ -14,20 +14,6 @@
                     Pedidos
                 </div>
             </div>
-            <div class="BotaoAdicionar" (click)="router.navigate(['/pedidos/novo'])">
-                <div class=" containerBotao ">
-                    <div class="PalavraAdd ">
-                        Add
-                    </div>
-                    <div class="containerIcone ">
-                        <div class="iconeAdicionar ">
-                            <span class="material-icons ">
-                              add
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <div class="conteudo">
@@ -35,34 +21,32 @@
             <div *ngFor="let pedido of pedidos;let i= index " class="containerproduto">
                 <div class="ladoAlado">
                     <div class="JuntarProduto">
-                        <div class="palavraproduto">
+                        <!-- <div class="palavraproduto">
                             Produto
                         </div>
                         <div class="palavraNome">
                             {{pedido.nomeDoProduto}}
-                        </div>
+                        </div> -->
                         <div class="palavracliente">
-                            Cliente
+                            Cliente:
                         </div>
                         <div class="palavraNome">
-                            {{pedido.nomeDoCliente}}
+                            {{pedido.NomeCliente}}
+                        </div>
+                        <div class="palavracliente">
+                            Valor total:
+                        </div>
+                        <div class="palavraNome">
+                            R$ {{pedido.ValorTotal}},00
                         </div>
                         <div class="EdicaoExclir">
-                            <div class="containerIcone3" (click)="editarPedido(pedido.nomeDoProduto, pedido.nomeDoCliente)">
+                            <div class="containerIcone3" (click)="removerPedido(pedido.NomeCliente, pedido.ValorTotal)">
                                 <div class="iconeLapis">
-                                    <span class="material-icons">
-                                  edit
-                                  </span>
+                                    <span class="material-icons" title="Produto enviado!">
+                                        local_shipping 
+                                    </span>
                                 </div>
                             </div>
-                            <div class="containerIcone4" (click)="removerProduto(i)">
-                                <div class="iconeLixeira">
-                                    <span class="material-icons">
-                                  delete
-                                  </span>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
                 </div>
