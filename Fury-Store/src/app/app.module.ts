@@ -10,7 +10,6 @@ import {
 import { AppComponent } from './app.component';
 import { LoginComponent } from './modulo-login/login/login.component';
 import { ClientesComponent } from './modulo-resto/lista-clientes/clientes.component';
-import { CadastroClientesComponent } from './modulo-resto/cadastro-clientes/cadastro-clientes.component';
 import { CadastroProdutosComponent } from './modulo-resto/cadastro-produtos/cadastro-produtos.component';
 import { ProdutosComponent } from './modulo-resto/lista-produtos/produtos.component';
 import { PedidosComponent } from './modulo-resto/lista-pedidos/pedidos.component';
@@ -32,7 +31,6 @@ const routes: Routes = [
   { path: 'carrinho', component: CarrinhoComponent, canActivate: [CheckLogged_Clientes] },
   { path: 'loja', component: LojaComponent, canActivate: [CheckLogged] },
   { path: 'clientes', component: ClientesComponent, canActivate: [CheckLogged] },
-  { path: 'clientes/:id', component: CadastroClientesComponent, canActivate: [CheckLogged] },
   { path: 'produtos', component: ProdutosComponent, canActivate: [CheckLogged] },
   { path: 'produtos/:id', component: CadastroProdutosComponent, canActivate: [CheckLogged] },
   { path: 'pedidos', component: PedidosComponent, canActivate: [CheckLogged] },
@@ -56,7 +54,6 @@ export function getAuthServiceConfigs() {
     LoginComponent,
     AppComponent,
     ClientesComponent,
-    CadastroClientesComponent,
     ProdutosComponent,
     CadastroProdutosComponent,
     PedidosComponent,

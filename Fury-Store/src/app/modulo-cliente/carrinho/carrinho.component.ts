@@ -37,15 +37,18 @@ export class CarrinhoComponent implements OnInit {
     this.usuarioService.buscarCarrinho()
       .then((resultado: any) => {
         for (let i = 0; i < resultado.length; i++) {
-          this.objeto = {
-            id: resultado[i].ID,
-            idProduto: resultado[i].PRODUTO_ID,
-            nome: resultado[i].PRODUTO_NOME,
-            valor: resultado[i].PRODUTO_VALOR,
-            imagem: resultado[i].PRODUTO_IMAGEM
+          if (this.userId == resultado[i].USER_ID) {
+            this.objeto = {
+              id: resultado[i].ID,
+              idProduto: resultado[i].PRODUTO_ID,
+              nome: resultado[i].PRODUTO_NOME,
+              valor: resultado[i].PRODUTO_VALOR,
+              imagem: resultado[i].PRODUTO_IMAGEM
+            }
+            
+            this.carrinho.push(this.objeto)
           }
           this.listaQuantidade[i] = 1
-          this.carrinho.push(this.objeto)
         }
       }).catch(erro => {
         console.log("ERRO AO BUSCAR PRODUTO:", erro)
@@ -102,7 +105,7 @@ export class CarrinhoComponent implements OnInit {
                   resultado.find(ValorProduto => {
                     if (ValorProduto.ID == this.idProduto) {
                       this.valorTotal = ValorProduto.VALOR * this.qtdProduto
-                      this.usuarioService.inserirPedido2(ValorFinalizarCompra.USER_ID, this.nome, ValorProduto.ID, ValorProduto.NOME, this.valorTotal, ValorProduto.IMAGEM)
+                      this.usuarioService.inserirPedido2(ValorFinalizarCompra.USER_ID, this.nome, ValorProduto.ID, ValorProduto.NOME, this.valorTotal)
                       alert("Produto comprado com sucesso!")
                       this.router.navigate(['/menu']);
                     }

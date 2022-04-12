@@ -76,7 +76,6 @@ export class CadastroProdutosComponent implements OnInit {
 
   }
 
-  imageUrl = '';
 
   imagemMudou(event) {
     this.input = event.target

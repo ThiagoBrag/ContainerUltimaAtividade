@@ -279,6 +279,21 @@ export class UsuarioService {
     });
   }
 
+  excluirUsuario(ID) {
+    return new Promise((resolvido, rejeitado) => {
+      fetch('/api/ExcluirUsuario',
+        {
+          method: 'POST',
+          body: JSON.stringify({ID}),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(resultado => resultado.json())
+        .then(result => resolvido(result))
+        .catch(rejeitado);
+    });
+  }
+
   excluirPedido(ID) {
     return new Promise((resolvido, rejeitado) => {
       fetch('/api/ExcluirPedido',

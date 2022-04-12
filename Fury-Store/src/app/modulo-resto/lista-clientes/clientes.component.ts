@@ -21,29 +21,44 @@ export class ClientesComponent implements OnInit {
 
   ngOnInit() {
     this.usuarioService.buscarCliente()
-    .then((resultado: Cliente[])=> {
+    .then((resultado: any)=> {
+      
+      
       for(let i = 0; i < resultado.length; i++){
-        this.objeto = {
-          nome: resultado[i].NOME,
-          sobrenome: resultado[i].SOBRENOME,
-          id: resultado[i].ID
-        }
+        if (resultado[i].NOME != "thiago" && resultado[i].SOBRENOME != "braga") {
+          this.objeto = {
+            nome: resultado[i].NOME,
+            sobrenome: resultado[i].SOBRENOME,
+            id: resultado[i].ID
+          }
         this.clientes.push(this.objeto)
+        }
       }
     }).catch(erro => {
       console.log("ERRO AO BUSCAR CLIENTE:", erro)
     })
   }
 
-  banCliente(i){
-    alert("CLIENTE BANIDO!")
+  banCliente(nome,sobrenome){
+    this.usuarioService.buscarCliente().then((resultado: any) => {
+      resultado.find(ValorCliente => {
+        if (ValorCliente.NOME == nome && ValorCliente.SOBRENOME == sobrenome) {
+          this.usuarioService.excluirCliente(ValorCliente.ID)
+          this.usuarioService.buscarUsuarios().then((resultado: any) => {
+            resultado.find(ValorUsuario => {
+              if (ValorUsuario.NOME == nome && ValorUsuario.SOBRENOME == sobrenome) {
+                this.usuarioService.excluirUsuario(ValorUsuario.ID)
+                alert("CLIENTE BANIDO!")
+                document.location.reload();
+              }
+            })
+          })
+          
+        }
+      })
+    })
+    
   }
 
 
-}
-
-interface Cliente{
-  NOME: string;
-  SOBRENOME: string;
-  ID: number;
 }

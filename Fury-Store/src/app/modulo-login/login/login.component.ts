@@ -53,7 +53,6 @@ export class LoginComponent implements OnInit {
         if (this.user == "thiago" && this.password == "123") {
           this.router.navigate(['/loja']);
         } else {
-          console.log("PASSSOOOUUU")
           this.router.navigate(['/menu'])
         }
       } else {

@@ -26,9 +26,9 @@
                     <strong>{{cliente.sobrenome}}</strong>
                 </div>
                 <div class="EdicaoExclir">
-                    <div class="containerIcone3" (click)="banCliente(i)">
+                    <div class="containerIcone3" (click)="banCliente(cliente.nome, cliente.sobrenome)">
                         <div class="iconeLapis">
-                            <span class="material-icons">
+                            <span class="material-icons" title="Banir!">
                                 person_off
                             </span>
                         </div>
