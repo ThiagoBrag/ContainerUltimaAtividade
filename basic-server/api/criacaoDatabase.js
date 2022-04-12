@@ -59,11 +59,10 @@ database(`CREATE TABLE IF NOT EXISTS ENDERECO (
 database(`CREATE TABLE IF NOT EXISTS PEDIDO (
         ID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
         CLIENTE_ID INTEGER UNIQUE,
+        CLIENTE_NOME varchar(45),
         PRODUTO_ID INTEGER UNIQUE,
-        ENDERECO_ID INTEGER UNIQUE,
-        FOREIGN KEY (CLIENTE_ID) REFERENCES CLIENTE(ID),
-        FOREIGN KEY (PRODUTO_ID) REFERENCES PRODUTO(ID),
-        FOREIGN KEY (ENDERECO_ID) REFERENCES ENDERECO(ID)
+        PRODUTO_NOME varchar(30),
+        PRODUTO_VALOR double
         )`)
     .then(result => {
         console.log('TABELA: PEDIDO CRIADA!');
@@ -83,4 +82,16 @@ database(`CREATE TABLE IF NOT EXISTS CARRINHO (
         console.log('TABELA: CARRINHO CRIADA!');
     }).catch(erro => {
         console.log('TABELA: CARRINHO DEU ERRO NA CRIAÇÃO');
+    });
+
+database(`CREATE TABLE IF NOT EXISTS FINALIZAR_COMPRA (
+        ID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
+        USER_ID INTEGER,
+        PRODUTO_ID INTEGER,
+        PRODUTO_QUANTIDADE INTEGER
+        )`)
+    .then(result => {
+        console.log('TABELA: FINALIZAR CRIADA!');
+    }).catch(erro => {
+        console.log('TABELA: FINALIZAR DEU ERRO NA CRIAÇÃO');
     });

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-loja',
@@ -9,10 +10,16 @@ import { Router } from '@angular/router';
 export class LojaComponent implements OnInit {
 
   constructor(
-    private router: Router
+    private router: Router,
+    private usuarioService: UsuarioService
   ) { }
 
   ngOnInit() {
+    this.usuarioService.buscarUsuarios().then((resultado: any) => {
+      resultado.find(ResultadoUsuarios => {
+        AAAAAAAAAAAAAAAAAA
+      })
+    })
   }
 
   goTo(path) {

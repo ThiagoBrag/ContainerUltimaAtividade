@@ -21,6 +21,11 @@ export class CarrinhoComponent implements OnInit {
   ) {
   }
 
+  qtdProduto
+  valorTotal
+  nome
+  userId
+  idProduto
   listaQuantidade = []
   selecionado
   quantidade = 1
@@ -28,6 +33,7 @@ export class CarrinhoComponent implements OnInit {
   carrinho = [];
   objeto = {}
   ngOnInit() {
+    this.userId = localStorage.getItem("ID");
     this.usuarioService.buscarCarrinho()
       .then((resultado: any) => {
         for (let i = 0; i < resultado.length; i++) {
@@ -54,31 +60,57 @@ export class CarrinhoComponent implements OnInit {
   }
   
   
-  selecionarProduto() {
-    var check = document.querySelector("#myCheck:checked");
+  
+  selecionarProduto(car, i) {
+    localStorage.setItem("ID_PRODUTO", car.idProduto)
+    localStorage.setItem("QUANTIDADE_PRODUTO", this.listaQuantidade[i])
+  this.usuarioService.inserirFinalizarCompra(this.userId, car.idProduto, this.listaQuantidade[i])
+
+    // var check = document.querySelector("#myCheck:checked");
      
-    var carrinhoo;
-      if(check){
-        carrinhoo = 'sim'
-      }else{
-        carrinhoo = 'nao'
-      }
-      console.log("TA AQUI", carrinhoo)
-      if (carrinhoo == 'sim') {
-        const htmlElement: HTMLElement = this.modalElement.nativeElement;
-        htmlElement.classList.add('color');
-        htmlElement.classList.remove('nocolor');
-      } else {
-        const htmlElement: HTMLElement = this.modalElement.nativeElement;
-        htmlElement.classList.add('nocolor');
-        htmlElement.classList.remove('color');
-      }
+    // var carrinhoo;
+    //   if(check) {
+    //     carrinhoo = 'sim'
+    //   }else{
+    //     carrinhoo = 'nao'
+    //   }
+    //   console.log("TA AQUI", carrinhoo, "INDEX", i)
+    //   if (carrinhoo == 'sim') {
+    //     const htmlElement: HTMLElement = this.modalElement.nativeElement;
+    //     console.log(car)
+    //     htmlElement.classList.add('color');
+    //   } else {
+    //     const htmlElement: HTMLElement = this.modalElement.nativeElement;
+    //     htmlElement.classList.remove('color');
+    //   }
     
   }
 
   comprar() {
-    
-    console.log("COMPRADO")
+    this.idProduto = localStorage.getItem('ID_PRODUTO')
+    this.qtdProduto = localStorage.getItem('QUANTIDADE_PRODUTO')
+    this.usuarioService.buscarFinalizarCompra().then((resultado: any) => {
+      resultado.find(ValorFinalizarCompra => {
+        if (this.userId == ValorFinalizarCompra.USER_ID) {
+          this.usuarioService.buscarCliente().then((resultado: any) => {
+            resultado.find(ValorCliente => {
+              if (ValorCliente.ID == this.userId) {
+                this.nome = ValorCliente.NOME
+                this.usuarioService.buscarProduto().then((resultado: any) => {
+                  resultado.find(ValorProduto => {
+                    if (ValorProduto.ID == this.idProduto) {
+                      this.valorTotal = ValorProduto.VALOR * this.qtdProduto
+                      this.usuarioService.inserirPedido(ValorFinalizarCompra.USER_ID, this.nome, ValorProduto.ID, ValorProduto.NOME, this.valorTotal, ValorProduto.IMAGEM)
+                    }
+                  })
+                })
+              }
+            })
+          })
+          
+        }
+      })
+    })
   }
 
 }

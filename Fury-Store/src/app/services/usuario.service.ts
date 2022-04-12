@@ -89,13 +89,13 @@ export class UsuarioService {
     });
   }
 
-  inserirPedido(cliente_id, produto_id, endereco_id) {
+  inserirPedido(cliente_id, cliente_nome, produto_id, produto_nome,produto_valor,produto_imagem) {
     return new Promise((resolvido, rejeitado) => {
       fetch('/api/inserir_pedido',
         {
           method: 'POST',
           body: JSON.stringify({
-            cliente_id, produto_id, endereco_id
+            cliente_id, cliente_nome, produto_id, produto_nome,produto_valor,produto_imagem
           }
           ),
           headers: {
@@ -114,6 +114,24 @@ export class UsuarioService {
           method: 'POST',
           body: JSON.stringify({
             user_id, produto_id, produto_nome, produto_valor, produto_imagem
+          }
+          ),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(resultado => resultado.json())
+        .then(result => resolvido(result))
+        .catch(rejeitado);
+    });
+  }
+
+  inserirFinalizarCompra(user_id, produto_id, produto_quantidade) {
+    return new Promise((resolvido, rejeitado) => {
+      fetch('/api/inserir_finalizar_compra',
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            user_id, produto_id, produto_quantidade
           }
           ),
           headers: {
@@ -146,6 +164,20 @@ export class UsuarioService {
   buscarPedido() {
     return new Promise((resolvido, rejeitado) => {
       fetch('/api/Pedido',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(resultado => resultado.json())
+        .then(result => resolvido(result))
+        .catch(rejeitado);
+    });
+  }
+
+  buscarFinalizarCompra() {
+    return new Promise((resolvido, rejeitado) => {
+      fetch('/api/FinalizarCompra',
         {
           method: 'POST',
           headers: {
