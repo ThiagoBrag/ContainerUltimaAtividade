@@ -91,30 +91,6 @@ export class CarrinhoComponent implements OnInit {
       })
     }
  }
-  
-  selecionarProduto(car, i) {
-    
-   
-
-    // var check = document.querySelector("#myCheck:checked");
-     
-    // var carrinhoo;
-    //   if(check) {
-    //     carrinhoo = 'sim'
-    //   }else{
-    //     carrinhoo = 'nao'
-    //   }
-    //   console.log("TA AQUI", carrinhoo, "INDEX", i)
-    //   if (carrinhoo == 'sim') {
-    //     const htmlElement: HTMLElement = this.modalElement.nativeElement;
-    //     console.log(car)
-    //     htmlElement.classList.add('color');
-    //   } else {
-    //     const htmlElement: HTMLElement = this.modalElement.nativeElement;
-    //     htmlElement.classList.remove('color');
-    //   }
-    
-  }
 
   comprar() {
     this.idProduto = localStorage.getItem('ID_PRODUTO')
@@ -147,5 +123,3 @@ export class CarrinhoComponent implements OnInit {
   }
 
 }
-
-// CONTINUAR A FAZER O CARRINHO (COLOCAR O MARK TASK E FAZER TOTAL)

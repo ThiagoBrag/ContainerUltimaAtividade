@@ -29,10 +29,10 @@
     </div>
     <div class="conteudo">
         <div class="containerproduto">
-            <div *ngFor="let car of carrinho;let i=index " class="produto">
+            <div *ngFor="let car of carrinho;let i=index " class="produto" #color>
 
                 <div class="containerIcone3" title="Selecionar Produto!">
-                    <input class="CheckBox" (click)="selecionarProduto(car, i)" (change)="checkCheckBoxvalue($event, car, i)" type="checkbox" id="myCheck">
+                    <input class="CheckBox" (change)="checkCheckBoxvalue($event, car, i)" type="checkbox" id="myCheck">
                 </div>
                 <div class="imagem">
                     <img src={{car.imagem}}>

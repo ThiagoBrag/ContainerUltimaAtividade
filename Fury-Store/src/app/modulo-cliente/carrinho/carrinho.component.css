@@ -65,9 +65,8 @@
     cursor: default;
 }
 
-.EscondeAzul.color {
-    /* background-color: rgba(0, 104, 201, 0.329); */
-    color: rgba(0, 104, 201, 0.329);
+.produto.color {
+    background-color: rgba(0, 104, 201, 0.329);
 }
 
 .palavraNome {
