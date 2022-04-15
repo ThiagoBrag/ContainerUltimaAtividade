@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild  } from '@angular/core';
+import { cr } from '@angular/core/src/render3';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
@@ -62,13 +63,38 @@ export class CarrinhoComponent implements OnInit {
     document.location.reload();
   }
   
-  
+  checkCheckBoxvalue(event, car, i){
+    if (event.target.checked == true) {
+      const htmlElement: HTMLElement = this.modalElement.nativeElement;
+      htmlElement.classList.add('color');
+
+      localStorage.setItem("ID_PRODUTO", car.idProduto)
+      localStorage.setItem("QUANTIDADE_PRODUTO", this.listaQuantidade[i])
+      this.usuarioService.inserirFinalizarCompra(this.userId, car.idProduto, this.listaQuantidade[i])
+    } else if (event.target.checked == false) {
+      const htmlElement: HTMLElement = this.modalElement.nativeElement;
+      htmlElement.classList.remove('color');
+
+      localStorage.removeItem("ID_PRODUTO")
+      localStorage.removeItem("QUANTIDADE_PRODUTO")
+      this.usuarioService.buscarFinalizarCompra().then((resultdo: any) => {
+        resultdo.find(ValorFinalizarCompra => {
+          console.log(ValorFinalizarCompra)
+          if (this.userId == ValorFinalizarCompra.USER_ID) {
+            if (car.idProduto == ValorFinalizarCompra.PRODUTO_ID) {
+              if (this.listaQuantidade[i] == ValorFinalizarCompra.PRODUTO_QUANTIDADE) {
+                this.usuarioService.ExcluirFinalizarCompra(ValorFinalizarCompra.ID)
+              }
+            }
+          }
+        })
+      })
+    }
+ }
   
   selecionarProduto(car, i) {
     
-    localStorage.setItem("ID_PRODUTO", car.idProduto)
-    localStorage.setItem("QUANTIDADE_PRODUTO", this.listaQuantidade[i])
-    this.usuarioService.inserirFinalizarCompra(this.userId, car.idProduto, this.listaQuantidade[i])
+   
 
     // var check = document.querySelector("#myCheck:checked");
      

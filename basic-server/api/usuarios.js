@@ -322,6 +322,17 @@ inserirRota('/ExcluirProduto', function(dados, resposta) {
         });
 })
 
+inserirRota('/ExcluirFinalizarCompra', function(dados, resposta) {
+    console.log(dados)
+
+    database(`DELETE FROM FINALIZAR_COMPRA WHERE ID = '${dados.ID}'`)
+        .then(result => {
+            resposta(result)
+        }).catch(erro => {
+            resposta({ erro: 'Erro ao excluir um item da tabela produto!' });
+        });
+})
+
 inserirRota('/ExcluirCliente', function(dados, resposta) {
     console.log(dados)
 
