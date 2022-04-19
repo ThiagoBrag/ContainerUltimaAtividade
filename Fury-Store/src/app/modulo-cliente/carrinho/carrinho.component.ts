@@ -22,25 +22,26 @@ export class CarrinhoComponent implements OnInit {
   ) {
   }
 
-  UserNome
-  finalizarCompraID
-  valortotal
-  ValorFinal = 0
-  qtdProduto
-  userId
-  idProduto
-  listaQuantidade = []
-  selecionado
-  quantidade = 1
-  idCarrinho
+  produtoSele;
+  ProdutoSelecionado = 0;
+  UserNome;
+  finalizarCompraID;
+  valortotal;
+  ValorFinal = 0;
+  qtdProduto;
+  userId;
+  idProduto;
+  listaQuantidade = [];
+  selecionado;
+  quantidade = 1;
+  idCarrinho;
   carrinho = [];
-  objeto = {}
+  objeto = {};
   ngOnInit() {
     this.userId = localStorage.getItem("ID");
 
     this.usuarioService.buscarUsuarios().then((resultado: any) => {
       resultado.find(ValorUser => {
-        console.log("BBB", ValorUser)
         if (ValorUser.ID == this.userId) {
           this.UserNome = ValorUser.NOME
         }
@@ -77,9 +78,11 @@ export class CarrinhoComponent implements OnInit {
 
   checkCheckBoxvalue(event, car, i) {
     if (event.target.checked == true) {
+      this.ProdutoSelecionado++
       this.valortotal = car.valor * this.listaQuantidade[i];
       this.usuarioService.inserirFinalizarCompra(this.userId, car.idProduto, this.listaQuantidade[i], this.valortotal)
     } else if (event.target.checked == false) {
+      this.ProdutoSelecionado--
       this.usuarioService.buscarFinalizarCompra().then((resultdo: any) => {
         resultdo.find(ValorFinalizarCompra => {
 
@@ -93,26 +96,28 @@ export class CarrinhoComponent implements OnInit {
         })
       })
     }
+    localStorage.setItem("PRODUTOSELECIONADO", this.ProdutoSelecionado.toString())
   }
 
   comprar() {
-    this.usuarioService.buscarFinalizarCompra().then((resultado: any) => {
-      resultado.find(ValorFinalizarCompra => {
-        if (this.userId == ValorFinalizarCompra.USER_ID) {
-          this.ValorFinal += ValorFinalizarCompra.PRODUTO_VALORTOTAL;
-          this.finalizarCompraID = ValorFinalizarCompra.ID;
-        }
+    this.ValorFinal = 0;
+    console.log(localStorage.getItem("PRODUTOSELECIONADO"))
+    if (parseInt(localStorage.getItem("PRODUTOSELECIONADO")) > 0) {
+      this.usuarioService.buscarFinalizarCompra().then((resultado: any) => {
+        resultado.find(ValorFinalizarCompra => {
+          if (this.userId == ValorFinalizarCompra.USER_ID) {
+            this.ValorFinal += ValorFinalizarCompra.PRODUTO_VALORTOTAL;
+            this.finalizarCompraID = ValorFinalizarCompra.ID;
+          }
+        })
+        this.usuarioService.ExcluirFinalizarCompra(this.finalizarCompraID)
+        this.usuarioService.inserirPedido2(this.userId, this.UserNome, this.ValorFinal)
+        alert("Produto comprado com sucesso!")
+        this.router.navigate(['/menu']);
       })
-      this.usuarioService.ExcluirFinalizarCompra(this.finalizarCompraID)
-      console.log(this.UserNome)
-      this.usuarioService.inserirPedido2(this.userId, this.UserNome, this.ValorFinal)
-      alert("Produto comprado com sucesso!")
-      this.router.navigate(['/menu']);
-    })
-
-
-
-
+    } else {
+      alert("Não existe produto selecionado")
+    }
+    localStorage.removeItem("PRODUTOSELECIONADO")
   }
-
 }
