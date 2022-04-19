@@ -23,20 +23,16 @@ class CheckLogged_Clientes implements CanActivate {
         let username = localStorage.getItem('NOME')
         let password = localStorage.getItem('PASSWORD')
 
-        if (username == "ty" && password == "ty") {
-           
-            return true;
-        } else {
-            if (username && password) {
-                if (username != 'Thiago' && password != '123') {
-                    return true
-                }
-            } else {
-                alert("É necessário um login válido!")
-                this.router.navigate([""]);
-                return false;
+        if (username && password) {
+            if (username != 'Thiago' && password != '123') {
+                return true
             }
+        } else {
+            alert("É necessário um login válido!")
+            this.router.navigate([""]);
+            return false;
         }
+
     }
 }
 
