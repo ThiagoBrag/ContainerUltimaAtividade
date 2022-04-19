@@ -1,3 +1,9 @@
 require('./teste');
 require('./usuarios');
-require('./criacaoDatabase')
+require('./criacaoDatabase');
+require('./insert');
+require('./produto');
+require('./cliente');
+require('./pedido');
+require('./FinalizarCompra');
+require('./carrinho');

@@ -107,13 +107,13 @@ export class UsuarioService {
     });
   }
 
-  inserirPedido2(cliente_id,cliente_nome ,produto_id, produto_nome, produto_valor) {
+  inserirPedido2(cliente_id,cliente_nome , produto_valorfinal) {
     return new Promise((resolvido, rejeitado) => {
       fetch('/api/inserir_pedido2',
         {
           method: 'POST',
           body: JSON.stringify({
-            cliente_id,cliente_nome ,produto_id, produto_nome, produto_valor
+            cliente_id,cliente_nome , produto_valorfinal
           }
           ),
           headers: {
@@ -143,13 +143,13 @@ export class UsuarioService {
     });
   }
 
-  inserirFinalizarCompra(user_id, produto_id, produto_quantidade) {
+  inserirFinalizarCompra(user_id, produto_id, produto_quantidade, produto_valortotal) {
     return new Promise((resolvido, rejeitado) => {
       fetch('/api/inserir_finalizar_compra',
         {
           method: 'POST',
           body: JSON.stringify({
-            user_id, produto_id, produto_quantidade
+            user_id, produto_id, produto_quantidade, produto_valortotal
           }
           ),
           headers: {
@@ -160,24 +160,6 @@ export class UsuarioService {
         .catch(rejeitado);
     });
   }
-
-  // inserirEndereco(pais, estado, cidade, bairro, rua, numero, cep) {
-  //   return new Promise((resolvido, rejeitado) => {
-  //     fetch('/api/inserir_endereco',
-  //       {
-  //         method: 'POST',
-  //         body: JSON.stringify({
-  //           pais, estado, cidade, bairro, rua, numero, cep
-  //         }
-  //         ),
-  //         headers: {
-  //           'Content-Type': 'application/json'
-  //         }
-  //       }).then(resultado => resultado.json())
-  //       .then(result => resolvido(result))
-  //       .catch(rejeitado);
-  //   });
-  // }
 
   buscarPedido() {
     return new Promise((resolvido, rejeitado) => {
@@ -206,20 +188,6 @@ export class UsuarioService {
         .catch(rejeitado);
     });
   }
-
-  // buscarEndereco() {
-  //   return new Promise((resolvido, rejeitado) => {
-  //     fetch('/api/Endereco',
-  //       {
-  //         method: 'POST',
-  //         headers: {
-  //           'Content-Type': 'application/json'
-  //         }
-  //       }).then(resultado => resultado.json())
-  //       .then(result => resolvido(result))
-  //       .catch(rejeitado);
-  //   });
-  // }
 
   buscarProduto() {
     return new Promise((resolvido, rejeitado) => {
@@ -339,21 +307,6 @@ export class UsuarioService {
     });
   }
 
-  // excluirEndereco(ID) {
-  //   return new Promise((resolvido, rejeitado) => {
-  //     fetch('/api/ExcluirEndereco',
-  //       {
-  //         method: 'POST',
-  //         body: JSON.stringify({ID}),
-  //         headers: {
-  //           'Content-Type': 'application/json'
-  //         }
-  //       }).then(resultado => resultado.json())
-  //       .then(result => resolvido(result))
-  //       .catch(rejeitado);
-  //   });
-  // }
-
   editarProduto(nome,preco, ID) {
     return new Promise((resolvido, rejeitado) => {
       fetch('/api/EditarProduto',
@@ -375,36 +328,6 @@ export class UsuarioService {
         {
           method: 'POST',
           body: JSON.stringify({nome, sobrenome, ID}),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }).then(resultado => resultado.json())
-        .then(result => resolvido(result))
-        .catch(rejeitado);
-    });
-  }
-
-  editarPedido(cliente_id, produto_id, endereco_id, ID) {
-    return new Promise((resolvido, rejeitado) => {
-      fetch('/api/EditarPedido',
-        {
-          method: 'POST',
-          body: JSON.stringify({cliente_id, produto_id, endereco_id, ID}),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }).then(resultado => resultado.json())
-        .then(result => resolvido(result))
-        .catch(rejeitado);
-    });
-  }
-
-  editarEndereco(pais, estado, cidade, bairro, rua, numero, cep, ID) {
-    return new Promise((resolvido, rejeitado) => {
-      fetch('/api/EditarEndereco',
-        {
-          method: 'POST',
-          body: JSON.stringify({pais, estado, cidade, bairro, rua, numero, cep, ID}),
           headers: {
             'Content-Type': 'application/json'
           }

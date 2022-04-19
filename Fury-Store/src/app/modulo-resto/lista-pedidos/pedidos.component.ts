@@ -27,43 +27,13 @@ export class PedidosComponent implements OnInit {
     this.usuarioService.buscarPedido()
     .then((resultado: any)=> {
       resultado.find(ValorPedido => {
+        console.log(ValorPedido)
         let pedido = {
           NomeCliente: ValorPedido.CLIENTE_NOME,
-          ValorTotal: ValorPedido.PRODUTO_VALOR
+          ValorFinal: ValorPedido.PRODUTO_VALORFINAL
         }
         this.pedidos.push(pedido)
-        // this.usuarioService.buscarUsuarios().then((resultadoo: any) => {
-        //   resultadoo.find(ValorUsuario => {
-        //     if (ValorPedido.CLIENTE_ID == ValorUsuario.ID) {
-              
-        //     }
-        //   })
-        // })
-
-      //   let nomeCliente
-      //   let nomeProduto
-      //   this.usuarioService.buscarCliente().then((resultado: any) => {
-      //     resultado.find(ValorCliente => {
-      //       if (ValorCliente.ID == ValorPedido.CLIENTE_ID) {
-      //         nomeCliente= ValorCliente.NOME
-      //         this.usuarioService.buscarProduto().then((resultado: any) => {
-      //           resultado.forEach(ValorProduto => {
-      //             if (ValorProduto.ID == ValorPedido.PRODUTO_ID) {
-      //               nomeProduto=  ValorProduto.NOME
-      //               let pedido = {
-      //                 idPedido: ValorPedido.ID,
-      //                 idProduto: ValorPedido.PRODUTO_ID,
-      //                 idCliente: ValorPedido.CLIENTE_ID,
-      //                 nomeDoProduto: nomeProduto,
-      //                 nomeDoCliente: nomeCliente
-      //               }
-      //               this.pedidos.push(pedido)
-      //             }
-      //           })
-      //         })
-      //       }
-      //     })
-      //   })
+        
       })
     }).catch(erro => {
       console.log("ERRO AO BUSCAR CLIENTE:", erro)

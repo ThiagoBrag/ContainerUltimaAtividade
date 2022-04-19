@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild  } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { cr } from '@angular/core/src/render3';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -22,9 +22,11 @@ export class CarrinhoComponent implements OnInit {
   ) {
   }
 
+  UserNome
+  finalizarCompraID
+  valortotal
+  ValorFinal = 0
   qtdProduto
-  valorTotal
-  nome
   userId
   idProduto
   listaQuantidade = []
@@ -35,6 +37,16 @@ export class CarrinhoComponent implements OnInit {
   objeto = {}
   ngOnInit() {
     this.userId = localStorage.getItem("ID");
+
+    this.usuarioService.buscarUsuarios().then((resultado: any) => {
+      resultado.find(ValorUser => {
+        console.log("BBB", ValorUser)
+        if (ValorUser.ID == this.userId) {
+          this.UserNome = ValorUser.NOME
+        }
+      })
+    })
+
     this.usuarioService.buscarCarrinho()
       .then((resultado: any) => {
         for (let i = 0; i < resultado.length; i++) {
@@ -46,7 +58,7 @@ export class CarrinhoComponent implements OnInit {
               valor: resultado[i].PRODUTO_VALOR,
               imagem: resultado[i].PRODUTO_IMAGEM
             }
-            
+
             this.carrinho.push(this.objeto)
           }
           this.listaQuantidade[i] = 1
@@ -62,24 +74,15 @@ export class CarrinhoComponent implements OnInit {
     alert("Produto removido com sucesso!")
     document.location.reload();
   }
-  
-  checkCheckBoxvalue(event, car, i){
+
+  checkCheckBoxvalue(event, car, i) {
     if (event.target.checked == true) {
-      const htmlElement: HTMLElement = this.modalElement.nativeElement;
-      htmlElement.classList.add('color');
-
-      localStorage.setItem("ID_PRODUTO", car.idProduto)
-      localStorage.setItem("QUANTIDADE_PRODUTO", this.listaQuantidade[i])
-      this.usuarioService.inserirFinalizarCompra(this.userId, car.idProduto, this.listaQuantidade[i])
+      this.valortotal = car.valor * this.listaQuantidade[i];
+      this.usuarioService.inserirFinalizarCompra(this.userId, car.idProduto, this.listaQuantidade[i], this.valortotal)
     } else if (event.target.checked == false) {
-      const htmlElement: HTMLElement = this.modalElement.nativeElement;
-      htmlElement.classList.remove('color');
-
-      localStorage.removeItem("ID_PRODUTO")
-      localStorage.removeItem("QUANTIDADE_PRODUTO")
       this.usuarioService.buscarFinalizarCompra().then((resultdo: any) => {
         resultdo.find(ValorFinalizarCompra => {
-          console.log(ValorFinalizarCompra)
+
           if (this.userId == ValorFinalizarCompra.USER_ID) {
             if (car.idProduto == ValorFinalizarCompra.PRODUTO_ID) {
               if (this.listaQuantidade[i] == ValorFinalizarCompra.PRODUTO_QUANTIDADE) {
@@ -90,36 +93,26 @@ export class CarrinhoComponent implements OnInit {
         })
       })
     }
- }
+  }
 
   comprar() {
-    this.idProduto = localStorage.getItem('ID_PRODUTO')
-    this.qtdProduto = localStorage.getItem('QUANTIDADE_PRODUTO')
-
     this.usuarioService.buscarFinalizarCompra().then((resultado: any) => {
       resultado.find(ValorFinalizarCompra => {
         if (this.userId == ValorFinalizarCompra.USER_ID) {
-          this.usuarioService.buscarUsuarios().then((resultado: any) => {
-            resultado.find(ValorUsuario => {
-              if (ValorUsuario.ID == this.userId) {
-                this.nome = ValorUsuario.NOME
-                this.usuarioService.buscarProduto().then((resultado: any) => {
-                  resultado.find(ValorProduto => {
-                    if (ValorProduto.ID == this.idProduto) {
-                      this.valorTotal = ValorProduto.VALOR * this.qtdProduto
-                      this.usuarioService.inserirPedido2(ValorFinalizarCompra.USER_ID, this.nome, ValorProduto.ID, ValorProduto.NOME, this.valorTotal)
-                      alert("Produto comprado com sucesso!")
-                      this.router.navigate(['/menu']);
-                    }
-                  })
-                })
-              }
-            })
-          })
-          
+          this.ValorFinal += ValorFinalizarCompra.PRODUTO_VALORTOTAL;
+          this.finalizarCompraID = ValorFinalizarCompra.ID;
         }
       })
+      this.usuarioService.ExcluirFinalizarCompra(this.finalizarCompraID)
+      console.log(this.UserNome)
+      this.usuarioService.inserirPedido2(this.userId, this.UserNome, this.ValorFinal)
+      alert("Produto comprado com sucesso!")
+      this.router.navigate(['/menu']);
     })
+
+
+
+
   }
 
 }
