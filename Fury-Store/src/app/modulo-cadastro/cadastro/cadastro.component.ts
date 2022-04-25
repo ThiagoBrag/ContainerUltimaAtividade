@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioService } from '../../services/usuario.service';
-import {
-  AuthService,
-  GoogleLoginProvider
-} from 'angular-6-social-login-v2';
 
 @Component({
   selector: 'app-cadastro',
@@ -19,28 +15,11 @@ export class CadastroComponent implements OnInit {
   passwordrepetido = '';
 
   constructor(
-    private socialAuthService: AuthService,
     private usuarioService: UsuarioService,
     private router: Router,
   ) { }
 
   ngOnInit() {
-  }
-
-  public Google(socialPlatform: string) {
-    let socialPlatformProvider;
-    if (socialPlatform == "google") {
-      socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
-    }
-
-
-    this.socialAuthService.signIn(socialPlatformProvider).then(
-      (userData) => {
-        localStorage.setItem('USER', "ty");
-        localStorage.setItem('PASSWORD', "ty");
-        this.router.navigate(['/loja']);
-      }
-    );
   }
 
   cadastrar() {

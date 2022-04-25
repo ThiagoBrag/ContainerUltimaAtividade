@@ -23,7 +23,7 @@ class CheckLogged_Clientes implements CanActivate {
         let username = localStorage.getItem('NOME')
         let password = localStorage.getItem('PASSWORD')
 
-        if (username == "y" && password == "y") {
+        if (username == "ty" && password == "ty") {
             return true
         } else {
 
